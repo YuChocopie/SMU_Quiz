@@ -12,5 +12,6 @@ class MainActivity : AppCompatActivity() {
         // yuchocopie commit msg
 
         // Tina commit msg
+        //jinsu change
     }
 }
