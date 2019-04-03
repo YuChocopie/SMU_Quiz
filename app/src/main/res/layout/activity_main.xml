@@ -7,13 +7,79 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <TextView
-            android:layout_width="wrap_content"
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/main_toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:minHeight="?attr/actionBarSize"
+            tools:ignore="MissingConstraints">
+
+        <TextView
+                android:id="@+id/toolBar_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/dailyQuiz_name"
+                android:textStyle="bold"
+                android:textSize="30sp"
+        />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageButton
+            android:id="@+id/btn_star"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/btn_star"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:background="@color/colorButtonBackground"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"/>
+
+    <TextView
+            android:id="@+id/textView_questionNum"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:text="@string/question_num"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/main_toolbar"/>
+
+    <TextView
+            android:id="@+id/textView_questionContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/question_content"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView_questionNum"
+            app:layout_constraintStart_toStartOf="@+id/textView_questionNum"
+            app:layout_constraintEnd_toEndOf="@+id/textView_questionNum"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"/>
+
+    <ListView
+            android:id="@+id/listView_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/textView_questionContent"
+            app:layout_constraintStart_toStartOf="@+id/textView_questionContent"
+            app:layout_constraintEnd_toEndOf="@+id/textView_questionContent"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.51">
+
+    </ListView>
+
+
 
 </android.support.constraint.ConstraintLayout>
