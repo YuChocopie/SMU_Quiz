@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">SMU_Quiz</string>
-
+    <string name="navigation_drawer_open">네비 열림</string>
+    <string name="navigation_drawer_close">네비 닫힘</string>
+    <string name="nav_header_desc">Navigation header</string>
 
 </resources>
 

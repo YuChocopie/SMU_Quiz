@@ -2,10 +2,11 @@ package com.smu.sangmyung.smu_quiz
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.gms.auth.api.Auth
+import android.support.v7.app.ActionBarDrawerToggle
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_after_login.*
+import kotlinx.android.synthetic.main.app_bar_main.*
 
 class AfterLoginActivity : AppCompatActivity() {
 
