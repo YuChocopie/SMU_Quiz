@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "93980216082",
+    "firebase_url": "https://smuquiz.firebaseio.com",
+    "project_id": "smuquiz",
+    "storage_bucket": "smuquiz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93980216082:android:3304c77a5a91c0f9",
+        "android_client_info": {
+          "package_name": "com.smu.sangmyung.smu_quiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93980216082-g1e9bi9gusb82c1pa3h746slbidl878n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smu.sangmyung.smu_quiz",
+            "certificate_hash": "ec9bf4c304342f2eb1261708738479f27eb64d10"
+          }
+        },
+        {
+          "client_id": "93980216082-h4jv5ddu7d2b3ofsh13esseu33hu3u97.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4xftAUMryUQivJNITT8dQR9HXRqzd3e0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93980216082-h4jv5ddu7d2b3ofsh13esseu33hu3u97.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
