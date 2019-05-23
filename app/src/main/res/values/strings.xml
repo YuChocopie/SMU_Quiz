@@ -4,5 +4,13 @@
     <string name="navigation_drawer_close">네비 닫힘</string>
     <string name="nav_header_desc">Navigation header</string>
 
+    <string name="dailyQuiz_name">All Com Quiz</string>
+    <string name="question_num">Quesion 13</string>
+    <string name="question_content">데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 현상이 발생하는 것을 무엇이라 하는가?</string>
+    <string name="question_1">이상 (Anomaly)</string>
+    <string name="question_2">제한 (Restriction)</string>
+    <string name="question_3">종속성 (Dependency)</string>
+    <string name="question_4">변환 (Translation)</string>
+
 </resources>
 
