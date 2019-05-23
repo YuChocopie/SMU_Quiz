@@ -1,5 +1,6 @@
 package com.smu.sangmyung.smu_quiz
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.support.v7.app.AppCompatActivity
