@@ -48,13 +48,10 @@ class GoogleSignInActivity : AppCompatActivity(){
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
-
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account!!)
             } catch (e: ApiException) {
-
                 Log.w(TAG, "Google sign in failed", e)
-
             }
         }
     }
@@ -66,12 +63,9 @@ class GoogleSignInActivity : AppCompatActivity(){
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-
                     Log.d(TAG, "signInWithCredential:success")
-                    val user = auth.currentUser
                     val intent = Intent(applicationContext,AfterLoginActivity::class.java)
                     startActivity(intent)
-
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                 }
@@ -81,13 +75,7 @@ class GoogleSignInActivity : AppCompatActivity(){
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
-    private fun signOut() {
 
-        auth.signOut()
-        googleSignInClient.signOut().addOnCompleteListener(this) {
-
-        }
-    }
     companion object {
         private const val TAG = "GoogleActivity"
         private const val RC_SIGN_IN = 9001

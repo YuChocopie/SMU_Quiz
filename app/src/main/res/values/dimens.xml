@@ -7,4 +7,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="icon_24">24dp</dimen>
     <dimen name="TitleBoxY">53dp</dimen>
+    <dimen name="subject_size">25dp</dimen>
 </resources>
