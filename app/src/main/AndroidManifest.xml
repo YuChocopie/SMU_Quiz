@@ -16,12 +16,31 @@
         <activity android:name=".GoogleSignInActivity">
         </activity>
         <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name="com.example.smu_quiz.DailyActivity">
+
+        </activity>
+        <activity android:name="com.example.smu_quiz.MockTestMain">
+
+        </activity>
+        <activity android:name="com.example.smu_quiz.StopActivity">
+
+        </activity>
+        <activity android:name="com.example.smu_quiz.TotalResult">
+
+        </activity>
+        <activity android:name="com.example.smu_quiz.MockTestStart">
+
+        </activity>
+
+        <activity android:name="com.example.smu_quiz.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

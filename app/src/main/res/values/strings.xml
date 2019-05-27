@@ -11,6 +11,17 @@
     <string name="question_2">제한 (Restriction)</string>
     <string name="question_3">종속성 (Dependency)</string>
     <string name="question_4">변환 (Translation)</string>
-
+    <string name="total_result">50 문제 중 19 문제를 맞았습니다!</string>
+    <string name="goto_wrong">오답 확인하러 가기</string>
+    <string name="goto_main">메인화면으로</string>
+    <string name="aWrongAnswer">aWrongAnswer() { \n ... \n }</string>
+    <string name="goToMain">goToMain() { \n ... \n }</string>
+    <string name="solve">오답풀이</string>
+    <string name="mock_test_start">전에 푸시던 문제를 이어푸시겠습니까?</string>
+    <string name="mock_continue">이어풀기</string>
+    <string name="mock_new">새로 풀기</string>
+    <string name="daily_stop">문제풀기를 중단하시겠습니까?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 </resources>
 
