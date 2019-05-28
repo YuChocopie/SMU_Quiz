@@ -10,10 +10,10 @@ import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.activity_stop.*
 
 class MockTestStart : AppCompatActivity(){
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stop)
-
 
         //xml 초기 화면 설정
         tvStop.setText("원하는 것을 선택하세요")
@@ -32,6 +32,7 @@ class MockTestStart : AppCompatActivity(){
 
         //새로풀기
         tvStopNo.setOnClickListener {
+            val intent = Intent(this, MockTestMain::class.java)
             startActivity(intent)
 
         }
