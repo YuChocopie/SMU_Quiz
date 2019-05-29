@@ -23,13 +23,19 @@
         <activity android:name="com.example.smu_quiz.MockTestMain">
 
         </activity>
-        <activity android:name="com.example.smu_quiz.StopActivity">
+        <activity android:name="com.example.smu_quiz.StopActivity"
+                  android:theme="@style/Transparent"
+        >
 
         </activity>
-        <activity android:name="com.example.smu_quiz.TotalResult">
+        <activity android:name="com.example.smu_quiz.TotalResult"
+                  android:theme="@style/Transparent"
+        >
 
         </activity>
-        <activity android:name="com.example.smu_quiz.MockTestStart">
+        <activity android:name="com.example.smu_quiz.MockTestStart"
+                  android:theme="@style/Transparent"
+        >
 
         </activity>
 
