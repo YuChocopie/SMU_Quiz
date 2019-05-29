@@ -16,7 +16,7 @@ class MockTestStart : AppCompatActivity(){
         setContentView(R.layout.activity_stop)
 
         //xml 초기 화면 설정
-        tvStop.setText("원하는 것을 선택하세요")
+        tvStop.setText(R.string.mock_test_start)
         tvStopYes.setText("이어풀기")
         tvStopNo.setText("새로풀기")
 

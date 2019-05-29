@@ -18,11 +18,11 @@ class DailyActivity : AppCompatActivity() {
 
     var questionList = mutableListOf<Question>(
 
-        Question("1","","subject1","problem1","choice1-1","choice1-2","choice1-3","choice1-4", "1"),
-        Question("2","","subject2","problem2","choice2-1","choice2-2","choice2-3","choice2-4", "2"),
-        Question("3","","subject3","problem3","choice3-1","choice3-2","choice3-3","choice3-4", "3"),
-        Question("4","","subject4","problem4","choice4-1","choice4-2","choice4-3","choice4-4", "4"),
-        Question("5","","subject5","problem5","choice5-1","choice5-2","choice5-3","choice5-4", "1")
+        Question("1","","subject1","problem1","choice1-1","choice1-2","choice1-3","choice1-4", "1",""),
+        Question("2","","subject2","problem2","choice2-1","choice2-2","choice2-3","choice2-4", "2",""),
+        Question("3","","subject3","problem3","choice3-1","choice3-2","choice3-3","choice3-4", "3",""),
+        Question("4","","subject4","problem4","choice4-1","choice4-2","choice4-3","choice4-4", "4",""),
+        Question("5","","subject5","problem5","choice5-1","choice5-2","choice5-3","choice5-4", "1","")
 
     )
 
