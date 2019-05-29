@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_daily.*
 
 class DailyActivity : AppCompatActivity() {
 
+    //데일리 문제 list
     var questionList = mutableListOf<Question>(
 
         Question("1","","subject1","problem1","choice1-1","choice1-2","choice1-3","choice1-4", "1",""),
@@ -47,23 +48,40 @@ class DailyActivity : AppCompatActivity() {
             if(questionList[position].answer == num){
                 ivAnswerCorrect.visibility = VISIBLE
                 ivAnswerWrong.visibility= INVISIBLE
-                choice[choicenum-1].tvChoice.setTextColor(Color.BLUE)
+                for(m in 0..3){
+                    if(m != choicenum-1){
+                        choice[m].tvChoice.setTextColor(Color.BLACK)
+                    }else{
+                        choice[m].tvChoice.setTextColor(Color.BLUE)
+                    }
+                }
             }else{
                 ivAnswerWrong.visibility = VISIBLE
                 ivAnswerCorrect.visibility= INVISIBLE
-                choice[choicenum-1].tvChoice.setTextColor(Color.RED)
+                for(m in 0..3){
+                    if(m != choicenum-1){
+                        choice[m].tvChoice.setTextColor(Color.BLACK)
+                    }else{
+                        choice[m].tvChoice.setTextColor(Color.RED)
+                    }
+                }
             }
         }
 
         //xml 파일 problem, choice text설정
         fun setting(pr_num:Int){
-            tvMainTopTitle.setText("Daily_${questionList[0].subject}")
-            tvMainQuestionContent.setText(questionList[0].problem)
+            tvMainTopTitle.setText("Daily_${questionList[pr_num].subject}")
+            tvMainQuestionContent.setText(questionList[pr_num].problem)
             tvMainQuestionNum.text="Question ${pr_num+1}"
             tvChoice1.text = questionList[pr_num].choice1
             tvChoice2.text = questionList[pr_num].choice2
             tvChoice3.text = questionList[pr_num].choice3
             tvChoice4.text = questionList[pr_num].choice4
+
+            ivAnswerCorrect.visibility = View.GONE
+            ivAnswerWrong.visibility = View.GONE
+
+            ivMainLike.setImageResource(R.drawable.like_empty)
 
             for(m in 0..3){
                 choice[m].tvChoice.setTextColor(Color.BLACK)
@@ -74,15 +92,19 @@ class DailyActivity : AppCompatActivity() {
         //xml파일 text뷰 내용 설정
         setting(pr_num)
 
+        //1번 선택했을 때
         tvChoice1.setOnClickListener {
             isQuestionResult(pr_num, "1")
         }
+        //2번 선택했을 때
         tvChoice2.setOnClickListener {
             isQuestionResult(pr_num,"2")
         }
+        //3번 선택했을 때
         tvChoice3.setOnClickListener {
             isQuestionResult(pr_num,"3")
         }
+        //4번 선택했을 때
         tvChoice4.setOnClickListener {
             isQuestionResult(pr_num,"4")
         }
@@ -99,28 +121,7 @@ class DailyActivity : AppCompatActivity() {
         tvNext.setOnClickListener {
             pr_num += 1
             if(pr_num < questionList.size){
-
-                tvMainTopTitle.setText("Daily_${questionList[pr_num].subject}")
-                tvMainQuestionContent.setText(questionList[pr_num].problem)
-                tvMainQuestionNum.text="Question ${pr_num+1}"
-                ivAnswerCorrect.visibility = View.INVISIBLE
-                ivAnswerWrong.visibility = View.INVISIBLE
-                //rvMainMultipleChoice.adapter = mAdapter
-                ivMainLike.setImageResource(R.drawable.like_empty)
-
-                tvChoice1.setText(questionList[pr_num].choice1)
-                tvChoice2.setText(questionList[pr_num].choice2)
-                tvChoice3.setText(questionList[pr_num].choice3)
-                tvChoice4.setText(questionList[pr_num].choice4)
-                tvChoice1.setTextColor(Color.BLACK)
-                tvChoice2.setTextColor(Color.BLACK)
-                tvChoice3.setTextColor(Color.BLACK)
-                tvChoice4.setTextColor(Color.BLACK)
-
-                tvChoice1.isClickable = true
-                tvChoice2.isClickable = true
-                tvChoice3.isClickable = true
-                tvChoice4.isClickable = true
+                setting(pr_num)
 
             }else{
                 Toast.makeText(this,"더이상 문제가 없습니다.",Toast.LENGTH_SHORT).show()
