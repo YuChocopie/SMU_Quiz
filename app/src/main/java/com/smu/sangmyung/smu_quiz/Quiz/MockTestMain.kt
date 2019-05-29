@@ -76,6 +76,7 @@ class MockTestMain : AppCompatActivity(){
         //xml 파일 problem, choice text설정
         fun setting(pr_num:Int){
             tvMainQuestionNum.text="Question ${pr_num+1}"
+            tvMainQuestionContent.setText(mocktestlist[pr_num].problem)
             tvChoice1.text = mocktestlist[pr_num].choice1
             tvChoice2.text = mocktestlist[pr_num].choice2
             tvChoice3.text = mocktestlist[pr_num].choice3
