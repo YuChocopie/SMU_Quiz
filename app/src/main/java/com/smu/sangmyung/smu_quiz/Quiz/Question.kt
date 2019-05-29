@@ -9,5 +9,6 @@ open class Question (
     open var choice2: String,
     open var choice3: String,
     open var choice4: String,
-    open var answer: String
+    open var answer: String,
+    open var explain:String
 )

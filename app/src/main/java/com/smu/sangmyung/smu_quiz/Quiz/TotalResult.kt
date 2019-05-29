@@ -15,6 +15,7 @@ class TotalResult : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.total_result)
 
+
         var totalCorrectPr = intent.getIntExtra("total_correct_num",0)
         var totalPrNum = intent.getIntExtra("total_pr_num",0)
 

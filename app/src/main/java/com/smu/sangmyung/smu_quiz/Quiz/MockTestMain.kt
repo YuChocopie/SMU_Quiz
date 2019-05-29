@@ -10,27 +10,22 @@ import android.widget.TextView
 import android.widget.Toast
 import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.activity_daily.*
-import kotlinx.android.synthetic.main.total_result.*
-import java.util.prefs.PreferenceChangeEvent
+import retrofit2.Retrofit
 
 class MockTestMain : AppCompatActivity(){
 
     var pr_total_correct_num =0 //총 맞춘 문제 개수
+    var pr_num:Int = 0 // mocktestlikst[position]에서 position
 
-    private fun saveData(test_num:Int){
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor = pref.edit()
-
-        editor.putInt("TEST_NUM",test_num)
-            .apply()
+    //뒤로가기 불가
+    override fun onBackPressed() {
+        //super.onBackPressed()
     }
 
-    private fun lodaData(textView: TextView){
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val test_num = pref.getInt("TEST_NUM",0)
-        textView.setText("모의고사 ${test_num+1}")
+    //모의고사 30개 리스트 넣어서 처리할거.
+    //
 
-    }
+
 
 
     //모의고사 문제 리스트
@@ -63,16 +58,22 @@ class MockTestMain : AppCompatActivity(){
         tvChoice2.isClickable =false
         tvChoice3.isClickable =false
         tvChoice4.isClickable =false
+
+        //다 풀었을 경우 뒤로 되돌아갈 수 없음
+        if(position+1 == mocktestlist.size){
+            tvStop.isClickable = false
+            Toast.makeText(this,"모의고사 문제를 다 푸셨습니다. next 버튼을 눌러주세요.",Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?){
-        var i = 0 // 즐겨찾기 처리할 때 사용
-        var pr_num:Int = 0 // mocktestlikst[position]에서 position
-        var already:String ="empty"
-        var next_or_prev = 0 //next(0) prev(1)
 
-        //saveData(1)
-        //lodaData(tvMainTopTitle)
+        var i = 0 // 즐겨찾기 처리할 때 사용
+        var already:String ="empty"
+        var next_or_prev = 1 //next(1) prev(0)
+
+        var test_num = 1
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily)
@@ -85,12 +86,12 @@ class MockTestMain : AppCompatActivity(){
         tvChoice2.text = mocktestlist[0].choice2
         tvChoice3.text = mocktestlist[0].choice3
         tvChoice4.text = mocktestlist[0].choice4
-        //tvMainTopTitle.setText("모의고사 1회")
-
+        tvMainTopTitle.setText("모의고사")
 
         //1번 선택했을 때
         tvChoice1.setOnClickListener {
             isQuestionResult(tvChoice1, pr_num, "1", next_or_prev)
+
         }
         //2번 선택했을 때
         tvChoice2.setOnClickListener {
@@ -109,9 +110,8 @@ class MockTestMain : AppCompatActivity(){
         tvNext.setOnClickListener {
             //문제수 1씩 증가
             next_or_prev = 1
-           pr_num += 1
+            pr_num += 1
             if(pr_num < mocktestlist.size){
-
 
                 tvMainQuestionContent.setText(mocktestlist[pr_num].problem)
                 tvMainQuestionNum.text="Question ${pr_num+1}"
@@ -160,8 +160,9 @@ class MockTestMain : AppCompatActivity(){
 
         //이전 문제로 돌아가기
         tvStop.setOnClickListener {
-            next_or_prev =0
             pr_num -= 1
+            next_or_prev =0
+
             if(pr_num >= 0) {
 
                 tvMainQuestionContent.setText(mocktestlist[pr_num].problem)
@@ -179,10 +180,8 @@ class MockTestMain : AppCompatActivity(){
                 tvChoice3.setTextColor(Color.BLACK)
                 tvChoice4.setTextColor(Color.BLACK)
 
-                tvChoice1.isClickable = true
-                tvChoice2.isClickable = true
-                tvChoice3.isClickable = true
-                tvChoice4.isClickable = true
+
+
             }else{
                 Toast.makeText(this,"이전 문제가 존재하지 않습니다.",Toast.LENGTH_SHORT).show()
             }

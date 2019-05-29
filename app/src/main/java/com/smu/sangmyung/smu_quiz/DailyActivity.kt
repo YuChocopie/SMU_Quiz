@@ -47,7 +47,7 @@ class DailyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily)
 
-        tvMainTopTitle.setText(questionList[0].subject)
+        tvMainTopTitle.setText("Daily_${questionList[0].subject}")
         tvMainQuestionContent.setText(questionList[0].problem)
         tvMainQuestionNum.text="Question ${pr_num}"
         tvChoice1.text = questionList[0].choice1
@@ -84,7 +84,7 @@ class DailyActivity : AppCompatActivity() {
             pr_num += 1
             if(j < questionList.size){
 
-                tvMainTopTitle.setText(questionList[j].subject)
+                tvMainTopTitle.setText("Daily_${questionList[j].subject}")
                 tvMainQuestionContent.setText(questionList[j].problem)
                 tvMainQuestionNum.text="Question ${pr_num}"
                 ivAnswerCorrect.visibility = View.INVISIBLE
