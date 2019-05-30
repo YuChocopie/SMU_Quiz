@@ -20,7 +20,7 @@ class DailyActivity : AppCompatActivity() {
     //데일리 문제 list
     var questionList = mutableListOf<Question>(
 
-        Question("1","","subject1","problem1","choice1-1","choice1-2","choice1-3","choice1-4", "1",""),
+        Question("1","","Database","problem1","choice1-1","choice1-2","choice1-3","choice1-4", "1",""),
         Question("2","","subject2","problem2","choice2-1","choice2-2","choice2-3","choice2-4", "2",""),
         Question("3","","subject3","problem3","choice3-1","choice3-2","choice3-3","choice3-4", "3",""),
         Question("4","","subject4","problem4","choice4-1","choice4-2","choice4-3","choice4-4", "4",""),
@@ -71,12 +71,12 @@ class DailyActivity : AppCompatActivity() {
         //xml 파일 problem, choice text설정
         fun setting(pr_num:Int){
             tvMainTopTitle.setText("Daily_${questionList[pr_num].subject}")
-            tvMainQuestionContent.setText(questionList[pr_num].problem)
+            tvMainQuestionContent.setText(questionList[pr_num].title)
             tvMainQuestionNum.text="Question ${pr_num+1}"
-            tvChoice1.text = questionList[pr_num].choice1
-            tvChoice2.text = questionList[pr_num].choice2
-            tvChoice3.text = questionList[pr_num].choice3
-            tvChoice4.text = questionList[pr_num].choice4
+            tvChoice1.text = "1. "+questionList[pr_num].choice1
+            tvChoice2.text = "2. "+questionList[pr_num].choice2
+            tvChoice3.text = "3. "+questionList[pr_num].choice3
+            tvChoice4.text = "4. "+questionList[pr_num].choice4
 
             ivAnswerCorrect.visibility = View.GONE
             ivAnswerWrong.visibility = View.GONE

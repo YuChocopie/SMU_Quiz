@@ -5,12 +5,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import com.smu.sangmyung.smu_quiz.Quiz.Choice
 import com.smu.sangmyung.smu_quiz.Quiz.Quiz
 import com.smu.sangmyung.smu_quiz.R
-import kotlinx.android.synthetic.main.activity_after_login.*
 import kotlinx.android.synthetic.main.activity_daily.*
 
 class MockTestMain : AppCompatActivity(){
@@ -76,11 +74,11 @@ class MockTestMain : AppCompatActivity(){
         //xml 파일 problem, choice text설정
         fun setting(pr_num:Int){
             tvMainQuestionNum.text="Question ${pr_num+1}"
-            tvMainQuestionContent.setText(mocktestlist[pr_num].problem)
-            tvChoice1.text = mocktestlist[pr_num].choice1
-            tvChoice2.text = mocktestlist[pr_num].choice2
-            tvChoice3.text = mocktestlist[pr_num].choice3
-            tvChoice4.text = mocktestlist[pr_num].choice4
+            tvMainQuestionContent.setText(mocktestlist[pr_num].title)
+            tvChoice1.text = "1. "+mocktestlist[pr_num].choice1
+            tvChoice2.text = "2. "+mocktestlist[pr_num].choice2
+            tvChoice3.text = "3. "+mocktestlist[pr_num].choice3
+            tvChoice4.text = "4. "+mocktestlist[pr_num].choice4
 
             for(m in 0..3){
                 choice[m].tvChoice.setTextColor(Color.BLACK)
@@ -122,7 +120,7 @@ class MockTestMain : AppCompatActivity(){
             //모의고사 다 풀었을 때
             else{
                 //맞춘문제 수 세기
-                for(m in 0..4){
+                for(m in 0..mocktest.size-1){
                     if(mocktest[m].correct == true){
                         pr_total_correct_num += 1
                     }

@@ -5,7 +5,7 @@ data class QuizRequest (
     val pr_id: String,
     val image: String,
     val subject: String,
-    val problem: String,
+    val title: String,
     val choice1: String,
     val choice2: String,
     val choice3: String,
