@@ -38,32 +38,32 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         cb_algorithm.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked){
-                get_subject("&algorithm")
+                get_subject("&algorithm&")
             }
         }
         cb_computer_network.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked){
-                get_subject("&computer_network")
+                get_subject("computer_network&")
             }
         }
         cb_data_structure.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked){
-                get_subject("&data_structure")
+                get_subject("data_structure&")
             }
         }
         cb_database.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked){
-                get_subject("&database")
+                get_subject("database&")
             }
         }
         cb_operation_system.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked){
-                get_subject("&operation_system")
+                get_subject("operation_system&")
             }
         }
         cb_software_engineering.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked){
-                get_subject("&software_engineering")
+                get_subject("sofrware_engineering&")
             }
         }
         btn_submit.setOnClickListener{
@@ -81,7 +81,7 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         nav_view_sub.setNavigationItemSelectedListener(this)
 
         val email =user!!.email
-        val nav_header_view = nav_view.getHeaderView(0)
+        val nav_header_view = nav_view_sub.getHeaderView(0)
         nav_header_view.tv_nvheader_email?.text=email.toString()
 
     }

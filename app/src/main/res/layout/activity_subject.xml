@@ -25,7 +25,8 @@
             android:layout_marginEnd="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp" android:id="@+id/linearLayout">
+            android:layout_marginTop="50dp"
+            android:id="@+id/linearLayout">
         <CheckBox
 
                 android:text="전체 선택"
