@@ -23,5 +23,13 @@
     <string name="daily_stop">문제풀기를 중단하시겠습니까?</string>
     <string name="yes">YES</string>
     <string name="no">NO</string>
+    <string name="SolveProblem">Solve a Problem</string>
+    <string name="goDdaily">Go to Daily Quiz</string>
+    <string name="change_problem_type">Change problem type</string>
+    <string name="go">Go!</string>
+    <string name="mock_test">Mock Test</string>
+    <string name="hello_world">
+        <![CDATA[<Hello! World/> \n\n Click to solve the problem]]></string>
+    <string name="check_mock"><![CDATA[<Check your skills through a mcok test!/>]]></string>
 </resources>
 

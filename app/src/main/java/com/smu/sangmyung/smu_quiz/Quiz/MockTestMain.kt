@@ -43,6 +43,8 @@ class MockTestMain : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily)
 
+        tvMainTopTitle.setText("Mock Test")
+
         //choice 4가지 담을 리스트 -> 이걸로 xml파일 설정
         var choice= mutableListOf<Choice>(
             Choice(tvChoice1),

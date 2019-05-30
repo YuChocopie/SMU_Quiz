@@ -30,9 +30,5 @@ class TotalResult : AppCompatActivity(){
         //오답 확인하러 가기
         tvBoxWrongAnswer.setOnClickListener {
         }
-
-
-
-
     }
 }

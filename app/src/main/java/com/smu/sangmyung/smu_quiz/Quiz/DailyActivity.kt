@@ -19,7 +19,6 @@ class DailyActivity : AppCompatActivity() {
 
     //데일리 문제 list
     var questionList = mutableListOf<Question>(
-
         Question("1","","Database","problem1","choice1-1","choice1-2","choice1-3","choice1-4", "1",""),
         Question("2","","subject2","problem2","choice2-1","choice2-2","choice2-3","choice2-4", "2",""),
         Question("3","","subject3","problem3","choice3-1","choice3-2","choice3-3","choice3-4", "3",""),
