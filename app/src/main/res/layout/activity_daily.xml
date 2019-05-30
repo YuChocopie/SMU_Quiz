@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.smu_quiz.DailyActivity">
+
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/clMainTopBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/TitleBoxY"
+            android:background="@drawable/underline"
+    >
+        <ImageButton
+                android:id="@+id/ibtMainTopMenu"
+                android:src="@drawable/menu"
+                android:background="@color/any"
+                android:tint="@color/gray1"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/tvMainTopTitle"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textColor="@color/main_blue"
+                android:letterSpacing="0.01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/ibtMainTopMenu"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="@+id/ibtMainTopMenu"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="8dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/clMainQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:id="@+id/ivAnswerCorrect"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/answer_correct"
+                    android:layout_margin="20dp"
+                    android:visibility="gone"
+            />
+            <ImageView
+                    android:id="@+id/ivAnswerWrong"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/answer_wrong"
+                    android:layout_margin="20dp"
+                    android:visibility="gone"
+            />
+
+
+
+        </FrameLayout>
+        <android.support.constraint.ConstraintLayout
+                android:id="@+id/clMainQuestionAndLike"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:background="@drawable/underline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="20dp">
+            <TextView
+                    android:id="@+id/tvMainQuestionNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorQuizTitle"
+                    android:letterSpacing="0.01"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            <ImageView
+                    android:id="@+id/ivMainLike"
+                    android:src="@drawable/like_empty"
+                    android:tint="@color/main_blue"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvMainQuestionNum"
+                    app:layout_constraintTop_toTopOf="@+id/tvMainQuestionNum"/>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <TextView
+                android:id="@+id/tvMainQuestionContent"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorText"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/clMainQuestionAndLike"
+                app:layout_constraintEnd_toEndOf="@+id/clMainQuestionAndLike"
+                app:layout_constraintHorizontal_bias="1.0"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/clMainQuestionAndLike"/>
+
+
+        <LinearLayout
+                android:id="@+id/rvMainMultipleChoice"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvMainQuestionContent"
+                app:layout_constraintHorizontal_bias="0.0">
+            <TextView
+                    android:id="@+id/tvChoice1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+            />
+            <TextView
+                    android:id="@+id/tvChoice2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+            />
+            <TextView
+                    android:id="@+id/tvChoice3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+            />
+            <TextView
+                    android:id="@+id/tvChoice4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+            />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/clMainBottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+        <TextView
+                android:id="@+id/tvStop"
+                android:text="stop"
+                android:textColor="@color/main_blue"
+                android:gravity="center_horizontal"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="normal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        />
+
+        <TextView
+                android:id="@+id/tvNext"
+                android:text="next"
+                android:textColor="@color/main_blue"
+                android:gravity="center_horizontal"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+
+</LinearLayout>

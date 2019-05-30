@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true"
+          android:drawable="@drawable/round_rectangle_fill"
+          android:color="@color/white1"
+    >
+    </item>
+
+    <item
+            android:drawable="@drawable/round_rectangle_empty"
+            android:color="@color/main_blue">
+    </item>
+
+</selector>
