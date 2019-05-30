@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SubjectActivity">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:id="@+id/linearLayout">
+        <CheckBox
+
+                android:text="전체 선택"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_selectall"
+                android:gravity="center"
+                android:textSize="@dimen/subject_size"
+                android:padding="10dp"
+                android:buttonTint="@color/main_blue"
+                android:background="@drawable/checkbox"
+                android:textColor="@color/gray1"
+        />
+        <CheckBox
+                android:text="Algorithm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_algorithm"
+                android:gravity="center"
+                android:textSize="@dimen/subject_size"
+                android:padding="10dp"
+                android:buttonTint="@color/main_blue"
+                android:background="@drawable/checkbox"
+                android:textColor="@color/gray1"/>
+        <CheckBox
+                android:text="Database"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_database"
+                android:gravity="center"
+                android:textSize="@dimen/subject_size"
+                android:padding="10dp"
+                android:buttonTint="@color/main_blue"
+                android:background="@drawable/checkbox"
+                android:textColor="@color/gray1"/>
+        <CheckBox
+                android:text="Software Engineering"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_software_engineering"
+                android:gravity="center"
+                android:textSize="@dimen/subject_size"
+                android:padding="10dp"
+                android:buttonTint="@color/main_blue"
+                android:background="@drawable/checkbox"
+                android:textColor="@color/gray1"/>
+        <CheckBox
+                android:text="Operation System"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_operation_system"
+                android:gravity="center"
+                android:textSize="@dimen/subject_size"
+                android:padding="10dp"
+                android:buttonTint="@color/main_blue"
+                android:background="@drawable/checkbox"
+                android:textColor="@color/gray1"/>
+        <CheckBox
+                android:text="Computer Network"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_computer_network"
+                android:gravity="center"
+                android:textSize="@dimen/subject_size"
+                android:padding="10dp"
+                android:buttonTint="@color/main_blue"
+                android:background="@drawable/checkbox"
+                android:textColor="@color/gray1"/>
+        <CheckBox
+                android:text="Computer Structure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_computer_structure"
+                android:gravity="center"
+                android:textSize="@dimen/subject_size"
+                android:padding="10dp"
+                android:buttonTint="@color/main_blue"
+                android:background="@drawable/checkbox"
+                android:textColor="@color/gray1"/>
+        <CheckBox
+                android:text="Data Structure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_data_structure"
+                android:gravity="center"
+                android:textSize="@dimen/subject_size"
+                android:padding="10dp"
+                android:buttonTint="@color/main_blue"
+                android:background="@drawable/checkbox"
+                android:textColor="@color/gray1"/>
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/btn_submit"
+            android:text="완료"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>
+
+    <include
+            layout="@layout/item_glibal_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer"/>
+
+</android.support.v4.widget.DrawerLayout>

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.activity_after_login.view.*
 import kotlinx.android.synthetic.main.activity_start.*
-import kotlinx.android.synthetic.main.item_glibal_title.*
+import kotlinx.android.synthetic.main.item_global_title.*
 
 class StartActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?){

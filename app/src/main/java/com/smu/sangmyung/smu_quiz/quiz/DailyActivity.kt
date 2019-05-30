@@ -1,17 +1,13 @@
 package com.example.smu_quiz
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.hardware.camera2.params.BlackLevelPattern
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.view.View.*
 import android.widget.*
-import com.smu.sangmyung.smu_quiz.Quiz.Choice
+import com.smu.sangmyung.smu_quiz.quiz.Choice
 import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.activity_daily.*
 

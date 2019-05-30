@@ -1,4 +1,4 @@
-package com.smu.sangmyung.smu_quiz.Quiz
+package com.smu.sangmyung.smu_quiz.quiz
 
 import android.widget.TextView
 

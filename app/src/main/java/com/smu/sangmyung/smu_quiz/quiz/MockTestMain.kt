@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-import com.smu.sangmyung.smu_quiz.Quiz.Choice
-import com.smu.sangmyung.smu_quiz.Quiz.Quiz
+import com.smu.sangmyung.smu_quiz.quiz.Choice
+import com.smu.sangmyung.smu_quiz.quiz.Quiz
 import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.activity_daily.*
 
@@ -33,8 +33,6 @@ class MockTestMain : AppCompatActivity(){
         Question("4","","mock4","problem4","choice4-1","choice4-2","choice4-3","choice4-4", "4",""),
         Question("5","","mock5","problem5","choice5-1","choice5-2","choice5-3","choice5-4", "1","")
     )
-
-
 
     override fun onCreate(savedInstanceState: Bundle?){
 
