@@ -16,5 +16,25 @@
     <string name="question">Question %s</string>
     <string name="answer">정답 %d</string>
 
+    <string name="total_result">50 문제 중 19 문제를 맞았습니다!</string>
+    <string name="goto_wrong">오답 확인하러 가기</string>
+    <string name="goto_main">메인화면으로</string>
+    <string name="aWrongAnswer">aWrongAnswer() { \n ... \n }</string>
+    <string name="goToMain">goToMain() { \n ... \n }</string>
+    <string name="solve">오답풀이</string>
+    <string name="mock_test_start">전에 푸시던 문제를 이어푸시겠습니까?</string>
+    <string name="mock_continue">이어풀기</string>
+    <string name="mock_new">새로 풀기</string>
+    <string name="daily_stop">문제풀기를 중단하시겠습니까?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="SolveProblem">Solve a Problem</string>
+    <string name="goDdaily">Go to Daily Quiz</string>
+    <string name="change_problem_type">Change problem type</string>
+    <string name="go">Go!</string>
+    <string name="mock_test">Mock Test</string>
+    <string name="hello_world">
+        <![CDATA[<Hello! World/> \n\n Click to solve the problem]]></string>
+    <string name="check_mock"><![CDATA[<Check your skills through a mcok test!/>]]></string>
 </resources>
 

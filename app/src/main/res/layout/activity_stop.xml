@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_marginTop="80dp"
+              android:layout_marginRight="50dp"
+              android:layout_marginLeft="50dp"
+              android:layout_marginBottom="50dp"
+              android:background="@drawable/round_rectangle_fill"
+              android:backgroundTint="@color/white1"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingBottom="10dp"
+              android:paddingRight="10dp"
+              android:paddingLeft="10dp"
+>
+    <TextView
+            android:id="@+id/tvStop"
+            android:layout_weight="1"
+            android:text="@string/daily_stop"
+            android:background="@drawable/underline"
+            android:textSize="24sp"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="normal"
+            android:textColor="@color/black5"
+            android:letterSpacing="0.1"
+            android:padding="20dp"
+            android:gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <TextView
+                    android:id="@+id/tvStopYes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="@string/yes"
+                    android:background="@drawable/select_goto"
+                    android:textColor="@drawable/select_goto"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="20dp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginBottom="20dp"
+            />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        <TextView
+                android:id="@+id/tvStopNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/no"
+                android:background="@drawable/select_goto"
+                android:textColor="@drawable/select_goto"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                android:padding="20dp"
+                android:textStyle="normal"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="20dp"
+        />
+    </android.support.constraint.ConstraintLayout>
+
+
+</LinearLayout>

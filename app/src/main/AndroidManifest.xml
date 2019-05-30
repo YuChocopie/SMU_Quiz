@@ -16,13 +16,24 @@
         <activity android:name=".GoogleSignInActivity"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".worng.WrongAnalysisActivity"/>
-        <activity android:name=".worng.WrongNoteActivity">
+        <activity android:name=".worng.WrongNoteActivity"/>
+        <activity android:name="com.example.smu_quiz.DailyActivity"/>
+        <activity android:name="com.example.smu_quiz.MockTestMain"/>
+        <activity android:name="com.example.smu_quiz.StopActivity"
+                  android:theme="@style/Transparent"/>
+        <activity android:name="com.example.smu_quiz.TotalResult"
+                  android:theme="@style/Transparent"/>
+        <activity android:name="com.example.smu_quiz.MockTestStart"
+                  android:theme="@style/Transparent"/>
+
+        <activity android:name="com.example.smu_quiz.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
