@@ -7,4 +7,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="icon_24">24dp</dimen>
     <dimen name="TitleBoxY">53dp</dimen>
+    <dimen name="activity_margin20">20dp</dimen>
+    <dimen name="SIZE_5">5dp</dimen>
+    <dimen name="SIZE_2">2dp</dimen>
 </resources>

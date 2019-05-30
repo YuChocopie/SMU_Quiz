@@ -1,27 +1,29 @@
 package com.smu.sangmyung.smu_quiz
 
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.MenuItem
-import android.support.v4.app.NotificationCompat.getAction
-import android.view.MotionEvent
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import kotlinx.android.synthetic.main.activity_main.*
-
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+
+    private var smuQuizAIP = SmuQuizAIP()
+    private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
+    private var smuQuizInterface = smuQuizRetrofit.create(SmuQuizInterface::class.java)
+
+
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -35,43 +37,65 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         val toggle = ActionBarDrawerToggle(
-             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
+
+        Log.d("Result", "123123")
+
+
+        ///TODO 나중에 지움
+        smuQuizInterface.test()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ result ->
+                // data 를 받아 처리합니다.
+                // 작업 중 오류가 발생하면 이 블록은 호출되지 않습니다
+                Log.d("Result", "123123 ${result}")
+            }, {
+                    error ->
+                error.printStackTrace()
+                Log.d("Result", "ereerr")
+            }, {
+                // 작업이 정상적으로 완료되지 않았을 때 호출됩니다.
+                Log.d("Result", "complete")
+            })
     }
-        override fun onBackPressed() {
-            if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-                drawer_layout.closeDrawer(GravityCompat.START)
-            } else {
-                super.onBackPressed()
-            }
-        }
 
-        override fun onNavigationItemSelected(item: MenuItem): Boolean {
-            when (item.itemId) {
-                R.id.nav_camera -> {
-
-                }
-                R.id.nav_gallery -> {
-
-                }
-
-                R.id.nav_manage -> {
-
-                }
-                R.id.nav_share -> {
-
-                }
-                R.id.nav_send -> {
-
-                }
-            }
-
+    override fun onBackPressed() {
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
-            return true
+        } else {
+            super.onBackPressed()
         }
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.nav_camera -> {
+
+            }
+            R.id.nav_gallery -> {
+
+            }
+
+            R.id.nav_manage -> {
+
+            }
+            R.id.nav_share -> {
+
+            }
+            R.id.nav_send -> {
+
+            }
+        }
+
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
+    }
+}
+
 
 
