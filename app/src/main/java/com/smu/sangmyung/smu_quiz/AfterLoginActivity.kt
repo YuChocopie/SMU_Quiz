@@ -1,19 +1,22 @@
 package com.smu.sangmyung.smu_quiz
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
-
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_after_login.*
+import kotlinx.android.synthetic.main.activity_after_login.view.*
 import kotlinx.android.synthetic.main.item_glibal_title.*
-
+import kotlinx.android.synthetic.main.nav_header_main.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
 class AfterLoginActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
@@ -24,7 +27,7 @@ class AfterLoginActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         setContentView(R.layout.activity_after_login)
 
         val email =user!!.email
-        //tv_nvheader_email.text=email  error.....?
+
 
         tv_subject.text = intent.getStringExtra("subject")
         //네비바
@@ -32,13 +35,14 @@ class AfterLoginActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
-
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
 
-    }
+        val nav_header_view = nav_view.getHeaderView(0)
+        nav_header_view.tv_nvheader_email?.text=email.toString()
 
+    }
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -46,7 +50,6 @@ class AfterLoginActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
             super.onBackPressed()
         }
     }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.select_subject -> {
@@ -74,7 +77,6 @@ class AfterLoginActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
                 Toast.makeText(applicationContext,"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show()
                 }
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }

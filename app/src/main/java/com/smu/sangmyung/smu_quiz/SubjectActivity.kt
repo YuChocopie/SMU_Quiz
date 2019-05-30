@@ -9,13 +9,17 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_after_login.*
 import kotlinx.android.synthetic.main.activity_subject.*
 import kotlinx.android.synthetic.main.activity_subject.drawer_layout
 import kotlinx.android.synthetic.main.item_glibal_title.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
 class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
+    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+
     private var all_subject:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,6 +79,10 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view_sub.setNavigationItemSelectedListener(this)
+
+        val email =user!!.email
+        val nav_header_view = nav_view.getHeaderView(0)
+        nav_header_view.tv_nvheader_email?.text=email.toString()
 
     }
 
