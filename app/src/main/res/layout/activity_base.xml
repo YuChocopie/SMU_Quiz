@@ -6,14 +6,18 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white5"
         android:fitsSystemWindows="true"
         tools:openDrawer="start">
-
     <include
-            layout="@layout/activity_start"
+            android:id="@+id/sujectTitle"
+            layout="@layout/item_global_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
+            android:layout_height="@dimen/TitleBoxY"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"/>
 
     <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
@@ -22,6 +26,8 @@
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header_main"
-            app:menu="@menu/activity_main_drawer"/>
+            app:menu="@menu/activity_main_drawer"
+            tools:ignore="MissingConstraints"/>
+
 
 </android.support.v4.widget.DrawerLayout>

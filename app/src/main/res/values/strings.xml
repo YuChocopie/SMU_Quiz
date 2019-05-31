@@ -11,7 +11,7 @@
     <string name="question_2">제한 (Restriction)</string>
     <string name="question_3">종속성 (Dependency)</string>
     <string name="question_4">변환 (Translation)</string>
-    <string name="Algorithm">Wrong problem - Algorithm</string>
+    <string name="Wrong_Algorithm">Wrong problem - Algorithm</string>
     <string name="wrong_problem">Wrong problem - %s</string>
     <string name="question">Question %s</string>
     <string name="answer">정답 %d</string>
@@ -36,5 +36,14 @@
     <string name="hello_world">
         <![CDATA[<Hello! World/> \n\n Click to solve the problem]]></string>
     <string name="check_mock"><![CDATA[<Check your skills through a mcok test!/>]]></string>
+
+    <string name="algorithm">algorithm</string>
+    <string name="database">database</string>
+    <string name="softwareEngineering">softwareEngineering</string>
+    <string name="operationSystem">operationSystem</string>
+    <string name="computerNetwork">computerNetwork</string>
+    <string name="computerStructure">datacomputerStructurebase</string>
+    <string name="dataStructure">dataStructure</string>
+
 </resources>
 

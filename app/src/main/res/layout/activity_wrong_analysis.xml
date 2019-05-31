@@ -58,6 +58,89 @@
             app:textColor="#858585"
             app:textGap="10dp"
             app:textSize="11sp"/>
+    <LinearLayout
+            android:weightSum="7"
+            android:id="@+id/tvLineGraphView"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            app:layout_constraintStart_toStartOf="@id/LineGraphView"
+            app:layout_constraintEnd_toEndOf="@id/LineGraphView"
+            app:layout_constraintTop_toBottomOf="@+id/LineGraphView">
+
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="@string/algorithm"
+        />
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="@string/database"
+        />
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="@string/softwareEngineering"
+        />
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="@string/operationSystem"
+        />
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="@string/computerNetwork"
+        />
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="@string/computerStructure"
+        />
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="@string/dataStructure"
+        />
+
+
+
+    </LinearLayout>
     <TextView
             android:id="@+id/tvWorngAnalysisSubject"
             android:layout_width="wrap_content"
@@ -71,7 +154,7 @@
             android:letterSpacing="0.05"
             app:layout_constraintStart_toStartOf="@+id/v1WorngNoteSubject"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/LineGraphView"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvLineGraphView"/>
 
     <View
             android:id="@+id/v1WorngNoteSubject"
@@ -101,12 +184,41 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvWorngAnalysisSubject"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/v1WorngNoteSubject">
 
 
     </LinearLayout>
+    <TextView
+            android:id="@+id/tvWorngAnalysisTitle"
+            android:text="알고리즘"
+            android:textColor="@color/black0"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/SIZE_15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="@+id/circleGraph"
+            app:layout_constraintBottom_toTopOf="@+id/tvWorngAnalysisText"
+            app:layout_constraintStart_toEndOf="@+id/circleGraph"
+            android:layout_marginStart="8dp"
+    />
+    <TextView
+            android:text="75%의 정답률
+총 푼 문제의 수 : 220"
+            android:textColor="@color/black2"
+            android:textStyle="normal"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvWorngAnalysisText"
+            app:layout_constraintTop_toBottomOf="@+id/tvWorngAnalysisTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/circleGraph"
+            app:layout_constraintStart_toEndOf="@+id/circleGraph"
+            android:layout_marginStart="8dp"
+    />
 
 </android.support.constraint.ConstraintLayout>

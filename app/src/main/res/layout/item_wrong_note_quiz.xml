@@ -6,7 +6,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/activity_margin20"
         android:paddingEnd="@dimen/activity_margin20"
-        android:background="@color/white1">
+        android:background="@color/white5">
 
     <TextView
             android:layout_marginTop="12dp"

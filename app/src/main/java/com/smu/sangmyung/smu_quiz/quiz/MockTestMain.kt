@@ -7,8 +7,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.smu.sangmyung.smu_quiz.quiz.Choice
-import com.smu.sangmyung.smu_quiz.quiz.Quiz
 import com.smu.sangmyung.smu_quiz.R
+import com.smu.sangmyung.smu_quiz.quiz.MockQuiz
 import kotlinx.android.synthetic.main.activity_daily.*
 import kotlinx.android.synthetic.main.item_global_title.*
 
@@ -18,21 +18,21 @@ class MockTestMain : AppCompatActivity(){
     var pr_num:Int = 0 // mocktestlikst[position]에서 position
 
     //모의고사 30개 리스트 넣어서 처리하기
-    var mocktest = mutableListOf<Quiz>(
-        Quiz(false),
-        Quiz(false),
-        Quiz(false),
-        Quiz(false),
-        Quiz(false)
+    var mocktest = mutableListOf<MockQuiz>(
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false)
     )
 
     //모의고사 문제 리스트
     var mocktestlist = mutableListOf<Question>(
-        Question("1","","mock1","problem1","choice1-1","choice1-2","choice1-3","choice1-4", "1",""),
-        Question("2","","mock2","problem2","choice2-1","choice2-2","choice2-3","choice2-4", "2",""),
-        Question("3","","mock3","problem3","choice3-1","choice3-2","choice3-3","choice3-4", "3",""),
-        Question("4","","mock4","problem4","choice4-1","choice4-2","choice4-3","choice4-4", "4",""),
-        Question("5","","mock5","problem5","choice5-1","choice5-2","choice5-3","choice5-4", "1","")
+        Question("1","","mock1","데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라 하는가?","choice1-1","choice1-2","choice1-3","choice1-4", "1",""),
+        Question("2","","mock2","데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라 하는가?","choice2-1","choice2-2","choice2-3","choice2-4", "2",""),
+        Question("13","","mock3","데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라 하는가?","choice3-1","choice3-2","choice3-3","choice3-4", "3",""),
+        Question("4","","mock4","데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라 하는가?","choice4-1","choice4-2","choice4-3","choice4-4", "4",""),
+        Question("5","","mock5","데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라 하는가?","choice5-1","choice5-2","choice5-3","choice5-4", "1","")
     )
 
     override fun onCreate(savedInstanceState: Bundle?){

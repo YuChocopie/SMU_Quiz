@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.android.synthetic.main.item_global_title.*
 
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : NavbaseActivity(){
 
 
     private var smuQuizAIP = SmuQuizAIP()
@@ -41,42 +41,42 @@ class MainActivity : AppCompatActivity(){
             val intent = Intent(this, MockTestStart::class.java)
             startActivity(intent)
         }
-        btn_gotologin.setOnClickListener {
-            val intent = Intent(applicationContext, GoogleSignInActivity::class.java)
-            startActivity(intent)
-        }
+//        btn_gotologin.setOnClickListener {
+//            val intent = Intent(applicationContext, GoogleSignInActivity::class.java)
+//            startActivity(intent)
+//        }
         btnChangeProblemType.setOnClickListener {
             val intent = Intent(applicationContext, SubjectActivity::class.java)
             startActivity(intent)
         }
 
-//        val toggle = ActionBarDrawerToggle(
-//            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
-//        )
-//
-//        drawer_layout.addDrawerListener(toggle)
-//        toggle.syncState()
+        val toggle = ActionBarDrawerToggle(
+            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
 //        nav_view.setNavigationItemSelectedListener(this)
 
         Log.d("Result", "123123")
 
-
-        ///TODO 나중에 지움
-//        smuQuizInterface.test()
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({ result ->
-//                // data 를 받아 처리합니다.
-//                // 작업 중 오류가 발생하면 이 블록은 호출되지 않습니다
-//                Log.d("Result", "123123 ${result}")
-//            }, {
-//                    error ->
-//                error.printStackTrace()
-//                Log.d("Result", "ereerr")
-//            }, {
-//                // 작업이 정상적으로 완료되지 않았을 때 호출됩니다.
-//                Log.d("Result", "complete")
-//            })
+//
+//        /TODO 나중에 지움
+        smuQuizInterface.test()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ result ->
+                // data 를 받아 처리합니다.
+                // 작업 중 오류가 발생하면 이 블록은 호출되지 않습니다
+                Log.d("Result", "123123 ${result}")
+            }, {
+                    error ->
+                error.printStackTrace()
+                Log.d("Result", "ereerr")
+            }, {
+                // 작업이 정상적으로 완료되지 않았을 때 호출됩니다.
+                Log.d("Result", "complete")
+            })
     }
 
     override fun onBackPressed() {

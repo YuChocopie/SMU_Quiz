@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import com.smu.sangmyung.smu_quiz.NavbaseActivity
 import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.adapters.WorngListAdapter
 import com.smu.sangmyung.smu_quiz.dataclass.Quiz
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_wrong_note.*
 import kotlinx.android.synthetic.main.item_global_title.*
 
 
-class WrongNoteActivity : AppCompatActivity() {
+class WrongNoteActivity : NavbaseActivity() {
 
     var wrongList = arrayListOf(
         Quiz(1, "subject", "", "title", 3, "해설", "1", "2", "3", "4"),
