@@ -13,8 +13,6 @@
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".login.AfterLoginActivity"/>
-        <activity android:name=".login.GoogleSignInActivity"/>
         <activity android:name=".login.SubjectActivity"/>
 
         <activity android:name="com.example.smu_quiz.DailyActivity"/>
@@ -29,8 +27,10 @@
         <activity android:name=".worng.WrongAnalysisActivity"/>
         <activity android:name=".worng.WrongNoteActivity"/>
 
-        <activity android:name=".MainActivity"/>
-        <activity android:name="com.example.smu_quiz.StartActivity">
+        <activity android:name="com.example.smu_quiz.StartActivity"/>
+        <activity android:name=".login.AfterLoginActivity"/>
+        <activity android:name=".login.GoogleSignInActivity"/>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

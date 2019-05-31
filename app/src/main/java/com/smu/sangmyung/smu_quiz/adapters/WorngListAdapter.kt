@@ -39,7 +39,7 @@ class WorngListAdapter(val context: Context, val worngList: List<Quiz>) :
         private val tvQuizExplain = itemView.tvWorngNoteQuizExplain
 
         fun bind(mainMenu: Quiz) {
-            tvQuizNum.text = String.format(context.getString(R.string.wrong_problem), mainMenu.pr_id.toString())
+            tvQuizNum.text = String.format(context.getString(R.string.question), mainMenu.pr_id.toString())
             tvQuizTitle.text = mainMenu.title
             tvQuizTexe1.text = mainMenu.choice_1
             tvQuizTexe2.text = mainMenu.choice_2

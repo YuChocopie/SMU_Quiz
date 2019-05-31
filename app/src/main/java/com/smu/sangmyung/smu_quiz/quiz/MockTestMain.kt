@@ -10,6 +10,7 @@ import com.smu.sangmyung.smu_quiz.quiz.Choice
 import com.smu.sangmyung.smu_quiz.quiz.Quiz
 import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.activity_daily.*
+import kotlinx.android.synthetic.main.item_global_title.*
 
 class MockTestMain : AppCompatActivity(){
 
@@ -41,7 +42,7 @@ class MockTestMain : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily)
 
-        tvMainTopTitle.setText("Mock Test")
+        tvGlobalTitle.text=("Mock Test")
 
         //choice 4가지 담을 리스트 -> 이걸로 xml파일 설정
         var choice= mutableListOf<Choice>(

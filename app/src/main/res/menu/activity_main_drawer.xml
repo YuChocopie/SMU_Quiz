@@ -7,16 +7,21 @@
         <item
                 android:title="문제 유형 선택"
                 android:id="@+id/select_subject"
-                android:icon="@drawable/ic_menu_camera"
+                android:icon="@drawable/ic_check"
         />
         <item
                 android:title="오답 문제"
                 android:id="@+id/wrong_ques"
-                android:icon="@drawable/ic_menu_gallery"
+                android:icon="@drawable/ic_border"
+        />
+        <item
+                android:title="오답 분석"
+                android:id="@+id/wrong_graph"
+                android:icon="@drawable/ic_timeline"
         />
         <item
                 android:id="@+id/gotomain"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_home"
                 android:title="메인으로"/>
     </group>
 
@@ -26,13 +31,13 @@
             <item
                     android:title="질문게시판"
                     android:id="@+id/community_ques"
-                    android:icon="@drawable/ic_menu_share"
+                    android:icon="@drawable/ic_searched"
 
             />
             <item
                     android:title="자유게시판"
                     android:id="@+id/community_free"
-                    android:icon="@drawable/ic_menu_send"
+                    android:icon="@drawable/ic_insert_comment"
             />
         </menu>
     </item>
@@ -40,7 +45,7 @@
     <item
             android:title="로그아웃"
             android:id="@+id/logout"
-            android:icon="@color/colorPrimary"
+            android:icon="@drawable/ic_input"
     />
 
 </menu>

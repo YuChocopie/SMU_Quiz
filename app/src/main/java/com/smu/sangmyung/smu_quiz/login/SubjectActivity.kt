@@ -11,8 +11,11 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.smu.sangmyung.smu_quiz.R
+import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
+import com.smu.sangmyung.smu_quiz.worng.WrongNoteActivity
 import kotlinx.android.synthetic.main.activity_subject.*
 import kotlinx.android.synthetic.main.activity_subject.drawer_layout
+import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
@@ -24,6 +27,7 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subject)
+        tvGlobalTitle.text = "문제 유형 설정"
 
         cb_selectall.setOnClickListener {
             cb_algorithm.toggle()
@@ -35,32 +39,33 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             cb_software_engineering.toggle()
         }
 
-        cb_algorithm.setOnCheckedChangeListener { buttonView, isChecked ->
+        cb_algorithm.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 get_subject("&algorithm&")
             }
         }
-        cb_computer_network.setOnCheckedChangeListener { buttonView, isChecked ->
+        cb_computer_network.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 get_subject("computer_network&")
             }
         }
-        cb_data_structure.setOnCheckedChangeListener { buttonView, isChecked ->
+        cb_data_structure.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 get_subject("data_structure&")
             }
         }
-        cb_database.setOnCheckedChangeListener { buttonView, isChecked ->
+        cb_database.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 get_subject("database&")
             }
         }
-        cb_operation_system.setOnCheckedChangeListener { buttonView, isChecked ->
+        cb_operation_system.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 get_subject("operation_system&")
             }
         }
-        cb_software_engineering.setOnCheckedChangeListener { buttonView, isChecked ->
+        cb_software_engineering.setOnCheckedChangeListener { _
+                                                             , isChecked ->
             if(isChecked){
                 get_subject("sofrware_engineering&")
             }
@@ -71,19 +76,19 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             startActivity(intent)
         }
 
-//        val toggle = ActionBarDrawerToggle(
-//            this, drawer_layout, toolbar,
-//            R.string.navigation_drawer_open,
-//            R.string.navigation_drawer_close
-//        )
+        val toggle = ActionBarDrawerToggle(
+            this, drawer_layout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
 
-//        drawer_layout.addDrawerListener(toggle)
-//        toggle.syncState()
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
         nav_view_sub.setNavigationItemSelectedListener(this)
 
-        val email =user!!.email
-        val nav_header_view = nav_view_sub.getHeaderView(0)
-        nav_header_view.tv_nvheader_email?.text=email.toString()
+//        val email =user!!.email
+//        val nav_header_view = nav_view_sub.getHeaderView(0)
+//        nav_header_view.tv_nvheader_email?.text=email.toString()
 
     }
 
@@ -105,14 +110,24 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             R.id.select_subject -> {
                 val intent= Intent(applicationContext, SubjectActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             R.id.wrong_ques -> {
-
+                val intent= Intent(applicationContext, WrongNoteActivity::class.java)
+                startActivity(intent)
+                finish()
             }
+            R.id.wrong_graph -> {
+                val intent= Intent(applicationContext, WrongAnalysisActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
 
             R.id.gotomain -> {
                 val intent= Intent(applicationContext, AfterLoginActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             R.id.community_ques -> {
 
@@ -125,6 +140,7 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 startActivity(intent)
                 FirebaseAuth.getInstance().signOut()
                 Toast.makeText(applicationContext,"로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
 

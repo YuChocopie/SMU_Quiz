@@ -9,12 +9,15 @@
         android:background="@color/white1">
 
     <TextView
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:id="@+id/tvWorngNoteQuizNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:textSize="16sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textColor="@color/black0"
             android:text="@string/question"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -26,6 +29,7 @@
             android:paddingEnd="10dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
+            android:letterSpacing="0.01"
             android:background="@drawable/code_box"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,18 +41,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:textColor="@color/black4"
+            android:textColor="@color/black2"
+            android:letterSpacing="0.01"
             android:text="문제제목"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
             android:id="@+id/tvWorngNoteQuizText1"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:textColor="@color/black4"
+            android:textColor="@color/black2"
+            android:letterSpacing="0.01"
             android:text="문제내용1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWorngNoteQuizTitle"/>
@@ -58,7 +64,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/black4"
+                android:textColor="@color/black2"
+                android:letterSpacing="0.01"
                 android:text="문제내용1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvWorngNoteQuizText1"/>
@@ -68,7 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/black4"
+                android:textColor="@color/black2"
+                android:letterSpacing="0.01"
                 android:text="문제내용3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvWorngNoteQuizText2"/>
@@ -78,17 +86,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/black4"
+                android:textColor="@color/black2"
+                android:letterSpacing="0.01"
                 android:text="문제내용4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvWorngNoteQuizText3"/>
         <TextView
                 android:id="@+id/tvWorngNoteQuizAnswer"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/black4"
+                android:textColor="@color/black2"
+                android:letterSpacing="0.01"
                 android:text="@string/answer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvWorngNoteQuizText4"/>
@@ -98,7 +108,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/black4"
+                android:textColor="@color/black2"
+                android:letterSpacing="0.01"
                 android:text="해설"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvWorngNoteQuizAnswer"/>

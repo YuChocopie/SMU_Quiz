@@ -5,34 +5,49 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/nav_header_height"
         android:background="@color/main_blue"
+        android:layout_marginTop="@dimen/activity_margin60"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:orientation="vertical"
-        android:gravity="center"
->
+        android:gravity="center">
 
+    <ImageView
+            android:id="@+id/iv_light"
+            android:layout_gravity="center"
+            android:layout_width="34dp"
+            android:layout_height="30dp"
+            android:tint="@color/yellow"
+            android:src="@drawable/light_ball"
+            android:layout_marginTop="15dp"/>
     <ImageView
             android:id="@+id/iv_nvapp"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_launcher_round"
-            android:layout_marginTop="10dp"
-    />
+            android:layout_width="70dp"
+            android:layout_height="80dp"
+            android:tint="@color/white5"
+            android:src="@drawable/ic_accessibility"/>
     <TextView
             android:id="@+id/tv_nvheader_appname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="allcom!"
+            android:text="개발의 초고수!"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-    />
+            android:layout_marginTop="30dp"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="bold"
+            android:textColor="@color/white5"
+            android:letterSpacing="0.05"/>
 
     <TextView
             android:id="@+id/tv_nvheader_email"
             android:layout_width="wrap_content"
-            android:text="allcom!"
             android:layout_height="wrap_content"
+            android:text="지금까지 130문제를 풀었어요"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white5"
+            android:letterSpacing="0.05"
     />
 </LinearLayout>

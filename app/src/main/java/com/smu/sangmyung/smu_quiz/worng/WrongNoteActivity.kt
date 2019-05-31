@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_global_title.*
 
 class WrongNoteActivity : AppCompatActivity() {
 
-    var wrongList = arrayListOf<Quiz>(
+    var wrongList = arrayListOf(
         Quiz(1, "subject", "", "title", 3, "해설", "1", "2", "3", "4"),
         Quiz(1, "subject", "", "title", 3, "해설", "1", "2", "3", "4"),
         Quiz(1, "subject", "", "title", 3, "해설", "1", "2", "3", "4"),
