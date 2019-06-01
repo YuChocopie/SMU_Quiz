@@ -11,7 +11,7 @@ import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.SmuQuizAIP
 import com.smu.sangmyung.smu_quiz.SmuQuizInterface
 import com.smu.sangmyung.smu_quiz.adapters.WorngListAdapter
-import com.smu.sangmyung.smu_quiz.dataclass.Quiz
+import com.smu.sangmyung.smu_quiz.model.Quiz
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_wrong_note.*

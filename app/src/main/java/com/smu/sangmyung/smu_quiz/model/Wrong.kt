@@ -1,4 +1,4 @@
-package com.smu.sangmyung.smu_quiz.dataclass
+package com.smu.sangmyung.smu_quiz.model
 
 data class Wrong(
     var id : Int,

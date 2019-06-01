@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.smu.sangmyung.smu_quiz.dataclass.Quiz
+import com.smu.sangmyung.smu_quiz.model.Quiz
 import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.item_wrong_note_quiz.view.*
 

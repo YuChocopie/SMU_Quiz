@@ -1,10 +1,9 @@
 package com.smu.sangmyung.smu_quiz
 
-import com.smu.sangmyung.smu_quiz.dataclass.Quiz
-import com.smu.sangmyung.smu_quiz.dataclass.Wrong
+import com.smu.sangmyung.smu_quiz.model.Quiz
+import com.smu.sangmyung.smu_quiz.model.Wrong
 import io.reactivex.Observable
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface SmuQuizInterface {
