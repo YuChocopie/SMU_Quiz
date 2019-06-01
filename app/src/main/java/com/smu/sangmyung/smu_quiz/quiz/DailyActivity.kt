@@ -9,6 +9,7 @@ import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Toast
+import com.smu.sangmyung.smu_quiz.DataClass.QuizSubject
 import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.SmuQuizAIP
 import com.smu.sangmyung.smu_quiz.SmuQuizInterface
@@ -24,6 +25,12 @@ class DailyActivity : AppCompatActivity() {
     private var smuQuizAIP = SmuQuizAIP()
     private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
     private var smuDailyInterface = smuQuizRetrofit.create(SmuQuizInterface::class.java)
+
+    var subject = mutableListOf<QuizSubject>(
+        QuizSubject("Databse"),
+        QuizSubject("Algorighme"),
+        QuizSubject("operation_system")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         var i = 0 //즐겨찾기 처리할 변수
@@ -116,8 +123,6 @@ class DailyActivity : AppCompatActivity() {
                 choice[m].tvChoice.setTextColor(Color.BLACK)
             }
             tvMainQuestionNum.text = "Question ${pr_num + 1}"
-
-
         }
 
         callQuiz()
@@ -131,7 +136,6 @@ class DailyActivity : AppCompatActivity() {
 
         val finishable = intent.getBooleanExtra("finish", false)
         if (finishable) {
-
             finish()
         }
         //다음문제로 넘어가기

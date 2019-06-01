@@ -48,7 +48,6 @@ class AfterLoginActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         val navheaderview = nav_view.getHeaderView(0)
         navheaderview.tv_nvheader_email?.text=email.toString()
 
-
         Algorithm= false
         Database=false
         sofrware_engineering = false

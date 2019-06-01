@@ -4,19 +4,24 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.quiz.Choice
 import com.smu.sangmyung.smu_quiz.R
+import com.smu.sangmyung.smu_quiz.SmuQuizAIP
+import com.smu.sangmyung.smu_quiz.SmuQuizInterface
 import com.smu.sangmyung.smu_quiz.quiz.MockQuiz
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_daily.*
 import kotlinx.android.synthetic.main.item_global_title.*
 
 class MockTestMain : AppCompatActivity(){
 
     var pr_total_correct_num =0 //총 맞춘 문제 개수
-    var pr_num:Int = 0 // mocktestlikst[position]에서 position
+    var pr_num:Int = 0 // mocktest[position]에서 position
 
     //모의고사 30개 리스트 넣어서 처리하기
     var mocktest = mutableListOf<MockQuiz>(
@@ -24,17 +29,39 @@ class MockTestMain : AppCompatActivity(){
         MockQuiz(false),
         MockQuiz(false),
         MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
+        MockQuiz(false),
         MockQuiz(false)
     )
 
-    //모의고사 문제 리스트
-    var mocktestlist = mutableListOf<Question>(
-        Question("1","","mock1","데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라 하는가?","choice1-1","choice1-2","choice1-3","choice1-4", "1",""),
-        Question("2","","mock2","데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라 하는가?","choice2-1","choice2-2","choice2-3","choice2-4", "2",""),
-        Question("13","","mock3","데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라 하는가?","choice3-1","choice3-2","choice3-3","choice3-4", "3",""),
-        Question("4","","mock4","데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라 하는가?","choice4-1","choice4-2","choice4-3","choice4-4", "4",""),
-        Question("5","","mock5","데이터의 중복으로 인하여 곤란한 관계연산을 처리할 때 곤란한 형상이 발생하는 것을 무엇이라 하는가?","choice5-1","choice5-2","choice5-3","choice5-4", "1","")
-    )
+
+    private var smuQuizAIP = SmuQuizAIP()
+    private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
+    private var smuDailyInterface = smuQuizRetrofit.create(SmuQuizInterface::class.java)
+
 
     override fun onCreate(savedInstanceState: Bundle?){
 
@@ -58,70 +85,89 @@ class MockTestMain : AppCompatActivity(){
             Choice(tvChoice4)
         )
 
-        //Choice 선택했을 때 처리
-        fun isQuestionResult(position: Int, num: String){
-            val choicenum = Integer.parseInt(num)
-            for(m in 0..3){
-                if(m != choicenum-1){
-                    choice[m].tvChoice.setTextColor(Color.BLACK)
-                }else{
-                    choice[m].tvChoice.setTextColor(Color.BLUE)
+        // 답 선택했을 때
+        fun isResult(answer:Int ,num:Int){
+            if(answer == num){
+                for (m in 0..3) {
+                    if (m != num-1) {
+                        choice[m].tvChoice.setTextColor(Color.BLACK)
+                    } else {
+                        choice[m].tvChoice.setTextColor(Color.BLUE)
+                    }
+                }
+
+            }else{
+                for (m in 0..3) {
+                    if (m != num-1) {
+                        choice[m].tvChoice.setTextColor(Color.BLACK)
+                    } else {
+                        choice[m].tvChoice.setTextColor(Color.BLUE)
+                    }
                 }
             }
-
-            //답 맞췄을 때
-            if(mocktestlist[position].answer == num){
-                mocktest[position].correct = true
-            }else{//답 틀렸을 때
-                mocktest[position].correct = false
-            }
-
         }
 
-        //xml 파일 problem, choice text설정
-        fun setting(pr_num:Int){
-            tvMainQuestionNum.text="Question ${pr_num+1}"
-            tvMainQuestionContent.setText(mocktestlist[pr_num].title)
-            tvChoice1.text = "1. "+mocktestlist[pr_num].choice1
-            tvChoice2.text = "2. "+mocktestlist[pr_num].choice2
-            tvChoice3.text = "3. "+mocktestlist[pr_num].choice3
-            tvChoice4.text = "4. "+mocktestlist[pr_num].choice4
+        fun callQuiz(pr_num:Int){
+            smuDailyInterface.mocktest()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ result ->
+                    // data 를 받아 처리합니다.
+                    // 작업 중 오류가 발생하면 이 블록은 호출되지 않습니다
+                    tvGlobalTitle.text = result[pr_num].subject
+                    tvMainQuestionContent.text = result[pr_num].title
+                    tvChoice1.text = "1. ${result[pr_num].choice_1}"
+                    tvChoice2.text = "2. ${result[pr_num].choice_2}"
+                    tvChoice3.text = "3. ${result[pr_num].choice_3}"
+                    tvChoice4.text = "4. ${result[pr_num].choice_4}f"
+                    val correctAnswer = result[pr_num].answer
 
-            for(m in 0..3){
+                    //1번 선택했을 때
+                    tvChoice1.setOnClickListener {
+                        isResult(correctAnswer, 1)
+                    }
+                    //2번 선택했을 때
+                    tvChoice2.setOnClickListener {
+                        isResult(correctAnswer, 2)
+                    }
+                    //3번 선택했을 때
+                    tvChoice3.setOnClickListener {
+                        isResult(correctAnswer, 3)
+                    }
+                    //4번 선택했을 때
+                    tvChoice4.setOnClickListener {
+                        isResult(correctAnswer, 4)
+                    }
+
+                }, {
+                        error ->
+                    error.printStackTrace()
+                    Toast.makeText(this,"오류",Toast.LENGTH_SHORT).show()
+                }, {
+                    // 작업이 정상적으로 완료되지 않았을 때 호출됩니다.
+                    Log.d("Result", "complete")
+                })
+
+            ivAnswerCorrect.visibility = View.GONE
+            ivAnswerWrong.visibility = View.GONE
+
+            ivMainLike.setImageResource(R.drawable.like_empty)
+
+            for (m in 0..3) {
                 choice[m].tvChoice.setTextColor(Color.BLACK)
             }
+            tvMainQuestionNum.text = "Question ${pr_num + 1}"
         }
 
-        //초기 activity 설정
-        tvStop.setText("prev")
-        setting(pr_num)
-
-        //1번 선택했을 때
-        tvChoice1.setOnClickListener {
-            isQuestionResult(pr_num, "1")
-        }
-        //2번 선택했을 때
-        tvChoice2.setOnClickListener {
-            isQuestionResult(pr_num,"2")
-        }
-        //3번 선택했을 때
-        tvChoice3.setOnClickListener {
-            isQuestionResult(pr_num,"3")
-        }
-        //4번 선택했을 때
-        tvChoice4.setOnClickListener {
-            isQuestionResult(pr_num,"4")
-
-        }
+        callQuiz(pr_num)
 
         //다음 문제로 넘어가기
         tvNext.setOnClickListener {
             //문제수 1씩 증가
             pr_num += 1
-            if(pr_num < mocktestlist.size){
+            if(pr_num < mocktest.size){
                 ivMainLike.setImageResource(R.drawable.like_empty)
-                setting(pr_num)
-
+                callQuiz(pr_num)
             }
 
             //모의고사 다 풀었을 때
@@ -159,7 +205,6 @@ class MockTestMain : AppCompatActivity(){
             //문제 수 감소
             pr_num -= 1
             if(pr_num >= 0) {
-                setting(pr_num)
             }else{
                 Toast.makeText(this,"이전 문제가 존재하지 않습니다.",Toast.LENGTH_SHORT).show()
             }
