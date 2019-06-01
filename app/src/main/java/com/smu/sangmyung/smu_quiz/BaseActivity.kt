@@ -180,26 +180,25 @@ public open class BaseActivity : AppCompatActivity() {
     fun loadQuizResult(subject:String):Int {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
 
-       // val subject = pref.getString("subject", "")
         when (subject) {
             "all" -> return pref.getInt("all",0)
-            "algo" -> return  pref.getInt("algo", 0)
-            "comne" -> return pref.getInt("comne", 0)
-            "comstruc" -> return  pref.getInt("comstruc", 0)
-            "datastruc" -> return  pref.getInt("datastruc", 0)
-            "daba" -> return pref.getInt("daba", 0)
-            "oper" -> return pref.getInt("oper", 0)
-            "soft" -> return pref.getInt("soft", 0)
+            "Algorithme" -> return  pref.getInt("algo", 0)
+            "computer_network" -> return pref.getInt("comne", 0)
+            "computer_structure" -> return  pref.getInt("comstruc", 0)
+            "Data_structure" -> return  pref.getInt("datastruc", 0)
+            "Database" -> return pref.getInt("daba", 0)
+            "operation_system" -> return pref.getInt("oper", 0)
+            "Software_Engineering" -> return pref.getInt("soft", 0)
             "wr_all" -> return pref.getInt("wr_all", 0)
-            "wr_algo" -> return pref.getInt("wr_algo", 0)
-            "wr_comne" -> return pref.getInt("wr_comne", 0)
-            "wr_comstruc" -> return pref.getInt("wr_comstruc", 0)
-            "wr_datastruc" -> return pref.getInt("wr_datastruc", 0)
-            "wr_daba" -> return pref.getInt("wr_daba", 0)
-            "wr_oper" -> return  pref.getInt("wr_oper", 0)
-            "wr_soft" -> return  pref.getInt("wr_soft", 0)
+            "wr_Algorithme" -> return pref.getInt("wr_algo", 0)
+            "wr_computer_network" -> return pref.getInt("wr_comne", 0)
+            "wr_computer_structure" -> return pref.getInt("wr_comstruc", 0)
+            "wr_Data_structure" -> return pref.getInt("wr_datastruc", 0)
+            "wr_Database" -> return pref.getInt("wr_daba", 0)
+            "wr_operation_system" -> return  pref.getInt("wr_oper", 0)
+            "wr_Software_engineering" -> return  pref.getInt("wr_soft", 0)
         }
-        return pref.getInt("wr_soft", 0)
+        return 0
     }
 
 }
