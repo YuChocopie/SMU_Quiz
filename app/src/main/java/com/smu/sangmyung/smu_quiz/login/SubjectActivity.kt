@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.smu.sangmyung.smu_quiz.BaseActivity
 import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
-class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
+class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener  {
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
     private var all_subject:String=""
@@ -78,13 +79,16 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             }
         }
         loadSubject()
+        loadSubjectlist()
         btn_submit.setOnClickListener{
+            saveSubjectlist(all_subject)
+
             saveSubject(cb_algorithm.isChecked, cb_computer_network.isChecked, cb_computer_structure.isChecked,
                 cb_data_structure.isChecked, cb_database.isChecked,
                 cb_operation_system.isChecked, cb_software_engineering.isChecked)
             val intent = Intent(applicationContext, MainActivity::class.java)
-            intent.putExtra("subject",all_subject)
             startActivity(intent)
+
         }
 
         val toggle = ActionBarDrawerToggle(
@@ -97,9 +101,9 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         toggle.syncState()
         nav_view_sub.setNavigationItemSelectedListener(this)
 
-//       val email =user!!.email
-//       val nav_header_view = nav_view_sub.getHeaderView(0)
-//       nav_header_view.tv_nvheader_email?.text=email.toString()
+        val email =user!!.email
+        val nav_header_view = nav_view_sub.getHeaderView(0)
+        nav_header_view.tv_nvheader_email?.text=email.toString()
 
     }
 
@@ -159,37 +163,6 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         return true
     }
 
-    private fun saveSubject(b1: Boolean,b2:Boolean,b3:Boolean,b4:Boolean,b5:Boolean,b6:Boolean,b7:Boolean){
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor = pref.edit()
-
-        editor.putBoolean("algorithm",b1)
-            .putBoolean("computer_network",b2)
-            .putBoolean("computer_structure",b3)
-            .putBoolean("data_structure",b4)
-            .putBoolean("database",b5)
-            .putBoolean("operation_system",b6)
-            .putBoolean("sofrware_engineering",b7)
-            .apply()
-    }
-    private fun loadSubject() {
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val b1 = pref.getBoolean("algorithm", false)
-        val b2 = pref.getBoolean("computer_network", false)
-        val b3 = pref.getBoolean("computer_structure", false)
-        val b4 = pref.getBoolean("data_structure", false)
-        val b5 = pref.getBoolean("database", false)
-        val b6 = pref.getBoolean("operation_system", false)
-        val b7 = pref.getBoolean("sofrware_engineering", false)
-            cb_algorithm.isChecked = b1
-            cb_computer_network.isChecked = b2
-            cb_computer_structure.isChecked = b3
-            cb_data_structure.isChecked = b4
-            cb_database.isChecked = b5
-            cb_operation_system.isChecked = b6
-            cb_software_engineering.isChecked = b7
-
-    }
 
 }
 

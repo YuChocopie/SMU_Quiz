@@ -19,7 +19,6 @@ import com.example.smu_quiz.MockTestStart
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.smu.sangmyung.smu_quiz.login.SubjectActivity
-import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
 import com.smu.sangmyung.smu_quiz.worng.WrongNoteActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -30,7 +29,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var auth: FirebaseAuth
 
     var Algorithm:Boolean?=null
@@ -53,7 +52,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //로그인 되있으면 이메일 확인후 네비바에 삽입
         checkCurrentUser()
         tvGlobalTitle.text="ALL QUIZ"
-
         btnGoDaily.setOnClickListener{
             val intent = Intent(this, DailyActivity::class.java)
             startActivity(intent)
@@ -110,7 +108,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         computer_structure =false
         data_structure = false
 
-        var subjectall:String ?= intent.getStringExtra("subject")
+        var subjectall:String = loadSubjectlist()
         if(subjectall!=null) {
             var subject_token = StringTokenizer(subjectall,"&")
             Log.d("ddddd",subjectall)
@@ -198,12 +196,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.community_free -> {
 
             }
-            R.id.login ->{
-                val intent= Intent(applicationContext, GoogleSignInActivity::class.java)
-                startActivity(intent)
-                Toast.makeText(applicationContext,"로그인 창으로.", Toast.LENGTH_SHORT).show()
-                finish()
-            }
             R.id.logout ->{
                 val intent= Intent(applicationContext, GoogleSignInActivity::class.java)
                 startActivity(intent)
@@ -222,7 +214,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return  get(random)
     }
 
-    private fun checkCurrentUser() {
+    fun checkCurrentUser() {
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
             auth =FirebaseAuth.getInstance()
@@ -234,17 +226,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         }
     }
-    private fun saveEmail(useremail:String){
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor = pref.edit()
-        editor.putString("useremail",useremail)
-            .apply()
-    }
-    private fun loadEmail():String{
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val email = pref.getString("useremail","")
-        return email
-    }
+
 }
 
 
