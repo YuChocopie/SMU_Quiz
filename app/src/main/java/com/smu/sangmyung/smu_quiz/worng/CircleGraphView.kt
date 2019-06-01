@@ -17,9 +17,9 @@ class CircleGraphView(context: Context?) : View(context) {
     private var mPaintsBack: Paint? = Paint()
     private var mUseCenters: BooleanArray = BooleanArray(4)
     //    private var mOvals: Array<RectF?> = arrayOfNulls(4)
-    private var mBigOval: RectF = RectF(40f, 40f, 440f, 440f)
+    private var mBigOval: RectF = RectF(20f, 20f, 300f, 300f)
     private var mStart: Float = 0.toFloat()
-    private var mSweep: Float = 200.toFloat()
+    private var mSweep: Float = 150.toFloat()
 //    private var mBigIndex: Int = 0
 
     private val SWEEP_INC = 1f
@@ -34,13 +34,13 @@ class CircleGraphView(context: Context?) : View(context) {
     override fun onDraw(canvas: Canvas) {
         mPaints = Paint(mPaints)
         mPaints!!.style = Paint.Style.STROKE
-        mPaints!!.strokeWidth = 40f
+        mPaints!!.strokeWidth = 30f
         mPaints!!.color = Color.RED
         mPaints!!.isAntiAlias = true
         mPaints!!.strokeCap = Paint.Cap.BUTT
         mPaintsBack = Paint(mPaints)
         mPaintsBack!!.style = Paint.Style.STROKE
-        mPaintsBack!!.strokeWidth = 30f
+        mPaintsBack!!.strokeWidth = 25f
         mPaintsBack!!.color = Color.GRAY
         mPaintsBack!!.isAntiAlias = true
         mPaintsBack!!.strokeCap = Paint.Cap.BUTT
