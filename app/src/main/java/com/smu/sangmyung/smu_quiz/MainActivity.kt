@@ -5,6 +5,7 @@ import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.design.widget.NavigationView
 import android.support.v4.content.ContextCompat.startActivity
 import android.support.v4.view.GravityCompat
@@ -232,6 +233,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         } else {
 
         }
+    }
+    private fun saveEmail(useremail:String){
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = pref.edit()
+        editor.putString("useremail",useremail)
+            .apply()
+    }
+    private fun loadEmail():String{
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val email = pref.getString("useremail","")
+        return email
     }
 }
 

@@ -31,7 +31,6 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         setContentView(R.layout.activity_subject)
         tvGlobalTitle.text = "문제 유형 설정"
 
-
         cb_selectall.setOnClickListener {
             cb_algorithm.toggle()
             cb_computer_network.toggle()
