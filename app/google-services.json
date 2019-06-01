@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "93980216082-l4p2i3uhiosrv9t8q8p8ombbh4fpivt0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smu.sangmyung.smu_quiz",
+            "certificate_hash": "ec9bf4c304342f2eb1261708738479f27eb64d10"
+          }
+        },
+        {
           "client_id": "93980216082-27opvq5paj7392hqe1gauiqbsf54hrgr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
 import java.util.*
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var auth: FirebaseAuth
 
     var Algorithm:Boolean?=null
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         computer_structure =false
         data_structure = false
 
-        var subjectall:String ?= intent.getStringExtra("subject")
+        var subjectall:String = loadSubjectlist()
         if(subjectall!=null) {
             var subject_token = StringTokenizer(subjectall,"&")
             Log.d("ddddd",subjectall)
@@ -178,12 +178,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.community_free -> {
 
             }
-            R.id.login ->{
-                val intent= Intent(applicationContext, GoogleSignInActivity::class.java)
-                startActivity(intent)
-                Toast.makeText(applicationContext,"로그인 창으로.", Toast.LENGTH_SHORT).show()
-                finish()
-            }
             R.id.logout ->{
                 val intent= Intent(applicationContext, GoogleSignInActivity::class.java)
                 startActivity(intent)
@@ -202,7 +196,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return  get(random)
     }
 
-    private fun checkCurrentUser() {
+    fun checkCurrentUser() {
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
             auth =FirebaseAuth.getInstance()
@@ -214,17 +208,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         }
     }
-    private fun saveEmail(useremail:String){
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor = pref.edit()
-        editor.putString("useremail",useremail)
-            .apply()
-    }
-    private fun loadEmail():String{
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val email = pref.getString("useremail","")
-        return email
-    }
+
 }
 
 

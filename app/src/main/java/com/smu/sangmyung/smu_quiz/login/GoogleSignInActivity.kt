@@ -71,7 +71,7 @@ class GoogleSignInActivity : AppCompatActivity(){
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
                     val user = auth.currentUser
-                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    val intent = Intent(applicationContext, SubjectActivity::class.java)
                     startActivity(intent)
                 } else {
                     Log.d(TAG, "signInWithCredential:failure", task.exception)
@@ -87,6 +87,7 @@ class GoogleSignInActivity : AppCompatActivity(){
         private const val TAG = "GoogleActivity"
         private const val RC_SIGN_IN = 9001
     }
+
 
 
 }
