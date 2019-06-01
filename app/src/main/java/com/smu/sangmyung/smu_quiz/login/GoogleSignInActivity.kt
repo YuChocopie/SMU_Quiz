@@ -45,7 +45,6 @@ class GoogleSignInActivity : BaseActivity(){
         super.onStart()
         val currentUser = auth.currentUser
 
-
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -75,6 +74,7 @@ class GoogleSignInActivity : BaseActivity(){
                     val user = auth.currentUser
                     val intent = Intent(applicationContext, SubjectActivity::class.java)
                     startActivity(intent)
+                    finish()
                 } else {
                     Log.d(TAG, "signInWithCredential:failure", task.exception)
                 }

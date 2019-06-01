@@ -155,7 +155,7 @@ class MockTestMain : AppCompatActivity(){
             //TODO::과목별 check 더하기
             pr_num += 1
           
-            if(pr_num < mocktest.size){
+            if(pr_num < isCorrect.size){
                 //TODO::즐겨찾기 보내기
 
                 ivMainLike.setImageResource(R.drawable.like_empty)

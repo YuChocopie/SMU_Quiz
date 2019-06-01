@@ -1,10 +1,10 @@
 package com.smu.sangmyung.smu_quiz
 
 import io.reactivex.Observable
-import retrofit2.http.GET
 import com.smu.sangmyung.smu_quiz.model.Quiz
 import com.smu.sangmyung.smu_quiz.model.Wrong
-import retrofit2.http.Query
+import io.reactivex.Flowable
+import retrofit2.http.*
 
 interface SmuQuizInterface {
 
@@ -23,5 +23,21 @@ interface SmuQuizInterface {
 
     @GET("/quiz/request")
     fun getDailyQuiz(@Query("subject")subject : String): Observable <List<Quiz>>
+
+//    @FormUrlEncoded
+    @POST("/register/wrong")
+    fun setWrongQuiz(@Body value: Wrong) : Flowable<Wrong>
+
+   @POST("/register/bookmark")
+    fun setBookMark(@Body value: Wrong) : Flowable<Wrong>
+
+
+//
+//    @POST("/posts")
+//    Call<ResponseGet> postFirst(@FieldMap HashMap<String, Object> parameters)
+//
+//    @PUT("/posts/1")
+//    Call<ResponseGet> putFirst(@Body RequestPut parameters)
+
 
 }

@@ -3,9 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorText">#000</color>
+    <color name="colorText">#37FC3846</color>
 
     <color name="any">#00ff0000</color>
+    <color name="beige">#f9f1e0</color>
 
     <color name="black0">#000</color>
     <color name="black2">#222</color>
@@ -28,5 +29,5 @@
     <color name="white5">#fff</color>
 
     <color name="transparent">#00000000</color>
-    <color name="yellow">#FFEB3B</color>
+    <color name="yellow">#6F86FF3B</color>
 </resources>
