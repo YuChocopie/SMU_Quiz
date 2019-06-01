@@ -32,11 +32,11 @@ class DailyActivity : AppCompatActivity() {
     //choice 4가지 담을 리스트 -> 이걸로 xml파일 설정
     var choice = mutableListOf<Choice>()
 
-    var subject = mutableListOf<QuizSubject>(
-        QuizSubject("Databse"),
+    /*var subject = mutableListOf<QuizSubject>(
+        QuizSubject("Database"),
         QuizSubject("Algorighme"),
         QuizSubject("operation_system")
-    )
+    )*/
 
     var pr_num = 0 //문제 수
     var quizSolved = false //문제풀이여부
@@ -159,6 +159,7 @@ class DailyActivity : AppCompatActivity() {
 
         //다음문제로 넘어가기
         tvNext.setOnClickListener {
+<<<<<<< Updated upstream
             if (quizSolved) {
                 if (bookMarkBoolean) {
                     val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
@@ -171,6 +172,20 @@ class DailyActivity : AppCompatActivity() {
                             error.printStackTrace()
                             Log.d("Result", "ereerr::bookMarkBoolean")
                         }, { Log.d("Result", "complete::bookMarkBoolean") })
+=======
+            pr_num += 1
+            callQuiz()
+        }
+
+        //즐겨찾기 체크 or 해제
+        ivMainLike.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View) {
+                i = 1 - i
+                if (i == 1) {
+                    ivMainLike.setImageResource(R.drawable.like_fill)
+                } else {
+                    ivMainLike.setImageResource(R.drawable.like_empty)
+>>>>>>> Stashed changes
                 }
                 if (!wrongBoolean) {
                     val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
