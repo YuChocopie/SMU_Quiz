@@ -39,17 +39,13 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         tvGlobalTitle.text = "오답분석"
 
         val points = intArrayOf(5, 3, 7, 8, 0, 0, 3)
-        Log.e("123123123123",loadQuizResult("wr_algo").toString())
-        points[0]=loadQuizResult("wr_algo")
-        Log.d("asd",points[0].toString())
-        points[1]=loadQuizResult("wr_daba")
-        Log.d("asd",points[1].toString())
-        points[2]=loadQuizResult("wr_soft")
-        Log.d("asd",points[2].toString())
-        points[3]=loadQuizResult("wr_oper")
-        points[4]=loadQuizResult("wr_comne")
-        points[5]=loadQuizResult("wr_comstruc")
-        points[6]=loadQuizResult("wr_datasturc")
+        points[0]=loadQuizResult("wr_Algorithme")
+        points[1]=loadQuizResult("wr_Database")
+        points[2]=loadQuizResult("wr_Software_engineering")
+        points[3]=loadQuizResult("wr_operation_system")
+        points[4]=loadQuizResult("wr_computer_network")
+        points[5]=loadQuizResult("wr_computer_structure")
+        points[6]=loadQuizResult("wr_Data_structure")
 
 
 
@@ -57,10 +53,10 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         LineGraphView?.drawForBeforeDrawView()
 
 
-        getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val infoview = circleGraph as LinearLayout
-        val sampleView = CircleGraphView(this)
-        infoview.addView(sampleView)
+//        getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+//        val infoview = circleGraph as LinearLayout
+//        val sampleView = CircleGraphView(this)
+//        infoview.addView(sampleView)
 
 
 
