@@ -30,8 +30,7 @@ import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-   // var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    //private lateinit var auth: FirebaseAuth
 
     var Algorithm:Boolean?=null
     var Database :Boolean?=null
@@ -50,8 +49,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //uth =FirebaseAuth.getInstance()
+       // var user =auth.currentUser
+
         //val email =user!!.email
-        tvGlobalTitle.text="ALL QUIZ"
+        //tvGlobalTitle.text="ALL QUIZ"
+
+
 
         btnGoDaily.setOnClickListener{
             val intent = Intent(this, DailyActivity::class.java)
@@ -101,7 +106,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //// subject tokenizer + random
 
-        //val navheaderview = nav_view.getHeaderView(0)
+        val navheaderview = nav_view_main.getHeaderView(0)
         //navheaderview.tv_nvheader_email?.text=email.toString()
 
 
