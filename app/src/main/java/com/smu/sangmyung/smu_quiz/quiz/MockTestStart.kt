@@ -34,6 +34,7 @@ class MockTestStart : AppCompatActivity(){
         tvStopNo.setOnClickListener {
             val intent = Intent(this, MockTestMain::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }
