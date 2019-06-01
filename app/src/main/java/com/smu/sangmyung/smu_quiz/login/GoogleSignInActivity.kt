@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
@@ -42,6 +44,7 @@ class GoogleSignInActivity : AppCompatActivity(){
         super.onStart()
         val currentUser = auth.currentUser
 
+
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -51,10 +54,10 @@ class GoogleSignInActivity : AppCompatActivity(){
             try {
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account!!)
-                val intent = Intent(applicationContext, MainActivity::class.java)
-                startActivity(intent)
+
             } catch (e: ApiException) {
                 Log.w(TAG, "Google sign in failed", e)
+
             }
         }
     }
@@ -67,9 +70,11 @@ class GoogleSignInActivity : AppCompatActivity(){
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
-
+                    val user = auth.currentUser
+                    val intent = Intent(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
                 } else {
-                    Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    Log.d(TAG, "signInWithCredential:failure", task.exception)
                 }
             }
     }
@@ -82,5 +87,6 @@ class GoogleSignInActivity : AppCompatActivity(){
         private const val TAG = "GoogleActivity"
         private const val RC_SIGN_IN = 9001
     }
+
 
 }
