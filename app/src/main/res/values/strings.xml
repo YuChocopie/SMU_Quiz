@@ -13,7 +13,7 @@
     <string name="question_4">변환 (Translation)</string>
     <string name="Wrong_Algorithm">Wrong problem - Algorithm</string>
     <string name="wrong_problem">Wrong problem - %s</string>
-    <string name="question">Question %s</string>
+    <string name="question">Question) %s</string>
     <string name="answer">정답 %d</string>
 
     <string name="total_result">50 문제 중 19 문제를 맞았습니다!</string>
@@ -44,6 +44,13 @@
     <string name="computerNetwork">computerNetwork</string>
     <string name="computerStructure">datacomputerStructurebase</string>
     <string name="dataStructure">dataStructure</string>
+    <string name="algorithm_h">알고리즘</string>
+    <string name="database_h">DB</string>
+    <string name="softwareEngineering_h">소프트웨어\n공학</string>
+    <string name="operationSystem_h">운영체제</string>
+    <string name="computerNetwork_h">컴퓨터\n네트워크</string>
+    <string name="computerStructure_h">컴퓨터\n구조</string>
+    <string name="dataStructure_h">자료구조</string>
 
 </resources>
 

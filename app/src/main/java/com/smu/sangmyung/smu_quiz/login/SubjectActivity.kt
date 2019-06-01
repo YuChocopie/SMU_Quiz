@@ -3,6 +3,7 @@ package com.smu.sangmyung.smu_quiz.login
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -10,6 +11,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
 import com.smu.sangmyung.smu_quiz.worng.WrongNoteActivity
@@ -29,6 +31,7 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         setContentView(R.layout.activity_subject)
         tvGlobalTitle.text = "문제 유형 설정"
 
+
         cb_selectall.setOnClickListener {
             cb_algorithm.toggle()
             cb_computer_network.toggle()
@@ -47,6 +50,11 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         cb_computer_network.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 get_subject("computer_network&")
+            }
+        }
+        cb_computer_structure.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                get_subject("computer_structure&")
             }
         }
         cb_data_structure.setOnCheckedChangeListener { _, isChecked ->
@@ -70,8 +78,12 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
                 get_subject("sofrware_engineering&")
             }
         }
+        loadSubject()
         btn_submit.setOnClickListener{
-            val intent = Intent(applicationContext, AfterLoginActivity::class.java)
+            saveSubject(cb_algorithm.isChecked, cb_computer_network.isChecked, cb_computer_structure.isChecked,
+                cb_data_structure.isChecked, cb_database.isChecked,
+                cb_operation_system.isChecked, cb_software_engineering.isChecked)
+            val intent = Intent(applicationContext, MainActivity::class.java)
             intent.putExtra("subject",all_subject)
             startActivity(intent)
         }
@@ -86,9 +98,9 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         toggle.syncState()
         nav_view_sub.setNavigationItemSelectedListener(this)
 
-//        val email =user!!.email
-//        val nav_header_view = nav_view_sub.getHeaderView(0)
-//        nav_header_view.tv_nvheader_email?.text=email.toString()
+//       val email =user!!.email
+//       val nav_header_view = nav_view_sub.getHeaderView(0)
+//       nav_header_view.tv_nvheader_email?.text=email.toString()
 
     }
 
@@ -125,7 +137,7 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 
             R.id.gotomain -> {
-                val intent= Intent(applicationContext, AfterLoginActivity::class.java)
+                val intent= Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -146,6 +158,38 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun saveSubject(b1: Boolean,b2:Boolean,b3:Boolean,b4:Boolean,b5:Boolean,b6:Boolean,b7:Boolean){
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = pref.edit()
+
+        editor.putBoolean("algorithm",b1)
+            .putBoolean("computer_network",b2)
+            .putBoolean("computer_structure",b3)
+            .putBoolean("data_structure",b4)
+            .putBoolean("database",b5)
+            .putBoolean("operation_system",b6)
+            .putBoolean("sofrware_engineering",b7)
+            .apply()
+    }
+    private fun loadSubject() {
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val b1 = pref.getBoolean("algorithm", false)
+        val b2 = pref.getBoolean("computer_network", false)
+        val b3 = pref.getBoolean("computer_structure", false)
+        val b4 = pref.getBoolean("data_structure", false)
+        val b5 = pref.getBoolean("database", false)
+        val b6 = pref.getBoolean("operation_system", false)
+        val b7 = pref.getBoolean("sofrware_engineering", false)
+            cb_algorithm.isChecked = b1
+            cb_computer_network.isChecked = b2
+            cb_computer_structure.isChecked = b3
+            cb_data_structure.isChecked = b4
+            cb_database.isChecked = b5
+            cb_operation_system.isChecked = b6
+            cb_software_engineering.isChecked = b7
+
     }
 
 }

@@ -12,7 +12,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.smu.sangmyung.smu_quiz.R
-import kotlinx.android.synthetic.main.activity_after_login.*
+import kotlinx.android.synthetic.main.activity_subject.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -43,7 +43,7 @@ class AfterLoginActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 //        )
 //        drawer_layout.addDrawerListener(toggle)
 //        toggle.syncState()
-        nav_view.setNavigationItemSelectedListener(this)
+//        nav_view.setNavigationItemSelectedListener(this)
 
         val navheaderview = nav_view.getHeaderView(0)
         navheaderview.tv_nvheader_email?.text=email.toString()

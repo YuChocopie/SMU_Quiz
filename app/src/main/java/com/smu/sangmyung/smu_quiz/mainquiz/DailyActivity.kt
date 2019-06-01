@@ -11,9 +11,9 @@ import android.view.View.VISIBLE
 import android.widget.Toast
 import com.smu.sangmyung.smu_quiz.DataClass.QuizSubject
 import com.smu.sangmyung.smu_quiz.R
+import com.smu.sangmyung.smu_quiz.mainquiz.Choice
 import com.smu.sangmyung.smu_quiz.SmuQuizAIP
 import com.smu.sangmyung.smu_quiz.SmuQuizInterface
-import com.smu.sangmyung.smu_quiz.quiz.Choice
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_daily.*

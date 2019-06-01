@@ -10,9 +10,10 @@
     <dimen name="SIZE_5">5dp</dimen>
     <dimen name="SIZE_2">2dp</dimen>
     <dimen name="TitleBoxY">53dp</dimen>
-    <dimen name="activity_subject_margin">30dp</dimen>
     <dimen name="activity_margin24">24dp</dimen>
     <dimen name="activity_margin40">40dp</dimen>
     <dimen name="activity_margin60">60dp</dimen>
     <dimen name="SIZE_15">15dp</dimen>
+    <dimen name="activity_subject_margin">30dp</dimen>
+    <dimen name="jinsoomargin">30dp</dimen>
 </resources>

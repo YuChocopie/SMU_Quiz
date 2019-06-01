@@ -7,14 +7,14 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.smu.sangmyung.smu_quiz.mainquiz.Choice
 import com.smu.sangmyung.smu_quiz.MainActivity
-import com.smu.sangmyung.smu_quiz.quiz.Choice
 import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.SmuQuizAIP
 import com.smu.sangmyung.smu_quiz.SmuQuizInterface
-import com.smu.sangmyung.smu_quiz.quiz.MockQuiz
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import com.smu.sangmyung.smu_quiz.mainquiz.MockQuiz
 import kotlinx.android.synthetic.main.activity_daily.*
 import kotlinx.android.synthetic.main.item_global_title.*
 
