@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "93980216082-g1e9bi9gusb82c1pa3h746slbidl878n.apps.googleusercontent.com",
+          "client_id": "93980216082-27opvq5paj7392hqe1gauiqbsf54hrgr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.smu.sangmyung.smu_quiz",
-            "certificate_hash": "ec9bf4c304342f2eb1261708738479f27eb64d10"
+            "certificate_hash": "72a58a6ab37c8003c701410928e8249d9039397f"
           }
         },
         {
@@ -29,7 +29,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD4xftAUMryUQivJNITT8dQR9HXRqzd3e0"
+          "current_key": "AIzaSyADiVL792wjDlb1tlvArqMkwIsGB3xclDg"
         }
       ],
       "services": {

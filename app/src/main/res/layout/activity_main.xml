@@ -17,6 +17,14 @@
             android:layout_height="match_parent"
             android:background="@color/white5"
             android:id="@+id/constraintLayout">
+        <include
+                layout="@layout/item_global_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/TitleBoxY"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"/>
 
         <ImageView
                 android:id="@+id/ivJeongu"
@@ -187,14 +195,7 @@
 
 
     </android.support.constraint.ConstraintLayout>
-    <include
-            layout="@layout/item_global_title"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/TitleBoxY"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
+
 
     <android.support.design.widget.NavigationView
             android:id="@+id/nav_view_main"

@@ -6,16 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/TitleBoxY">
 
-    <android.support.v7.widget.Toolbar
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="match_parent"
-            android:id="@+id/toolbar"
-            android:layout_height="@dimen/TitleBoxY">
-        <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
     <TextView
             android:id="@+id/tvGlobalTitle"
             android:layout_width="wrap_content"
@@ -36,7 +26,15 @@
             android:background="@color/gray2"
             app:layout_constraintBottom_toBottomOf="parent"
     />
-        </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.Toolbar
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:layout_height="@dimen/TitleBoxY">
+
     </android.support.v7.widget.Toolbar>
 
 </android.support.constraint.ConstraintLayout>
