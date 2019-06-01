@@ -64,7 +64,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:padding="@dimen/SIZE_5"
-                    android:text="Question 13"
                     android:fontFamily="sans-serif"
                     android:textStyle="bold"
                     android:textColor="@color/colorQuizTitle"
