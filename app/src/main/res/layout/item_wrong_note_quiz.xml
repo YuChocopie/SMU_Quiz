@@ -13,8 +13,7 @@
             android:id="@+id/tvWorngNoteQuizNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
             android:textColor="@color/black0"
@@ -23,41 +22,25 @@
             app:layout_constraintStart_toStartOf="parent"/>
     <android.support.constraint.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:layout_height="wrap_content"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
+            android:padding="15dp"
             android:letterSpacing="0.01"
             android:background="@drawable/code_box"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvWorngNoteQuizNum">
 
-
-    <TextView
-            android:id="@+id/tvWorngNoteQuizTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@color/black2"
-            android:letterSpacing="0.01"
-            android:text="문제제목"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
     <TextView
             android:id="@+id/tvWorngNoteQuizText1"
-            android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:textColor="@color/black2"
+            android:textColor="@color/black0"
             android:letterSpacing="0.01"
             android:text="문제내용1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvWorngNoteQuizTitle"/>
+            app:layout_constraintTop_toTopOf="parent"/>
         <TextView
                 android:id="@+id/tvWorngNoteQuizText2"
                 android:layout_marginTop="5dp"

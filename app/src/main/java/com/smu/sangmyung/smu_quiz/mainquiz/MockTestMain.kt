@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-import com.smu.sangmyung.smu_quiz.quiz.Choice
+import com.smu.sangmyung.smu_quiz.mainquiz.Choice
+import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
-import com.smu.sangmyung.smu_quiz.quiz.MockQuiz
+import com.smu.sangmyung.smu_quiz.mainquiz.MockQuiz
 import kotlinx.android.synthetic.main.activity_daily.*
 import kotlinx.android.synthetic.main.item_global_title.*
 
@@ -41,6 +42,11 @@ class MockTestMain : AppCompatActivity(){
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily)
+
+        val finishable = intent.getBooleanExtra("finish", false)
+        if (finishable) {
+            finish()
+        }
 
         tvGlobalTitle.text=("Mock Test")
 
@@ -131,9 +137,9 @@ class MockTestMain : AppCompatActivity(){
                 intent.putExtra("total_correct_num",pr_total_correct_num) //총 맞춘문제
                 intent.putExtra("total_pr_num",pr_num) // 총 문제 수
                 startActivity(intent)
-
             }
         }
+
 
         //즐겨찾기 별 클릭, 해제
         ivMainLike.setOnClickListener(object : View.OnClickListener{
