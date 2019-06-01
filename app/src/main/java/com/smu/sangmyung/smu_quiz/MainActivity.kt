@@ -3,11 +3,9 @@ package com.smu.sangmyung.smu_quiz
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
@@ -16,6 +14,7 @@ import com.example.smu_quiz.MockTestStart
 import com.google.firebase.auth.FirebaseAuth
 import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import com.smu.sangmyung.smu_quiz.login.SubjectActivity
+import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
 import com.smu.sangmyung.smu_quiz.model.Wrong
 import com.smu.sangmyung.smu_quiz.worng.WrongNoteActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -24,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -83,6 +83,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             startActivity(intent)
         }
     }
+
 
     private fun setToggle() {
         val toggle = ActionBarDrawerToggle(
@@ -155,6 +156,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             return subject_list
     }
 
+
     override fun onBackPressed() {
         if (drawer_layout_main.isDrawerOpen(GravityCompat.START)) {
             drawer_layout_main.closeDrawer(GravityCompat.START)
@@ -175,23 +177,20 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 startActivity(intent)
                 finish()
             }
-            //R.id.wrong_graph -> {
-            //    val intent= Intent(applicationContext, WrongAnalysisActivity::class.java)
-            //    startActivity(intent)
-             //   finish()
-            //}
-
-
-            R.id.gotomain -> {
-                val intent= Intent(applicationContext, MainActivity::class.java)
+            R.id.wrong_graph -> {
+                val intent= Intent(applicationContext, WrongAnalysisActivity::class.java)
                 startActivity(intent)
                 finish()
             }
+            R.id.gotomain -> {
+                val intent= Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
+           }
             R.id.community_ques -> {
-
+                Toast.makeText(applicationContext,"준비중입니다 ^^",Toast.LENGTH_SHORT).show()
             }
             R.id.community_free -> {
-
+                Toast.makeText(applicationContext,"준비중입니다 ^^",Toast.LENGTH_SHORT).show()
             }
             R.id.logout ->{
                 val intent= Intent(applicationContext, GoogleSignInActivity::class.java)
@@ -201,7 +200,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 finish()
             }
         }
-
         drawer_layout_main.closeDrawer(GravityCompat.START)
         return true
     }
