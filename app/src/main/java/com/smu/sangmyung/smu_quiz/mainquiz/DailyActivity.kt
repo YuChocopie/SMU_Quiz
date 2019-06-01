@@ -136,9 +136,9 @@ class DailyActivity : AppCompatActivity() {
 
         //다음문제로 넘어가기
         tvNext.setOnClickListener {
-            callQuiz()
             pr_num += 1
             callQuiz()
+
         }
 
         //즐겨찾기 체크 or 해제

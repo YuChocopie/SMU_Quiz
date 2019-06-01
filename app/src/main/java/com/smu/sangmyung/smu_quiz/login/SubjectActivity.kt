@@ -17,7 +17,7 @@ import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
 import com.smu.sangmyung.smu_quiz.worng.WrongNoteActivity
 import kotlinx.android.synthetic.main.activity_subject.*
-import kotlinx.android.synthetic.main.activity_subject.drawer_layout
+import kotlinx.android.synthetic.main.activity_wrong_analysis.*
 import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
@@ -92,12 +92,12 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         }
 
         val toggle = ActionBarDrawerToggle(
-            this, drawer_layout, toolbar,
+            this, drawer_layout_subject, toolbar,
             R.string.navigation_drawer_open,
             R.string.navigation_drawer_close
         )
 
-        drawer_layout.addDrawerListener(toggle)
+        drawer_layout_subject.addDrawerListener(toggle)
         toggle.syncState()
         nav_view_sub.setNavigationItemSelectedListener(this)
 
@@ -113,8 +113,8 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
 
 
     override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
+        if (drawer_layout_subject.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout_subject.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
         }
@@ -125,7 +125,6 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
             R.id.select_subject -> {
                 val intent= Intent(applicationContext, SubjectActivity::class.java)
                 startActivity(intent)
-                finish()
             }
             R.id.wrong_ques -> {
                 val intent= Intent(applicationContext, WrongNoteActivity::class.java)
@@ -137,18 +136,16 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
                 startActivity(intent)
                 finish()
             }
-
-
             R.id.gotomain -> {
                 val intent= Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.community_ques -> {
-
+                Toast.makeText(applicationContext,"준비중입니다 ^^",Toast.LENGTH_SHORT).show()
             }
             R.id.community_free -> {
-
+                Toast.makeText(applicationContext,"준비중입니다 ^^",Toast.LENGTH_SHORT).show()
             }
             R.id.logout ->{
                 val intent= Intent(applicationContext, GoogleSignInActivity::class.java)
@@ -159,7 +156,7 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
             }
         }
 
-        drawer_layout.closeDrawer(GravityCompat.START)
+        drawer_layout_subject.closeDrawer(GravityCompat.START)
         return true
     }
 

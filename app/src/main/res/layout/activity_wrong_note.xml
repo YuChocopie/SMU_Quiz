@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout_wrong_note"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -289,4 +290,14 @@
         </android.support.v4.widget.NestedScrollView>
 
     </android.support.constraint.ConstraintLayout>
+
+    <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view_wrong_note"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer"/>
+
 </android.support.v4.widget.DrawerLayout>
