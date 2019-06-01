@@ -12,17 +12,18 @@ class StopActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stop)
-        val intent = Intent(this,DailyActivity::class.java)
-        tvStopYes.setOnClickListener {
+
+        //val intent = Intent(this,DailyActivity::class.java)
+
+
+
+        /*tvStopYes.setOnClickListener {
             intent.putExtra("finish",true)
-            startActivity(intent)
+            startActivityForResult(intent,100)
             finish()
         }
         tvStopNo.setOnClickListener {
-            intent.putExtra("finish",false)
             finish()
-            startActivity(intent)
-            finish()
-        }
+        }*/
     }
 }
