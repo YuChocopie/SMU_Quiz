@@ -180,7 +180,6 @@ public open class BaseActivity : AppCompatActivity() {
     fun loadQuizResult(subject:String):Int {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
 
-        Log.e("123123",pref.getInt("wr_daba",0).toString())
        // val subject = pref.getString("subject", "")
         when (subject) {
             "all" -> return pref.getInt("all",0)

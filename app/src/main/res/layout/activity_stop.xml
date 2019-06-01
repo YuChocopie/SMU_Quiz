@@ -92,6 +92,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/tvStopYes"
                 app:layout_constraintStart_toStartOf="@+id/tvStopYes"
         />
+
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
 
