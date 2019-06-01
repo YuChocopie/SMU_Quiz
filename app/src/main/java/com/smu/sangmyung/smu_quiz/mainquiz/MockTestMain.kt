@@ -169,18 +169,7 @@ class MockTestMain : BaseActivity(){
 
         Log.d("gagaga",sss)
 
-<<<<<<< Updated upstream
-        //다음 문제로 넘어가기
-        tvNext.setOnClickListener {
-            //문제수 1씩 증가
-            //TODO::과목별 check 더하기
-            pr_num += 1
-          
-            if(pr_num < isCorrect.size){
-                //TODO::즐겨찾기 보내기
-=======
         callQuiz(pr_num,sss,choice)
->>>>>>> Stashed changes
 
         /*var size = 0
         var all:String=""
