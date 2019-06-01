@@ -31,6 +31,7 @@ class DailyActivity : AppCompatActivity() {
         QuizSubject("operation_system")
     )
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         var i = 0 //즐겨찾기 처리할 변수
         var pr_num = 0 //문제 수
