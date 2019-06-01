@@ -78,7 +78,7 @@ class DailyActivity : BaseActivity() {
             .subscribe({ result ->
                 // data 를 받아 처리합니다.
                 Log.d("121212", subjectSelect.random().toString())
-                Log.d("12121212", result[0].subject)
+                Log.d("12121212", result[0].toString())
 
                 // 작업 중 오류가 발생하면 이 블록은 호출되지 않습니다
                 quiz.add(result[0])
@@ -200,7 +200,7 @@ class DailyActivity : BaseActivity() {
                 saveQuizResult("all")
                 // 해당 과목 문제수 증가
                 saveQuizResult(quiz[0].subject)
-
+                pr_num++
                 quiz.clear()
                 wrongBoolean = false
                 quizSolved = false

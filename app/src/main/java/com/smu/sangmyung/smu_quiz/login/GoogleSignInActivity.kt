@@ -1,29 +1,33 @@
 package com.smu.sangmyung.smu_quiz.login
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.View
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.smu.sangmyung.smu_quiz.BaseActivity
-import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
+import com.smu.sangmyung.smu_quiz.SmuQuizAIP
+import com.smu.sangmyung.smu_quiz.SmuQuizInterface
+import com.smu.sangmyung.smu_quiz.model.User
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_google.*
 
-class GoogleSignInActivity : BaseActivity(){
+class GoogleSignInActivity : BaseActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-
-    override  fun onCreate(savedInstanceState: Bundle?){
+    private var smuQuizAIP = SmuQuizAIP()
+    private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
+    private var smuDailyInterface = smuQuizRetrofit.create(SmuQuizInterface::class.java)
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_google)
 
@@ -31,7 +35,7 @@ class GoogleSignInActivity : BaseActivity(){
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-    
+
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         auth = FirebaseAuth.getInstance()
@@ -41,11 +45,13 @@ class GoogleSignInActivity : BaseActivity(){
 
         }
     }
+
     public override fun onStart() {
         super.onStart()
         val currentUser = auth.currentUser
 
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -61,6 +67,8 @@ class GoogleSignInActivity : BaseActivity(){
             }
         }
     }
+
+    @SuppressLint("CheckResult")
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
 
@@ -73,6 +81,20 @@ class GoogleSignInActivity : BaseActivity(){
                     saveCurrentUserEmail(auth.currentUser?.email.toString())
                     val user = auth.currentUser
                     val intent = Intent(applicationContext, SubjectActivity::class.java)
+                    val userId = User(user?.email.toString())
+                    Log.d("Result", "123123:setUser:")
+
+                    smuDailyInterface.setUser(userId)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe({ wrong ->
+                            Log.d("Result", "123123:setUser:$wrong")
+                        }, { error ->
+                            error.printStackTrace()
+                            Log.d("Result", "ereerr::setUser")
+                        }, { Log.d("Result", "complete::setUser") })
+
+
                     startActivity(intent)
                     finish()
                 } else {
@@ -80,6 +102,7 @@ class GoogleSignInActivity : BaseActivity(){
                 }
             }
     }
+
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)

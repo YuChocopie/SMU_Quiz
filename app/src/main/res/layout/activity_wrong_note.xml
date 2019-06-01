@@ -107,7 +107,8 @@
                         app:layout_constraintTop_toBottomOf="@+id/vWorngNoteDatabase"
                         app:layout_constraintBottom_toTopOf="@id/tvWorngNoteSubjectSoftwareEngineering"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintVertical_chainStyle="spread_inside">
                 </android.support.v7.widget.RecyclerView>
 
 
@@ -122,9 +123,9 @@
                         android:text="@string/wrong_problem"
                         android:textColor="@color/black0"
                         android:letterSpacing="0.05"
-                        app:layout_constraintStart_toStartOf="@+id/vWorngNoteAlgorithm"
+                        app:layout_constraintStart_toStartOf="@+id/tvWorngNoteSubjectAlgorithm"
                         app:layout_constraintTop_toBottomOf="@id/rvWorngDatabase"
-                       />
+                />
                 <View
                         android:id="@+id/vWorngNoteSoftwareEngineering"
                         android:layout_width="match_parent"
@@ -284,13 +285,9 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent">
                 </android.support.v7.widget.RecyclerView>
-
             </android.support.constraint.ConstraintLayout>
-
         </android.support.v4.widget.NestedScrollView>
-
     </android.support.constraint.ConstraintLayout>
-
     <android.support.design.widget.NavigationView
             android:id="@+id/nav_view_wrong_note"
             android:layout_width="wrap_content"
@@ -299,5 +296,4 @@
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/nav_header_main"
             app:menu="@menu/activity_main_drawer"/>
-
 </android.support.v4.widget.DrawerLayout>

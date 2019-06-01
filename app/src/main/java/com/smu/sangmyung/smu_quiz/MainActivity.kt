@@ -50,21 +50,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         //로그인 되있으면 이메일 확인후 네비바에 삽입
         checkCurrentUser()
         tvGlobalTitle.text="ALL QUIZ"
-
-        val wrong = Wrong(1,2,email)
-
-        smuQuizInterface.setWrongQuiz(wrong)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ wrong ->
-                Log.d("Result", "123123:setWrongQuiz:$wrong")
-            }, { error ->
-                error.printStackTrace()
-                Log.d("Result", "ereerr::setWrongQuiz")
-            }, { Log.d("Result", "complete::setWrongQuiz") })
 
         setToggle()
         setBtn()
@@ -194,6 +183,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 val intent= Intent(applicationContext, GoogleSignInActivity::class.java)
                 startActivity(intent)
                 FirebaseAuth.getInstance().signOut()
+                saveCurrentUserEmail(true.toString())
                 Toast.makeText(applicationContext,"로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
                 finish()
             }
