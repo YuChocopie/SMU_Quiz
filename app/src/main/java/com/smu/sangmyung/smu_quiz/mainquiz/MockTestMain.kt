@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
-import com.smu.sangmyung.smu_quiz.quiz.Choice
+import com.smu.sangmyung.smu_quiz.mainquiz.Choice
 import com.smu.sangmyung.smu_quiz.R
-import com.smu.sangmyung.smu_quiz.quiz.MockQuiz
+import com.smu.sangmyung.smu_quiz.mainquiz.MockQuiz
 import kotlinx.android.synthetic.main.activity_daily.*
 import kotlinx.android.synthetic.main.item_global_title.*
 

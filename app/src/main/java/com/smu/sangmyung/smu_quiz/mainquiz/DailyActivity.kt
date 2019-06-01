@@ -10,7 +10,7 @@ import android.view.View.VISIBLE
 import android.widget.Toast
 import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
-import com.smu.sangmyung.smu_quiz.quiz.Choice
+import com.smu.sangmyung.smu_quiz.mainquiz.Choice
 import kotlinx.android.synthetic.main.activity_daily.*
 import kotlinx.android.synthetic.main.item_global_title.*
 

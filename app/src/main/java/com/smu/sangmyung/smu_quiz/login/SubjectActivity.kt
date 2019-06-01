@@ -87,9 +87,9 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         toggle.syncState()
         nav_view_sub.setNavigationItemSelectedListener(this)
 
-       val email =user!!.email
-       val nav_header_view = nav_view_sub.getHeaderView(0)
-       nav_header_view.tv_nvheader_email?.text=email.toString()
+//       val email =user!!.email
+//       val nav_header_view = nav_view_sub.getHeaderView(0)
+//       nav_header_view.tv_nvheader_email?.text=email.toString()
 
     }
 
