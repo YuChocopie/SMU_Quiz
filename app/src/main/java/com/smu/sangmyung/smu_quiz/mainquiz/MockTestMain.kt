@@ -126,6 +126,8 @@ class MockTestMain : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily)
         tvStop.text = "prev"
+        val subjectSelect:ArrayList<String> ?= intent.getStringArrayListExtra("subject")
+
 
         val finishable = intent.getBooleanExtra("finish", false)
         if (finishable) {
@@ -152,9 +154,12 @@ class MockTestMain : AppCompatActivity(){
             //문제수 1씩 증가
             //TODO::과목별 check 더하기
             pr_num += 1
-            if(pr_num < isCorrect.size){
+          
+            if(pr_num < mocktest.size){
                 //TODO::즐겨찾기 보내기
-                callQuiz(pr_num, subject[0],choice)
+
+                ivMainLike.setImageResource(R.drawable.like_empty)
+//                setting(pr_num)
 
             }
 

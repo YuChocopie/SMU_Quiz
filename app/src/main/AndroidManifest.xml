@@ -25,12 +25,9 @@
                   android:theme="@style/Transparent"/>
 
         <activity android:name=".worng.WrongAnalysisActivity"/>
-
-        <activity android:name="com.example.smu_quiz.StartActivity"/>
-        <activity android:name=".login.AfterLoginActivity"/>
-        <activity android:name=".login.GoogleSignInActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".worng.WrongNoteActivity"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".login.GoogleSignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

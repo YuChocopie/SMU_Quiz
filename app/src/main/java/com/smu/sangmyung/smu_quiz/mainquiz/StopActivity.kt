@@ -13,17 +13,16 @@ class StopActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stop)
 
-        //val intent = Intent(this,DailyActivity::class.java)
+        val intent = Intent(this,DailyActivity::class.java)
 
-
-
-        /*tvStopYes.setOnClickListener {
+        tvStopYes.setOnClickListener {
             intent.putExtra("finish",true)
-            startActivityForResult(intent,100)
+            setResult(RESULT_OK,intent)
             finish()
         }
+
         tvStopNo.setOnClickListener {
             finish()
-        }*/
+        }
     }
 }
