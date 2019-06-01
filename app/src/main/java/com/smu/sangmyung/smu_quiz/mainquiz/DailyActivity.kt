@@ -39,6 +39,7 @@ class DailyActivity : AppCompatActivity() {
     )
 
     var pr_num = 0 //문제 수
+    var quizSolved = false //문제풀이여부
     var wrongBoolean = false //문제정답여부
     var bookMarkBoolean = false //문제정답여부
     var correctAnswer = 0
@@ -135,6 +136,7 @@ class DailyActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("CheckResult")
     private fun setBtn() {
         //즐겨찾기 체크 or 해제
         ivMainLike.setOnClickListener(object : View.OnClickListener {
@@ -157,52 +159,59 @@ class DailyActivity : AppCompatActivity() {
 
         //다음문제로 넘어가기
         tvNext.setOnClickListener {
-
-            if (bookMarkBoolean) {
-                val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
-                smuDailyInterface.setBookMark(wrong)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({ wrong ->
-                        Log.d("Result", "123123:bookMarkBoolean:$wrong")
-                    }, { error ->
-                        error.printStackTrace()
-                        Log.d("Result", "ereerr::bookMarkBoolean")
-                    }, { Log.d("Result", "complete::bookMarkBoolean") })
-            }
-            if (!wrongBoolean) {
-                val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
-                smuDailyInterface.setWrongQuiz(wrong)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({ wrong ->
-                        Log.d("Result", "123123:wrongBoolean:$wrong")
-                    }, { error ->
-                        error.printStackTrace()
-                        Log.d("Result", "ereerr::wrongBoolean")
-                    }, { Log.d("Result", "complete::wrongBoolean") })
-            }
-            pr_num += 1
-            quiz.clear()
-            wrongBoolean = false
-            callQuiz()
+            if (quizSolved) {
+                if (bookMarkBoolean) {
+                    val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
+                    smuDailyInterface.setBookMark(wrong)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe({ wrong ->
+                            Log.d("Result", "123123:bookMarkBoolean:$wrong")
+                        }, { error ->
+                            error.printStackTrace()
+                            Log.d("Result", "ereerr::bookMarkBoolean")
+                        }, { Log.d("Result", "complete::bookMarkBoolean") })
+                }
+                if (!wrongBoolean) {
+                    val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
+                    smuDailyInterface.setWrongQuiz(wrong)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe({ wrong ->
+                            Log.d("Result", "123123:wrongBoolean:$wrong")
+                        }, { error ->
+                            error.printStackTrace()
+                            Log.d("Result", "ereerr::wrongBoolean")
+                        }, { Log.d("Result", "complete::wrongBoolean") })
+                }
+                pr_num += 1
+                quiz.clear()
+                wrongBoolean = false
+                quizSolved = false
+                callQuiz()
+            } else
+                Toast.makeText(this, "문제를 풀어주세요", Toast.LENGTH_LONG).show()
         }
         // 답 선택했을 때 맞는지 틀리는지
         //1번 선택했을 때
         tvChoice1.setOnClickListener {
             isResult(correctAnswer, 1)
+            quizSolved = true
         }
         //2번 선택했을 때
         tvChoice2.setOnClickListener {
             isResult(correctAnswer, 2)
+            quizSolved = true
         }
         //3번 선택했을 때
         tvChoice3.setOnClickListener {
             isResult(correctAnswer, 3)
+            quizSolved = true
         }
         //4번 선택했을 때
         tvChoice4.setOnClickListener {
             isResult(correctAnswer, 4)
+            quizSolved = true
         }
     }
 
