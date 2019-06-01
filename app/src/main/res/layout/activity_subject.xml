@@ -282,7 +282,7 @@
                 android:background="@color/gray2"
                 app:layout_constraintTop_toBottomOf="@+id/tvSubjectOperationSystem"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="@dimen/activity_subject_margin"
+                android:layout_marginStart="@dimen/jinsoomargin"
                 android:layout_marginEnd="@dimen/activity_subject_margin"
                 app:layout_constraintEnd_toEndOf="parent"/>
         <TextView
