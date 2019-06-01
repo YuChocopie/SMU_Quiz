@@ -183,8 +183,13 @@ class DailyActivity : AppCompatActivity() {
                             error.printStackTrace()
                             Log.d("Result", "ereerr::wrongBoolean")
                         }, { Log.d("Result", "complete::wrongBoolean") })
+                    //오답인경우
+                    //전체 오답 개수 ++
+                    //quiz[0].subject //해당과목만 오답 증가 ++
                 }
                 pr_num += 1
+                // 전제문제수 증가
+                // 해당 과목 문제수 증가
                 quiz.clear()
                 wrongBoolean = false
                 quizSolved = false
