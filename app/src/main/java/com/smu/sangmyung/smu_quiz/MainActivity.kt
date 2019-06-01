@@ -5,6 +5,7 @@ import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.design.widget.NavigationView
 import android.support.v4.content.ContextCompat.startActivity
 import android.support.v4.view.GravityCompat
@@ -30,7 +31,7 @@ import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    //private lateinit var auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
 
     var Algorithm:Boolean?=null
     var Database :Boolean?=null
@@ -49,14 +50,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        //uth =FirebaseAuth.getInstance()
-       // var user =auth.currentUser
-
-        //val email =user!!.email
-        //tvGlobalTitle.text="ALL QUIZ"
-
-
+        //로그인 되있으면 이메일 확인후 네비바에 삽입
+        checkCurrentUser()
+        tvGlobalTitle.text="ALL QUIZ"
 
         btnGoDaily.setOnClickListener{
             val intent = Intent(this, DailyActivity::class.java)
@@ -105,10 +101,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         //// subject tokenizer + random
-
-        val navheaderview = nav_view_main.getHeaderView(0)
-        //navheaderview.tv_nvheader_email?.text=email.toString()
-
 
         Algorithm= false
         Database=false
@@ -228,6 +220,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     fun <String>ArrayList<String>.radnom():String{
         var random = Random().nextInt(size)
         return  get(random)
+    }
+
+    private fun checkCurrentUser() {
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            auth =FirebaseAuth.getInstance()
+            var user =auth.currentUser
+            val email =user!!.email
+            val navheaderview = nav_view_main.getHeaderView(0)
+            navheaderview.tv_nvheader_email?.text=email.toString()
+        } else {
+
+        }
+    }
+    private fun saveEmail(useremail:String){
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = pref.edit()
+        editor.putString("useremail",useremail)
+            .apply()
+    }
+    private fun loadEmail():String{
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val email = pref.getString("useremail","")
+        return email
     }
 }
 
