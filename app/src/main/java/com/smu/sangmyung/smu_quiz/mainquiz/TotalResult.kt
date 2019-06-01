@@ -29,6 +29,7 @@ class TotalResult : AppCompatActivity(){
             var intent = Intent(this,MockTestMain::class.java)
             intent.putExtra("finish",true)
             startActivity(intent)
+            finish()
         }
         //오답 확인하러 가기
         tvBoxWrongAnswer.setOnClickListener {
