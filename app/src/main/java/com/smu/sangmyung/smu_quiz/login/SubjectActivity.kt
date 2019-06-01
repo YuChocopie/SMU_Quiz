@@ -85,6 +85,7 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.putExtra("subject",all_subject)
             startActivity(intent)
+            finish()
         }
 
         val toggle = ActionBarDrawerToggle(
