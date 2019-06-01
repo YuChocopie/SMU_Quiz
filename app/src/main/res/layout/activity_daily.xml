@@ -24,28 +24,7 @@
             android:layout_weight="10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
-        <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-            <ImageView
-                    android:id="@+id/ivAnswerCorrect"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/answer_correct"
-                    android:layout_margin="40dp"
-                    android:visibility="gone"
-            />
-            <ImageView
-                    android:id="@+id/ivAnswerWrong"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/answer_wrong"
-                    android:layout_margin="40dp"
-                    android:visibility="gone"
-            />
-
-        </FrameLayout>
         <android.support.constraint.ConstraintLayout
                 android:id="@+id/clMainQuestionAndLike"
                 android:layout_width="match_parent"
@@ -97,7 +76,7 @@
         <TextView
                 android:id="@+id/tvMainQuestionContent"
                 android:layout_width="match_parent"
-                android:textColor="@color/colorText"
+                android:textColor="@color/black0"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:letterSpacing="0.01"
@@ -118,6 +97,7 @@
                 android:layout_marginTop="40dp"
                 app:layout_constraintTop_toBottomOf="@+id/tvMainQuestionContent">
             <TextView
+                    android:gravity="center_vertical"
                     android:paddingTop="10dp"
                     android:id="@+id/tvChoice1"
                     android:textSize="16sp"
@@ -130,6 +110,7 @@
 
             />
             <TextView
+                    android:gravity="center_vertical"
                     android:id="@+id/tvChoice2"
                     android:paddingTop="10dp"
                     android:textSize="16sp"
@@ -140,17 +121,20 @@
                     android:textColor="@color/black0"
 
             />
-            <TextView android:paddingTop="10dp"
-                      android:textSize="16sp"
-                      android:id="@+id/tvChoice3"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_weight="1"
-                      android:letterSpacing="0.01"
-                      android:textColor="@color/black0"
+            <TextView
+                    android:gravity="center_vertical"
+                    android:paddingTop="10dp"
+                    android:textSize="16sp"
+                    android:id="@+id/tvChoice3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:letterSpacing="0.01"
+                    android:textColor="@color/black0"
 
             />
             <TextView
+                    android:gravity="center_vertical"
                     android:paddingTop="10dp"
                     android:id="@+id/tvChoice4"
                     android:layout_width="match_parent"
@@ -163,6 +147,28 @@
 
         </LinearLayout>
 
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:id="@+id/ivAnswerCorrect"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/answer_correct"
+                    android:layout_margin="40dp"
+                    android:visibility="gone"
+            />
+            <ImageView
+                    android:id="@+id/ivAnswerWrong"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/answer_wrong"
+                    android:layout_margin="40dp"
+                    android:visibility="gone"
+            />
+
+        </FrameLayout>
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout

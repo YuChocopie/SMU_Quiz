@@ -15,7 +15,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import com.smu.sangmyung.smu_quiz.login.SubjectActivity
 import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
+import com.smu.sangmyung.smu_quiz.model.Wrong
 import com.smu.sangmyung.smu_quiz.worng.WrongNoteActivity
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
@@ -47,6 +50,18 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         //로그인 되있으면 이메일 확인후 네비바에 삽입
         checkCurrentUser()
         tvGlobalTitle.text="ALL QUIZ"
+
+        val wrong = Wrong(1,2,"abc@abc.com")
+
+        smuQuizInterface.setWrongQuiz(wrong)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ wrong ->
+                Log.d("Result", "123123:setWrongQuiz:$wrong")
+            }, { error ->
+                error.printStackTrace()
+                Log.d("Result", "ereerr::setWrongQuiz")
+            }, { Log.d("Result", "complete::setWrongQuiz") })
 
         setToggle()
         setBtn()
