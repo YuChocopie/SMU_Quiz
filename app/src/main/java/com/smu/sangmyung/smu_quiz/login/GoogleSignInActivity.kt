@@ -13,11 +13,12 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.smu.sangmyung.smu_quiz.BaseActivity
 import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.activity_google.*
 
-class GoogleSignInActivity : AppCompatActivity(){
+class GoogleSignInActivity : BaseActivity(){
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -70,6 +71,7 @@ class GoogleSignInActivity : AppCompatActivity(){
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
+                    saveCurrentUserEmail(auth.currentUser?.email.toString())
                     val user = auth.currentUser
                     val intent = Intent(applicationContext, SubjectActivity::class.java)
                     startActivity(intent)
@@ -87,7 +89,4 @@ class GoogleSignInActivity : AppCompatActivity(){
         private const val TAG = "GoogleActivity"
         private const val RC_SIGN_IN = 9001
     }
-
-
-
 }

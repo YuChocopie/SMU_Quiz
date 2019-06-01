@@ -42,11 +42,6 @@
         </menu>
     </item>
     <item
-            android:title="로그인"
-            android:id="@+id/login"
-            android:icon="@drawable/ic_input"
-    />
-    <item
             android:title="로그아웃"
             android:id="@+id/logout"
             android:icon="@drawable/ic_input"

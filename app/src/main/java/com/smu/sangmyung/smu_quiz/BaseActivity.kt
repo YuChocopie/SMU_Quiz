@@ -62,5 +62,18 @@ public open class BaseActivity : AppCompatActivity() {
         val subjectlist = pref.getString("subjectlist","")
         return subjectlist
     }
+    fun saveCurrentUserEmail(useremail:String){
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor = pref.edit()
+        editor.putString("useremail",useremail)
+            .apply()
+
+        editor.commit()
+    }
+    fun loadCurrentUserEmail():String{
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val useremail = pref.getString("useremail","false")
+        return useremail
+    }
 }
 
