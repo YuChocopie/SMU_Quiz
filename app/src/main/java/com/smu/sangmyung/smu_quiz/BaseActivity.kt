@@ -42,6 +42,7 @@ public open class BaseActivity : AppCompatActivity() {
 
         editor.commit()
     }
+
     fun loadSubject() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         val b1 = pref.getBoolean("algorithm", false)

@@ -9,7 +9,7 @@ import retrofit2.http.*
 interface SmuQuizInterface {
 
     /** Get StationResponse with TM Position **/
-    @GET("/quiz/mocktest?subject=Database&&operation_system")
+    @GET("/quiz/mocktest?subject=Database&subject=operation_system")
     fun test(): Observable<List<Quiz>>
 
     @GET("/quiz/mocktest")

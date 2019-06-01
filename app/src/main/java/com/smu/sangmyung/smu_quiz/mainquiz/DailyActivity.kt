@@ -32,11 +32,11 @@ class DailyActivity : AppCompatActivity() {
     //choice 4가지 담을 리스트 -> 이걸로 xml파일 설정
     var choice = mutableListOf<Choice>()
 
-    var subject = mutableListOf<QuizSubject>(
-        QuizSubject("Databse"),
+    /*var subject = mutableListOf<QuizSubject>(
+        QuizSubject("Database"),
         QuizSubject("Algorighme"),
         QuizSubject("operation_system")
-    )
+    )*/
 
     var pr_num = 0 //문제 수
     var quizSolved = false //문제풀이여부
@@ -171,6 +171,7 @@ class DailyActivity : AppCompatActivity() {
                             error.printStackTrace()
                             Log.d("Result", "ereerr::bookMarkBoolean")
                         }, { Log.d("Result", "complete::bookMarkBoolean") })
+
                 }
                 if (!wrongBoolean) {
                     val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
