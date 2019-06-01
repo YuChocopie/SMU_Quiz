@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.activity_stop.*
+import java.util.ArrayList
 
 class MockTestStart : AppCompatActivity(){
 
@@ -19,6 +20,8 @@ class MockTestStart : AppCompatActivity(){
         tvStop.setText(R.string.mock_test_start)
         tvStopYes.setText("이어풀기")
         tvStopNo.setText("새로풀기")
+
+        val subjectSelect: ArrayList<String>? = intent.getStringArrayListExtra("subject")
 
 
         //이어풀기
@@ -33,6 +36,7 @@ class MockTestStart : AppCompatActivity(){
         //새로풀기
         tvStopNo.setOnClickListener {
             val intent = Intent(this, MockTestMain::class.java)
+            intent.putExtra("subject",subjectSelect)
             startActivity(intent)
             finish()
         }

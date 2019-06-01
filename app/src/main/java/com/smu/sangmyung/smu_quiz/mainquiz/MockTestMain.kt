@@ -1,58 +1,111 @@
 package com.example.smu_quiz
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.os.Parcel
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
-import com.smu.sangmyung.smu_quiz.DataClass.QuizSubject
-import com.smu.sangmyung.smu_quiz.mainquiz.Choice
+import com.smu.sangmyung.smu_quiz.BaseActivity
 import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.SmuQuizAIP
 import com.smu.sangmyung.smu_quiz.SmuQuizInterface
+import com.smu.sangmyung.smu_quiz.mainquiz.Choice
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import com.smu.sangmyung.smu_quiz.mainquiz.MockQuiz
 import kotlinx.android.synthetic.main.activity_daily.*
-import kotlinx.android.synthetic.main.activity_subject.*
 import kotlinx.android.synthetic.main.item_global_title.*
 
-class MockTestMain : AppCompatActivity(){
+class MockTestMain : BaseActivity() {
 
-    var pr_total_correct_num =0 //총 맞춘 문제 개수
-    var pr_num:Int = 0 // getMocktest[position]에서 position
+    var pr_total_correct_num = 0 //총 맞춘 문제 개수
+    var pr_num: Int = 0 // getMocktest[position]에서 position
 
-    //모의고사 30개 리스트 넣어서 처리하기
+    //모의고사 30개 답 true, false 저장할 리스트
     var isCorrect = mutableListOf(
-        false,false,false,false,false,false,false,false,false,false,
-        false,false,false,false,false,false,false,false,false,false,
-        false,false,false,false,false,false,false,false,false,false
+        false, false, false, false, false, false, false, false, false, false,
+        false, false, false, false, false, false, false, false, false, false,
+        false, false, false, false, false, false, false, false, false, false
     )
-
 
     private var smuQuizAIP = SmuQuizAIP()
     private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
     private var smuDailyInterface = smuQuizRetrofit.create(SmuQuizInterface::class.java)
 
+    var choice = mutableListOf<Choice>()
+    var subjectSelect = arrayListOf<String>()
+    var subjectText = ""
+    val subject = HashMap<String, String>()
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_daily)
+        tvStop.text = "prev"
+
+        clickBtn()
+        //맞추면 true or 틀리면 false
+        //choice 4가지 담을 리스트 -> 이걸로 xml파일 설정
+        choice.add(Choice(tvChoice1))
+        choice.add(Choice(tvChoice2))
+        choice.add(Choice(tvChoice3))
+        choice.add(Choice(tvChoice4))
+
+        // 선택한 과목
+        subjectSelect = intent.getStringArrayListExtra("subject")
+        for (i in subjectSelect) {
+            subject.put("subject", i)
+        }
+
+        callQuiz(pr_num, choice)
+
+    }
+
+    private fun clickBtn() {
+
+        //다음 문제로 넘어가기
+        tvNext.setOnClickListener {
+            pr_num += 1
+            if (pr_num < 5) {
+                callQuiz(pr_num, choice)
+            }
+            //모의고사 다 풀었을 때
+            else {
+                //맞춘문제 수 세기
+                for (m in 0..isCorrect.size - 1) {
+                    if (isCorrect[m] == true) {
+                        pr_total_correct_num += 1
+                    }
+                }
+                //TotalResult로 총 맞춘문제, 총 문제 수 전달
+                val intent = Intent(this, TotalResult::class.java)
+                intent.putExtra("total_correct_num", pr_total_correct_num) //총 맞춘문제
+                intent.putExtra("total_pr_num", pr_num) // 총 문제 수
+                startActivityForResult(intent, 3000)
+            }
+            //TODO::과목별 check 더하기
+            //TODO::즐겨찾기 보내기
+        }
+    }
 
     //답 맞췄는지 틀렸는지
-    private fun isResult(answer:Int ,num:Int, choice:MutableList<Choice>){
-        if(answer == num){
+    private fun isResult(answer: Int, num: Int, choice: MutableList<Choice>) {
+        if (answer == num) {
             isCorrect[pr_num] = true
             for (m in 0..3) {
-                if (m != num-1) {
+                if (m != num - 1) {
                     choice[m].tvChoice.setTextColor(Color.BLACK)
                 } else {
                     choice[m].tvChoice.setTextColor(Color.BLUE)
                 }
             }
 
-        }else{
+        } else {
             for (m in 0..3) {
-                if (m != num-1) {
+                if (m != num - 1) {
                     choice[m].tvChoice.setTextColor(Color.BLACK)
                 } else {
                     choice[m].tvChoice.setTextColor(Color.BLUE)
@@ -61,7 +114,9 @@ class MockTestMain : AppCompatActivity(){
         }
     }
 
-    private fun callQuiz(pr_num:Int, subject: String,choice: MutableList<Choice>){
+    @SuppressLint("CheckResult")
+    fun callQuiz(pr_num: Int, choice: MutableList<Choice>) {
+
         smuDailyInterface.getMocktest(subject)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -93,110 +148,54 @@ class MockTestMain : AppCompatActivity(){
                     isResult(correctAnswer, 4, choice)
                 }
 
-            }, {
-                    error ->
+                var i = 0
+                ivMainLike.setOnClickListener(object : View.OnClickListener {
+                    override fun onClick(v: View) {
+                        i = 1 - i
+                        if (i == 1) {
+                            ivMainLike.setImageResource(R.drawable.like_fill)
+                        } else {
+                            ivMainLike.setImageResource(R.drawable.like_empty)
+                        }
+                    }
+                })
+
+            }, { error ->
                 error.printStackTrace()
-                Toast.makeText(this,"오류",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "오류", Toast.LENGTH_SHORT).show()
             }, {
                 // 작업이 정상적으로 완료되지 않았을 때 호출됩니다.
                 Log.d("Result", "complete")
             })
 
+
+        //다음문제로 넘어가면 별 무조건 해제
         ivMainLike.setImageResource(R.drawable.like_empty)
 
+        //다음문제로 넘어가면 choice 글씨 색 모두 블랙으로 바꾸기
         for (m in 0..3) {
             choice[m].tvChoice.setTextColor(Color.BLACK)
         }
+        //문제 증가한거 표시 Question1, Question2, ...
         tvMainQuestionNum.text = "Question ${pr_num + 1}"
     }
 
-    private fun isLike(i:Int){
-            if(i == 1){
-                ivMainLike.setImageResource(R.drawable.like_fill)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-            }else{
-                ivMainLike.setImageResource(R.drawable.like_empty)
+        if (resultCode == RESULT_OK) {
+            when (requestCode) {
+                // MainActivity 에서 요청할 때 보낸 요청 코드 (3000)
+                3000 -> finish()
             }
+        }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?){
-
-        var i = 0 // 즐겨찾기 처리할 때 사용
-
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_daily)
-        tvStop.text = "prev"
-        val subjectSelect:ArrayList<String> ?= intent.getStringArrayListExtra("subject")
-
-
-        val finishable = intent.getBooleanExtra("finish", false)
-        if (finishable) {
-            finish()
-        }
-
-        //맞추면 true or 틀리면 false
-        //choice 4가지 담을 리스트 -> 이걸로 xml파일 설정
-        var choice= mutableListOf<Choice>(
-            Choice(tvChoice1),
-            Choice(tvChoice2),
-            Choice(tvChoice3),
-            Choice(tvChoice4)
-        )
-
-        // 선택한 과목
-        var subject: List<String> = listOf("Database", "operation_system")
-
-        //문제 불러오기
-        callQuiz(pr_num, "operation_system",choice)
-
-        //다음 문제로 넘어가기
-        tvNext.setOnClickListener {
-            //문제수 1씩 증가
-            //TODO::과목별 check 더하기
-            pr_num += 1
-          
-            if(pr_num < isCorrect.size){
-                //TODO::즐겨찾기 보내기
-
-                ivMainLike.setImageResource(R.drawable.like_empty)
-//                setting(pr_num)
-
-            }
-
-            //모의고사 다 풀었을 때
-            else{
-                //맞춘문제 수 세기
-                for(m in 0..isCorrect.size-1){
-                    if(isCorrect[m] == true){
-                        pr_total_correct_num += 1
-                    }
-                }
-                //TotalResult로 총 맞춘문제, 총 문제 수 전달
-                val intent = Intent(this, TotalResult::class.java)
-                intent.putExtra("total_correct_num",pr_total_correct_num) //총 맞춘문제
-                intent.putExtra("total_pr_num",pr_num) // 총 문제 수
-                startActivity(intent)
-            }
-        }
-
-
-        //즐겨찾기 별 클릭, 해제
-        ivMainLike.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View){
-                i = 1-i
-                isLike(i)
-
-            }
-        })
-
-        //이전 문제로 돌아가기
-        tvStop.setOnClickListener {
-            //문제 수 감소
-            pr_num -= 1
-
-        }
-
+    fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(pr_total_correct_num)
+        parcel.writeInt(pr_num)
+        parcel.writeString(subjectText)
     }
-
 }
+
 

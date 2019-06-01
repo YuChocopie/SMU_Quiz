@@ -98,7 +98,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private fun subjectSet(): ArrayList<String> {
-//// subject tokenizer + random
         var subject_list = arrayListOf<String>()
 
         Algorithm= false
@@ -113,8 +112,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         if(subjectall!=null) {
             var subject_token = StringTokenizer(subjectall,"&")
             Log.d("ddddd",subjectall)
-
-
+            subject_list.clear()
             while(subject_token.hasMoreTokens()) {
                 var token: String = subject_token.nextToken().toString()
                 if (token=="algorithm") {
@@ -178,16 +176,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.wrong_ques -> {
                 val intent= Intent(applicationContext, WrongNoteActivity::class.java)
                 startActivity(intent)
-                finish()
             }
             R.id.wrong_graph -> {
                 val intent= Intent(applicationContext, WrongAnalysisActivity::class.java)
                 startActivity(intent)
-                finish()
             }
             R.id.gotomain -> {
-                val intent= Intent(applicationContext, MainActivity::class.java)
-                startActivity(intent)
+
            }
             R.id.community_ques -> {
                 Toast.makeText(applicationContext,"준비중입니다 ^^",Toast.LENGTH_SHORT).show()
