@@ -201,6 +201,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.community_free -> {
 
             }
+            R.id.login ->{
+                val intent= Intent(applicationContext, GoogleSignInActivity::class.java)
+                startActivity(intent)
+                Toast.makeText(applicationContext,"로그인 창으로.", Toast.LENGTH_SHORT).show()
+                finish()
+            }
             R.id.logout ->{
                 val intent= Intent(applicationContext, GoogleSignInActivity::class.java)
                 startActivity(intent)
