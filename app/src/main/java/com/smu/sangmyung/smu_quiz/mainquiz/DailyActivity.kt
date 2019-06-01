@@ -6,17 +6,17 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
 import android.widget.Toast
+import com.smu.sangmyung.smu_quiz.DataClass.QuizSubject
 import com.smu.sangmyung.smu_quiz.R
-import com.smu.sangmyung.smu_quiz.mainquiz.Choice
 import com.smu.sangmyung.smu_quiz.SmuQuizAIP
 import com.smu.sangmyung.smu_quiz.SmuQuizInterface
+import com.smu.sangmyung.smu_quiz.mainquiz.Choice
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_daily.*
 import kotlinx.android.synthetic.main.item_global_title.*
+import java.util.*
 
 
 class DailyActivity : AppCompatActivity() {
@@ -25,11 +25,20 @@ class DailyActivity : AppCompatActivity() {
     private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
     private var smuDailyInterface = smuQuizRetrofit.create(SmuQuizInterface::class.java)
 
+    var subject = mutableListOf<QuizSubject>(
+        QuizSubject("Databse"),
+        QuizSubject("Algorighme"),
+        QuizSubject("operation_system")
+    )
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         var i = 0 //즐겨찾기 처리할 변수
         var pr_num = 0 //문제 수
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily)
+
+        val subjectSelect: ArrayList<String>? = intent.getStringArrayListExtra("subject")
 
         //choice 4가지 담을 리스트 -> 이걸로 xml파일 설정
         var choice = mutableListOf<Choice>(
@@ -40,23 +49,23 @@ class DailyActivity : AppCompatActivity() {
         )
 
         // 답 선택했을 때 맞는지 틀리는지
-        fun isResult(answer:Int ,num:Int){
-            if(answer == num){
+        fun isResult(answer: Int, num: Int) {
+            if (answer == num) {
                 ivAnswerCorrect.visibility = View.VISIBLE
                 ivAnswerWrong.visibility = View.INVISIBLE
                 for (m in 0..3) {
-                    if (m != num-1) {
+                    if (m != num - 1) {
                         choice[m].tvChoice.setTextColor(Color.BLACK)
                     } else {
                         choice[m].tvChoice.setTextColor(Color.BLUE)
                     }
                 }
 
-            }else{
+            } else {
                 ivAnswerCorrect.visibility = View.INVISIBLE
                 ivAnswerWrong.visibility = View.VISIBLE
                 for (m in 0..3) {
-                    if (m != num-1) {
+                    if (m != num - 1) {
                         choice[m].tvChoice.setTextColor(Color.BLACK)
                     } else {
                         choice[m].tvChoice.setTextColor(Color.RED)
@@ -66,8 +75,8 @@ class DailyActivity : AppCompatActivity() {
         }
 
         //문제 불러오기 && xml설정하기
-        fun callQuiz(){
-            smuDailyInterface.test()
+        fun callQuiz() {
+            smuDailyInterface.getDailyQuiz(subjectSelect?.random().toString())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ result ->
@@ -78,7 +87,7 @@ class DailyActivity : AppCompatActivity() {
                     tvChoice1.text = "1. ${result[0].choice_1}"
                     tvChoice2.text = "2. ${result[0].choice_2}"
                     tvChoice3.text = "3. ${result[0].choice_3}"
-                    tvChoice4.text = "4. ${result[0].choice_4}f"
+                    tvChoice4.text = "4. ${result[0].choice_4}"
                     val correctAnswer = result[0].answer
 
                     //1번 선택했을 때
@@ -98,10 +107,9 @@ class DailyActivity : AppCompatActivity() {
                         isResult(correctAnswer, 4)
                     }
 
-                }, {
-                        error ->
+                }, { error ->
                     error.printStackTrace()
-                    Toast.makeText(this,"오류",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "오류", Toast.LENGTH_SHORT).show()
                 }, {
                     // 작업이 정상적으로 완료되지 않았을 때 호출됩니다.
                     Log.d("Result", "complete")
@@ -116,8 +124,6 @@ class DailyActivity : AppCompatActivity() {
                 choice[m].tvChoice.setTextColor(Color.BLACK)
             }
             tvMainQuestionNum.text = "Question ${pr_num + 1}"
-
-
         }
 
         callQuiz()
@@ -125,15 +131,9 @@ class DailyActivity : AppCompatActivity() {
         //문제 풀다가 중간에 그만둘 때
         tvStop.setOnClickListener {
             val intent = Intent(this, StopActivity::class.java)
-            startActivity(intent)
-
+            startActivityForResult(intent, 3000)
         }
 
-        val finishable = intent.getBooleanExtra("finish", false)
-        if (finishable) {
-
-            finish()
-        }
         //다음문제로 넘어가기
         tvNext.setOnClickListener {
             callQuiz()
@@ -153,6 +153,21 @@ class DailyActivity : AppCompatActivity() {
             }
         })
     }
+
+
+    fun <String> ArrayList<String>.radnom(): String {
+        var random = Random().nextInt(size)
+        return get(random)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == RESULT_OK) {
+            when (requestCode) {
+                // MainActivity 에서 요청할 때 보낸 요청 코드 (3000)
+                3000 -> finish()
+            }
+        }
+    }
 }
-
-

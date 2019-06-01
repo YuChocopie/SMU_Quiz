@@ -88,7 +88,7 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
                 cb_operation_system.isChecked, cb_software_engineering.isChecked)
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
-
+            finish()
         }
 
         val toggle = ActionBarDrawerToggle(
