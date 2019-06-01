@@ -51,6 +51,8 @@ class GoogleSignInActivity : AppCompatActivity(){
             try {
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account!!)
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
             } catch (e: ApiException) {
                 Log.w(TAG, "Google sign in failed", e)
             }
@@ -65,8 +67,7 @@ class GoogleSignInActivity : AppCompatActivity(){
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
-                    val intent = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(intent)
+
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
                 }
