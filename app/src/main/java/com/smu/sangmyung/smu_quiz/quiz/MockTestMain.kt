@@ -69,6 +69,7 @@ class MockTestMain : AppCompatActivity(){
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily)
+        tvStop.text = "prev"
 
         val finishable = intent.getBooleanExtra("finish", false)
         if (finishable) {
@@ -114,7 +115,7 @@ class MockTestMain : AppCompatActivity(){
                 .subscribe({ result ->
                     // data 를 받아 처리합니다.
                     // 작업 중 오류가 발생하면 이 블록은 호출되지 않습니다
-                    tvGlobalTitle.text = result[pr_num].subject
+                    tvGlobalTitle.text = "Mock Test"
                     tvMainQuestionContent.text = result[pr_num].title
                     tvChoice1.text = "1. ${result[pr_num].choice_1}"
                     tvChoice2.text = "2. ${result[pr_num].choice_2}"
@@ -147,9 +148,6 @@ class MockTestMain : AppCompatActivity(){
                     // 작업이 정상적으로 완료되지 않았을 때 호출됩니다.
                     Log.d("Result", "complete")
                 })
-
-            ivAnswerCorrect.visibility = View.GONE
-            ivAnswerWrong.visibility = View.GONE
 
             ivMainLike.setImageResource(R.drawable.like_empty)
 
