@@ -10,7 +10,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.smu.sangmyung.smu_quiz.login.AfterLoginActivity
 import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import com.smu.sangmyung.smu_quiz.login.SubjectActivity
 import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
@@ -21,7 +20,6 @@ import kotlinx.android.synthetic.main.item_global_title.*
 open class NavbaseActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-    private var all_subject:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +37,7 @@ open class NavbaseActivity : AppCompatActivity(), NavigationView.OnNavigationIte
 //        val email =user!!.email
 //        val nav_header_view = nav_view_sub.getHeaderView(0)
 //        nav_header_view.tv_nvheader_email?.text=email.toString()
-
-    }
+}
 
 
     override fun onBackPressed() {
@@ -71,7 +68,7 @@ open class NavbaseActivity : AppCompatActivity(), NavigationView.OnNavigationIte
 
 
             R.id.gotomain -> {
-                val intent= Intent(applicationContext, AfterLoginActivity::class.java)
+                val intent= Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }

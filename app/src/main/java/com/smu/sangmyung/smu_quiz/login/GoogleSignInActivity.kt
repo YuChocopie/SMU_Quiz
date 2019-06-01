@@ -11,6 +11,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.activity_google.*
 
@@ -64,7 +65,7 @@ class GoogleSignInActivity : AppCompatActivity(){
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
-                    val intent = Intent(applicationContext, AfterLoginActivity::class.java)
+                    val intent = Intent(applicationContext, MainActivity::class.java)
                     startActivity(intent)
                 } else {
                     Log.w(TAG, "signInWithCredential:failure", task.exception)

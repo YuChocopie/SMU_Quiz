@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
 import com.smu.sangmyung.smu_quiz.worng.WrongNoteActivity
@@ -71,7 +72,7 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
             }
         }
         btn_submit.setOnClickListener{
-            val intent = Intent(applicationContext, AfterLoginActivity::class.java)
+            val intent = Intent(applicationContext, MainActivity::class.java)
             intent.putExtra("subject",all_subject)
             startActivity(intent)
         }
@@ -86,9 +87,9 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
         toggle.syncState()
         nav_view_sub.setNavigationItemSelectedListener(this)
 
-//        val email =user!!.email
-//        val nav_header_view = nav_view_sub.getHeaderView(0)
-//        nav_header_view.tv_nvheader_email?.text=email.toString()
+       val email =user!!.email
+       val nav_header_view = nav_view_sub.getHeaderView(0)
+       nav_header_view.tv_nvheader_email?.text=email.toString()
 
     }
 
@@ -125,7 +126,7 @@ class SubjectActivity : AppCompatActivity(), NavigationView.OnNavigationItemSele
 
 
             R.id.gotomain -> {
-                val intent= Intent(applicationContext, AfterLoginActivity::class.java)
+                val intent= Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
