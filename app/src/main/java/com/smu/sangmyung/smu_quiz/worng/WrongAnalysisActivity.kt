@@ -9,16 +9,14 @@ import android.support.v4.content.ContextCompat.startActivity
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.smu.sangmyung.smu_quiz.MainActivity
-import com.smu.sangmyung.smu_quiz.R
-import com.smu.sangmyung.smu_quiz.SmuQuizAIP
-import com.smu.sangmyung.smu_quiz.SmuQuizInterface
+import com.smu.sangmyung.smu_quiz.*
 import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import com.smu.sangmyung.smu_quiz.login.SubjectActivity
 import kotlinx.android.synthetic.main.activity_subject.*
@@ -26,7 +24,7 @@ import kotlinx.android.synthetic.main.activity_wrong_analysis.*
 import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
-class WrongAnalysisActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener {
+class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
     @SuppressLint("WrongViewCast")
 
@@ -41,8 +39,21 @@ class WrongAnalysisActivity : AppCompatActivity() , NavigationView.OnNavigationI
         tvGlobalTitle.text = "오답분석"
 
         val points = intArrayOf(5, 3, 7, 8, 0, 0, 3)
+        Log.e("123123123123",loadQuizResult("wr_algo").toString())
+        points[0]=loadQuizResult("wr_algo")
+        Log.d("asd",points[0].toString())
+        points[1]=loadQuizResult("wr_daba")
+        Log.d("asd",points[1].toString())
+        points[2]=loadQuizResult("wr_soft")
+        Log.d("asd",points[2].toString())
+        points[3]=loadQuizResult("wr_oper")
+        points[4]=loadQuizResult("wr_comne")
+        points[5]=loadQuizResult("wr_comstruc")
+        points[6]=loadQuizResult("wr_datasturc")
 
-        LineGraphView?.setPoints(points, 1.0, 0, 10)
+
+
+        LineGraphView?.setPoints(points, 1.0, 0, points.max()!!.toInt()+2)
         LineGraphView?.drawForBeforeDrawView()
 
 

@@ -3,11 +3,11 @@ package com.smu.sangmyung.smu_quiz
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_subject.*
 
 public open class BaseActivity : AppCompatActivity() {
-
-    var all :Int =0
+    var all :Int=0
     var algo: Int=0
     var comne: Int=0
     var comstruc: Int=0
@@ -90,115 +90,116 @@ public open class BaseActivity : AppCompatActivity() {
     }
 
 
-    fun saveQuizResult(subject: String,num:Int) {
+    fun saveQuizResult(subject: String) {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         val editor = pref.edit()
         when(subject){
             "all" -> {
-                editor.putInt("num", all.plus(num))
+                editor.putInt("all",pref.getInt("all",0) +1)
                     .apply()
-                editor.commit()
+
             }
-            "algo" -> {
-                editor.putInt("num", algo.plus(num))
+            "Algorithme" -> {
+                editor.putInt("algo", pref.getInt("algo",0) +1)
                     .apply()
-                editor.commit()
+
             }
-            "comne" -> {editor.putInt("num",comne.plus(num))
+            "computer_network" -> {editor.putInt("comne",pref.getInt("comne",0) +1)
             .apply()
-            editor.commit()
+
             }
-            "comstruc" -> {
-                editor.putInt("num", comstruc.plus(num))
+            "computer_structure" -> {
+                editor.putInt("comstruc", pref.getInt("comstruc",0) +1)
                     .apply()
-                editor.commit()
+
             }
-            "datastruc" -> {
-                editor.putInt("num", datastruc.plus(num))
+            "Data_structure" -> {
+                editor.putInt("datastruc", pref.getInt("datastruc",0) +1)
                     .apply()
-                editor.commit()
+
             }
-            "daba" -> {
-                editor.putInt("num", daba.plus(num))
+            "Database" -> {
+                editor.putInt("daba", pref.getInt("daba",0) +1)
                     .apply()
-                editor.commit()
+
             }
-            "oper" -> {
-                editor.putInt("num", oper.plus(num))
+            "operation_system" -> {
+                editor.putInt("oper", pref.getInt("oper",0) +1)
                     .apply()
-                editor.commit()
+
             }
-            "soft" -> {
-                editor.putInt("num", soft.plus(num))
+            "Software_Engineering" -> {
+                editor.putInt("soft", pref.getInt("soft",0) +1)
                     .apply()
-                editor.commit()
+
             }
             "wr_all" -> {
-                editor.putInt("num", wr_all.plus(num))
+                editor.putInt("wr_all", pref.getInt("wr_all",0) +1)
                     .apply()
-                editor.commit()
-            }
-            "wr_algo" -> {
-                editor.putInt("num", wr_algo.plus(num))
-                    .apply()
-                editor.commit()
-            }
-            "wr_comne" -> {
-                editor.putInt("num", wr_comne.plus(num))
-                    .apply()
-                editor.commit()
-            }
-            "wr_comstruc" -> {
-                editor.putInt("num", wr_comstruc.plus(num))
-                    .apply()
-                editor.commit()
-            }
-            "wr_datastruc" -> {
-                editor.putInt("num", wr_datastruc.plus(num))
-                    .apply()
-                editor.commit()
-            }
-            "wr_daba" -> {
-                editor.putInt("num", wr_daba.plus(num))
-                    .apply()
-                editor.commit()
-            }
-            "wr_oper" -> {
-                editor.putInt("num", wr_oper.plus(num))
-                    .apply()
-                editor.commit()
-            }
-            "wr_soft" -> {
-                editor.putInt("num", wr_soft.plus(num))
-                    .apply()
-                editor.commit()
-            }
-        }
-    }
-    fun loadQuizResult():Int {
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val subject = pref.getString("subject", "")
-        var nnum = 0
-        when (subject) {
-            "all" -> nnum= pref.getInt("num", all)
-            "algo" -> nnum=  pref.getInt("num", algo)
-            "comne" -> nnum=  pref.getInt("num", comne)
-            "comstruc" -> nnum=  pref.getInt("num", comstruc)
-            "datastruc" -> nnum=  pref.getInt("num", datastruc)
-            "daba" -> nnum=  pref.getInt("num", daba)
-            "oper" -> nnum=  pref.getInt("num", oper)
-            "soft" -> nnum=  pref.getInt("num", soft)
-            "wr_all" -> nnum=  pref.getInt("num", wr_all)
-            "wr_algo" -> nnum=  pref.getInt("num", wr_algo)
-            "wr_comne" -> nnum=  pref.getInt("num", wr_comne)
-            "wr_comstruc" -> nnum=  pref.getInt("num", wr_comstruc)
-            "wr_datastruc" -> nnum=  pref.getInt("num", wr_datastruc)
-            "wr_daba" -> nnum=  pref.getInt("num", wr_daba)
-            "wr_oper" -> nnum=  pref.getInt("num", wr_oper)
-            "wr_soft" -> nnum=  pref.getInt("num", wr_soft)
-        }
-        return nnum
 
+            }
+            "wr_Algorithme" -> {
+                editor.putInt("wr_algo", pref.getInt("wr_algo",0) +1)
+                    .apply()
+
+            }
+            "wr_computer_network" -> {
+                editor.putInt("wr_comne", pref.getInt("wr_comne",0) +1)
+                    .apply()
+
+            }
+            "wr_computer_structure" -> {
+                editor.putInt("wr_comstruc", pref.getInt("wr_comstruc",0) +1)
+                    .apply()
+
+            }
+            "wr_Data_structure" -> {
+                editor.putInt("wr_datastruc", pref.getInt("wr_datastruc",0) +1)
+                    .apply()
+
+            }
+            "wr_Database" -> {
+                editor.putInt("wr_daba", pref.getInt("wr_daba",0) +1)
+                    .apply()
+
+            }
+            "wr_operation_system" -> {
+                editor.putInt("wr_oper", pref.getInt("wr_oper",0) +1)
+                    .apply()
+
+            }
+            "wr_Software_engineering" -> {
+                editor.putInt("wr_soft", pref.getInt("all",0) +1)
+                    .apply()
+
+            }
+        }
+        editor.commit()
+    }
+    fun loadQuizResult(subject:String):Int {
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+
+        Log.e("123123",pref.getInt("wr_daba",0).toString())
+       // val subject = pref.getString("subject", "")
+        when (subject) {
+            "all" -> return pref.getInt("all",0)
+            "algo" -> return  pref.getInt("algo", 0)
+            "comne" -> return pref.getInt("comne", 0)
+            "comstruc" -> return  pref.getInt("comstruc", 0)
+            "datastruc" -> return  pref.getInt("datastruc", 0)
+            "daba" -> return pref.getInt("daba", 0)
+            "oper" -> return pref.getInt("oper", 0)
+            "soft" -> return pref.getInt("soft", 0)
+            "wr_all" -> return pref.getInt("wr_all", 0)
+            "wr_algo" -> return pref.getInt("wr_algo", 0)
+            "wr_comne" -> return pref.getInt("wr_comne", 0)
+            "wr_comstruc" -> return pref.getInt("wr_comstruc", 0)
+            "wr_datastruc" -> return pref.getInt("wr_datastruc", 0)
+            "wr_daba" -> return pref.getInt("wr_daba", 0)
+            "wr_oper" -> return  pref.getInt("wr_oper", 0)
+            "wr_soft" -> return  pref.getInt("wr_soft", 0)
+        }
+        return pref.getInt("wr_soft", 0)
     }
 
 }

@@ -6,12 +6,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 >
-
     <android.support.constraint.ConstraintLayout
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:layout_marginRight="40dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/round_rectangle_fill"
             android:backgroundTint="@color/white5"
@@ -27,7 +26,7 @@
         <TextView
                 android:id="@+id/tvStop"
                 android:text="@string/daily_stop"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:fontFamily="sans-serif-medium"
                 android:textStyle="bold"
                 android:textColor="@color/black0"

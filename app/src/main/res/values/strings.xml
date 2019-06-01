@@ -22,7 +22,7 @@
     <string name="aWrongAnswer">aWrongAnswer() { \n ... \n }</string>
     <string name="goToMain">goToMain() { \n ... \n }</string>
     <string name="solve">오답풀이</string>
-    <string name="mock_test_start">전에 푸시던 문제를 이어푸시겠습니까?</string>
+    <string name="mock_test_start">전에 푸시던 문제를 이어서\n푸시겠습니까?</string>
     <string name="mock_continue">이어풀기</string>
     <string name="mock_new">새로 풀기</string>
     <string name="daily_stop">문제풀기를 중단하시겠습니까?</string>

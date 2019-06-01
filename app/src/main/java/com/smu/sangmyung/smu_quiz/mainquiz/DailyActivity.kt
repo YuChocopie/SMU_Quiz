@@ -9,6 +9,9 @@ import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.smu.sangmyung.smu_quiz.BaseActivity
 import com.smu.sangmyung.smu_quiz.DataClass.QuizSubject
 import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.SmuQuizAIP
@@ -24,7 +27,9 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class DailyActivity : AppCompatActivity() {
+class DailyActivity : BaseActivity() {
+    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    val email = user!!.email.toString()
 
     private var smuQuizAIP = SmuQuizAIP()
     private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
@@ -161,7 +166,7 @@ class DailyActivity : AppCompatActivity() {
         tvNext.setOnClickListener {
             if (quizSolved) {
                 if (bookMarkBoolean) {
-                    val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
+                    val wrong = Wrong(0, quiz[0].pr_id, email)
                     smuDailyInterface.setBookMark(wrong)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -173,7 +178,7 @@ class DailyActivity : AppCompatActivity() {
                         }, { Log.d("Result", "complete::bookMarkBoolean") })
                 }
                 if (!wrongBoolean) {
-                    val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
+                    val wrong = Wrong(0, quiz[0].pr_id, email)
                     smuDailyInterface.setWrongQuiz(wrong)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -183,17 +188,23 @@ class DailyActivity : AppCompatActivity() {
                             error.printStackTrace()
                             Log.d("Result", "ereerr::wrongBoolean")
                         }, { Log.d("Result", "complete::wrongBoolean") })
-                    //오답인경우
-                    //전체 오답 개수 ++
-                    //quiz[0].subject //해당과목만 오답 증가 ++
+                    //오답인경우 전체 오답++
+                    saveQuizResult("wr_all")
+                    Log.d("asd",quiz[0].subject)
+                    //해당과목만 오답 증가 ++
+                    saveQuizResult("wr_${quiz[0].subject}")
+
                 }
-                pr_num += 1
                 // 전제문제수 증가
+                saveQuizResult("all")
                 // 해당 과목 문제수 증가
+                saveQuizResult(quiz[0].subject)
+
                 quiz.clear()
                 wrongBoolean = false
                 quizSolved = false
                 callQuiz()
+
             } else
                 Toast.makeText(this, "문제를 풀어주세요", Toast.LENGTH_LONG).show()
         }

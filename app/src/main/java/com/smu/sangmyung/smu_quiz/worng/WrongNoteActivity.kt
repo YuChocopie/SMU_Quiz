@@ -35,7 +35,7 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
 class WrongNoteActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener  {
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
-    val email:String  = "abc@abc.com"
+    val email:String  = user!!.email.toString()
 
     var wrongListAlgorithm = arrayListOf<Quiz>()
     var wrongListDB = arrayListOf<Quiz>()
@@ -81,7 +81,6 @@ class WrongNoteActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
         nav_header_view.tv_nvheader_email?.text=email.toString()
 
     }
-
     @SuppressLint("CheckResult")
     private fun getWrongData() {
         smuQuizInterface.getWorngNum(email)

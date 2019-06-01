@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.example.smu_quiz.DailyActivity
 import com.example.smu_quiz.MockTestStart
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import com.smu.sangmyung.smu_quiz.login.SubjectActivity
 import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
@@ -28,6 +29,8 @@ import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var auth: FirebaseAuth
+    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    val email = user!!.email.toString()
 
     var Algorithm:Boolean?=null
     var Database :Boolean?=null
@@ -51,7 +54,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         checkCurrentUser()
         tvGlobalTitle.text="ALL QUIZ"
 
-        val wrong = Wrong(1,2,"abc@abc.com")
+        val wrong = Wrong(1,2,email)
 
         smuQuizInterface.setWrongQuiz(wrong)
             .subscribeOn(Schedulers.io())
