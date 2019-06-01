@@ -117,11 +117,13 @@ class MockTestMain : AppCompatActivity(){
         //다음 문제로 넘어가기
         tvNext.setOnClickListener {
             //문제수 1씩 증가
+            //TODO::과목별 check 더하기
             pr_num += 1
             if(pr_num < mocktestlist.size){
+                //TODO::즐겨찾기 보내기
+
                 ivMainLike.setImageResource(R.drawable.like_empty)
                 setting(pr_num)
-
             }
 
             //모의고사 다 풀었을 때

@@ -67,7 +67,7 @@ class DailyActivity : AppCompatActivity() {
 
         //문제 불러오기 && xml설정하기
         fun callQuiz(){
-            smuDailyInterface.test()
+            smuDailyInterface.getDailyQuiz("Database")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ result ->
@@ -78,7 +78,7 @@ class DailyActivity : AppCompatActivity() {
                     tvChoice1.text = "1. ${result[0].choice_1}"
                     tvChoice2.text = "2. ${result[0].choice_2}"
                     tvChoice3.text = "3. ${result[0].choice_3}"
-                    tvChoice4.text = "4. ${result[0].choice_4}f"
+                    tvChoice4.text = "4. ${result[0].choice_4}"
                     val correctAnswer = result[0].answer
 
                     //1번 선택했을 때

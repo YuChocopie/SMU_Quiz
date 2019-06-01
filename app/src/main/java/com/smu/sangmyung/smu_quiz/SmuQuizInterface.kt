@@ -12,11 +12,14 @@ interface SmuQuizInterface {
     @GET("/quiz/request?subject=Database")
     fun test(): Observable <List<Quiz>>
 
-
+//    /quiz/request?subject=Database
     @GET("/register/wrong")
     fun getWorngNum(@Query("email")email : String): Observable <List<Wrong>>
 
     @GET("/register/detail")
     fun getWorngDetail(@Query("pr_id")wrongNum : Int): Observable <List<Quiz>>
+
+    @GET("/quiz/request")
+    fun getDailyQuiz(@Query("subject")subject : String): Observable <List<Quiz>>
 
 }
