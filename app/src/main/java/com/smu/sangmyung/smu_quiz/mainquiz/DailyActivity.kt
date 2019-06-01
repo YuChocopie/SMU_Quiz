@@ -159,7 +159,6 @@ class DailyActivity : AppCompatActivity() {
 
         //다음문제로 넘어가기
         tvNext.setOnClickListener {
-<<<<<<< Updated upstream
             if (quizSolved) {
                 if (bookMarkBoolean) {
                     val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
@@ -172,20 +171,7 @@ class DailyActivity : AppCompatActivity() {
                             error.printStackTrace()
                             Log.d("Result", "ereerr::bookMarkBoolean")
                         }, { Log.d("Result", "complete::bookMarkBoolean") })
-=======
-            pr_num += 1
-            callQuiz()
-        }
 
-        //즐겨찾기 체크 or 해제
-        ivMainLike.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View) {
-                i = 1 - i
-                if (i == 1) {
-                    ivMainLike.setImageResource(R.drawable.like_fill)
-                } else {
-                    ivMainLike.setImageResource(R.drawable.like_empty)
->>>>>>> Stashed changes
                 }
                 if (!wrongBoolean) {
                     val wrong = Wrong(0, quiz[0].pr_id, "abc@abc.com")
