@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.smu.sangmyung.smu_quiz.BaseActivity
+import com.smu.sangmyung.smu_quiz.FavoriteActivity
 import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
@@ -44,7 +45,7 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
 
         cb_algorithm.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                get_subject("&algorithm&")
+                get_subject("Algorithme&")
             }
         }
         cb_computer_network.setOnCheckedChangeListener { _, isChecked ->
@@ -59,12 +60,12 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         }
         cb_data_structure.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                get_subject("data_structure&")
+                get_subject("Data_structure&")
             }
         }
         cb_database.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                get_subject("database&")
+                get_subject("Database&")
             }
         }
         cb_operation_system.setOnCheckedChangeListener { _, isChecked ->
@@ -75,7 +76,7 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         cb_software_engineering.setOnCheckedChangeListener { _
                                                              , isChecked ->
             if(isChecked){
-                get_subject("sofrware_engineering&")
+                get_subject("Software_Engineering&")
             }
         }
         loadSubject()
@@ -124,6 +125,10 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         when (item.itemId) {
             R.id.select_subject -> {
                 val intent= Intent(applicationContext, SubjectActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.favorite -> {
+                val intent= Intent(applicationContext, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.wrong_ques -> {

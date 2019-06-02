@@ -32,13 +32,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
     val email = user!!.email.toString()
 
-    var Algorithm:Boolean?=null
+    var Algorithme:Boolean?=null
     var Database :Boolean?=null
-    var sofrware_engineering : Boolean ?= null
+    var Software_Engineering : Boolean ?= null
     var operation_system :Boolean?=null
     var computer_network : Boolean?= null
     var computer_structure :Boolean?=null
-    var data_structure : Boolean?= null
+    var Data_structure : Boolean?= null
     var selected_subject:String?=null
 
 
@@ -89,13 +89,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     private fun subjectSet(): ArrayList<String> {
         var subject_list = arrayListOf<String>()
 
-        Algorithm= false
+        Algorithme= false
         Database=false
-        sofrware_engineering = false
+        Software_Engineering = false
         operation_system =false
         computer_network = false
         computer_structure =false
-        data_structure = false
+        Data_structure = false
 
         var subjectall:String = loadSubjectlist()
         if(subjectall!=null) {
@@ -105,7 +105,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             while(subject_token.hasMoreTokens()) {
                 var token: String = subject_token.nextToken().toString()
                 if (token=="algorithm") {
-                    Algorithm = true
+                    Algorithme = true
                     Log.d("ddddd",token)
                     subject_list.add("Algorithme")
                 }
@@ -115,7 +115,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     subject_list.add("Database")
                 }
                 if (token=="sofrware_engineering") {
-                    sofrware_engineering = true
+                    Software_Engineering = true
                     Log.d("ddddd",token)
                     subject_list.add("Software_Engineering")
                 }
@@ -135,7 +135,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     subject_list.add("computer_structure")
                 }
                 if (token=="data_structure") {
-                    data_structure = true
+                    Data_structure = true
                     Log.d("ddddd",token)
                     subject_list.add("Data_structure")
                 }
@@ -161,6 +161,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 val intent= Intent(applicationContext, SubjectActivity::class.java)
                 startActivity(intent)
                 finish()
+            }
+            R.id.favorite -> {
+                val intent= Intent(applicationContext, FavoriteActivity::class.java)
+                startActivity(intent)
             }
             R.id.wrong_ques -> {
                 val intent= Intent(applicationContext, WrongNoteActivity::class.java)

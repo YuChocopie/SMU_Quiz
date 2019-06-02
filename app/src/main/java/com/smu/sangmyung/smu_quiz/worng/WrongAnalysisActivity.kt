@@ -54,28 +54,34 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
 
 
         getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val infoview_A = circleGraph_Algo as LinearLayout
-        val infoview_db = circleGraph_Daba as LinearLayout
-        val infoview_ds = circleGraph_DataStruc as LinearLayout
-        val infoview_cs = circleGraph_ComStruc as LinearLayout
-        val infoview_cn = circleGraph_Comne as LinearLayout
-        val infoview_s = circleGraph_Soft as LinearLayout
-        val infoview_os = circleGraph_Oper as LinearLayout
-        val sampleView1 = CircleGraphView(this)
-        val sampleView2 = CircleGraphView(this)
-        val sampleView3 = CircleGraphView(this)
-        val sampleView4 = CircleGraphView(this)
-        val sampleView5 = CircleGraphView(this)
-        val sampleView6 = CircleGraphView(this)
-        val sampleView7 = CircleGraphView(this)
-        infoview_A.addView(sampleView1)
-        infoview_db.addView(sampleView2)
-        infoview_ds.addView(sampleView3)
-        infoview_cs.addView(sampleView4)
-        infoview_cn.addView(sampleView5)
-        infoview_s.addView(sampleView6)
-        infoview_os.addView(sampleView7)
 
+        val Algoview = circleGraph_Algo as LinearLayout
+        val CGAlgo = CircleGraphView(this)
+        Algoview.addView(CGAlgo)
+
+        val Dabaview = circleGraph_Daba as LinearLayout
+        val CGDaba = CircleGraphView(this)
+        Dabaview.addView(CGDaba)
+
+        val Softview = circleGraph_Soft as LinearLayout
+        val CGSoft = CircleGraphView(this)
+        Softview.addView(CGSoft)
+
+        val Operview = circleGraph_Oper as LinearLayout
+        val CGOper = CircleGraphView(this)
+        Operview.addView(CGOper)
+
+        val Comneview = circleGraph_Comne as LinearLayout
+        val CGComne = CircleGraphView(this)
+        Comneview.addView(CGComne)
+
+        val ComStrucview = circleGraph_ComStruc as LinearLayout
+        val CGComstruc = CircleGraphView(this)
+        ComStrucview.addView(CGComstruc)
+
+        val DataStrucview = circleGraph_DataStruc as LinearLayout
+        val CGDataStruc = CircleGraphView(this)
+        DataStrucview.addView(CGDataStruc)
 
 
         val toggle = ActionBarDrawerToggle(
@@ -107,6 +113,10 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         when (item.itemId) {
             R.id.select_subject -> {
                 val intent= Intent(applicationContext, SubjectActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.favorite -> {
+                val intent= Intent(applicationContext, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.wrong_ques -> {
