@@ -31,13 +31,13 @@ public open class BaseActivity : AppCompatActivity() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         val editor = pref.edit()
 
-        editor.putBoolean("algorithm",b1)
+        editor.putBoolean("Algorithme",b1)
             .putBoolean("computer_network",b2)
             .putBoolean("computer_structure",b3)
-            .putBoolean("data_structure",b4)
-            .putBoolean("database",b5)
+            .putBoolean("Data_structure",b4)
+            .putBoolean("Database",b5)
             .putBoolean("operation_system",b6)
-            .putBoolean("sofrware_engineering",b7)
+            .putBoolean("Software_Engineering",b7)
             .apply()
 
         editor.commit()
@@ -45,13 +45,13 @@ public open class BaseActivity : AppCompatActivity() {
 
     fun loadSubject() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val b1 = pref.getBoolean("algorithm", false)
+        val b1 = pref.getBoolean("Algorithme", false)
         val b2 = pref.getBoolean("computer_network", false)
         val b3 = pref.getBoolean("computer_structure", false)
-        val b4 = pref.getBoolean("data_structure", false)
-        val b5 = pref.getBoolean("database", false)
+        val b4 = pref.getBoolean("Data_structure", false)
+        val b5 = pref.getBoolean("Database", false)
         val b6 = pref.getBoolean("operation_system", false)
-        val b7 = pref.getBoolean("sofrware_engineering", false)
+        val b7 = pref.getBoolean("Software_Engineering", false)
         cb_algorithm.isChecked = b1
         cb_computer_network.isChecked = b2
         cb_computer_structure.isChecked = b3

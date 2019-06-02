@@ -44,7 +44,7 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
 
         cb_algorithm.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                get_subject("&algorithm&")
+                get_subject("Algorithme&")
             }
         }
         cb_computer_network.setOnCheckedChangeListener { _, isChecked ->
@@ -59,12 +59,12 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         }
         cb_data_structure.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                get_subject("data_structure&")
+                get_subject("Data_structure&")
             }
         }
         cb_database.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                get_subject("database&")
+                get_subject("Database&")
             }
         }
         cb_operation_system.setOnCheckedChangeListener { _, isChecked ->
@@ -75,7 +75,7 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         cb_software_engineering.setOnCheckedChangeListener { _
                                                              , isChecked ->
             if(isChecked){
-                get_subject("sofrware_engineering&")
+                get_subject("Software_Engineering&")
             }
         }
         loadSubject()

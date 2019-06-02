@@ -59,6 +59,30 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         val CGAlgo = CircleGraphView(this)
         Algoview.addView(CGAlgo)
 
+        val Dabaview = circleGraph_Daba as LinearLayout
+        val CGDaba = CircleGraphView(this)
+        Dabaview.addView(CGDaba)
+
+        val Softview = circleGraph_Soft as LinearLayout
+        val CGSoft = CircleGraphView(this)
+        Softview.addView(CGSoft)
+
+        val Operview = circleGraph_Oper as LinearLayout
+        val CGOper = CircleGraphView(this)
+        Operview.addView(CGOper)
+
+        val Comneview = circleGraph_Comne as LinearLayout
+        val CGComne = CircleGraphView(this)
+        Comneview.addView(CGComne)
+
+        val ComStrucview = circleGraph_ComStruc as LinearLayout
+        val CGComstruc = CircleGraphView(this)
+        ComStrucview.addView(CGComstruc)
+
+        val DataStrucview = circleGraph_DataStruc as LinearLayout
+        val CGDataStruc = CircleGraphView(this)
+        DataStrucview.addView(CGDataStruc)
+
 
 
 
