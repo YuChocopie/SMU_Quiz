@@ -190,16 +190,16 @@ class DailyActivity : BaseActivity() {
                             Log.d("Result", "ereerr::wrongBoolean")
                         }, { Log.d("Result", "complete::wrongBoolean") })
                     //오답인경우 전체 오답++
-                    saveQuizResult("wr_all")
+                    saveQuizResult("wr_all",1)
                     Log.d("asd",quiz[0].subject)
                     //해당과목만 오답 증가 ++
-                    saveQuizResult("wr_${quiz[0].subject}")
+                    saveQuizResult("wr_${quiz[0].subject}",1)
 
                 }
                 // 전제문제수 증가
-                saveQuizResult("all")
+                saveQuizResult("all",1)
                 // 해당 과목 문제수 증가
-                saveQuizResult(quiz[0].subject)
+                saveQuizResult(quiz[0].subject,1)
 
                 quiz.clear()
                 wrongBoolean = false

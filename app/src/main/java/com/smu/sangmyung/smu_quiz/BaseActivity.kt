@@ -91,86 +91,86 @@ public open class BaseActivity : AppCompatActivity() {
     }
 
 
-    fun saveQuizResult(subject: String) {
+    fun saveQuizResult(subject: String,num:Int) {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         val editor = pref.edit()
         when(subject){
             "all" -> {
-                editor.putInt("all",pref.getInt("all",0) +1)
+                editor.putInt("all",pref.getInt("all",0) +num)
                     .apply()
 
             }
             "Algorithme" -> {
-                editor.putInt("algo", pref.getInt("algo",0) +1)
+                editor.putInt("algo", pref.getInt("algo",0) +num)
                     .apply()
 
             }
-            "computer_network" -> {editor.putInt("comne",pref.getInt("comne",0) +1)
+            "computer_network" -> {editor.putInt("comne",pref.getInt("comne",0) +num)
             .apply()
 
             }
             "computer_structure" -> {
-                editor.putInt("comstruc", pref.getInt("comstruc",0) +1)
+                editor.putInt("comstruc", pref.getInt("comstruc",0) +num)
                     .apply()
 
             }
             "Data_structure" -> {
-                editor.putInt("datastruc", pref.getInt("datastruc",0) +1)
+                editor.putInt("datastruc", pref.getInt("datastruc",0) +num)
                     .apply()
 
             }
             "Database" -> {
-                editor.putInt("daba", pref.getInt("daba",0) +1)
+                editor.putInt("daba", pref.getInt("daba",0) +num)
                     .apply()
 
             }
             "operation_system" -> {
-                editor.putInt("oper", pref.getInt("oper",0) +1)
+                editor.putInt("oper", pref.getInt("oper",0) +num)
                     .apply()
 
             }
             "Software_Engineering" -> {
-                editor.putInt("soft", pref.getInt("soft",0) +1)
+                editor.putInt("soft", pref.getInt("soft",0) +num)
                     .apply()
 
             }
             "wr_all" -> {
-                editor.putInt("wr_all", pref.getInt("wr_all",0) +1)
+                editor.putInt("wr_all", pref.getInt("wr_all",0) +num)
                     .apply()
 
             }
             "wr_Algorithme" -> {
-                editor.putInt("wr_algo", pref.getInt("wr_algo",0) +1)
+                editor.putInt("wr_algo", pref.getInt("wr_algo",0) +num)
                     .apply()
 
             }
             "wr_computer_network" -> {
-                editor.putInt("wr_comne", pref.getInt("wr_comne",0) +1)
+                editor.putInt("wr_comne", pref.getInt("wr_comne",0) +num)
                     .apply()
 
             }
             "wr_computer_structure" -> {
-                editor.putInt("wr_comstruc", pref.getInt("wr_comstruc",0) +1)
+                editor.putInt("wr_comstruc", pref.getInt("wr_comstruc",0) +num)
                     .apply()
 
             }
             "wr_Data_structure" -> {
-                editor.putInt("wr_datastruc", pref.getInt("wr_datastruc",0) +1)
+                editor.putInt("wr_datastruc", pref.getInt("wr_datastruc",0) +num)
                     .apply()
 
             }
             "wr_Database" -> {
-                editor.putInt("wr_daba", pref.getInt("wr_daba",0) +1)
+                editor.putInt("wr_daba", pref.getInt("wr_daba",0) +num)
                     .apply()
 
             }
             "wr_operation_system" -> {
-                editor.putInt("wr_oper", pref.getInt("wr_oper",0) +1)
+                editor.putInt("wr_oper", pref.getInt("wr_oper",0) +num)
                     .apply()
 
             }
-            "wr_Software_engineering" -> {
-                editor.putInt("wr_soft", pref.getInt("all",0) +1)
+            "wr_Software_Engineering" -> {
+                editor.putInt("wr_soft", pref.getInt("all",0) +num)
                     .apply()
 
             }
@@ -180,7 +180,6 @@ public open class BaseActivity : AppCompatActivity() {
     fun loadQuizResult(subject:String):Int {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
 
-        Log.e("123123",pref.getInt("wr_daba",0).toString())
         when (subject) {
             "all" -> return pref.getInt("all",0)
             "Algorithme" -> return  pref.getInt("algo", 0)
@@ -197,7 +196,7 @@ public open class BaseActivity : AppCompatActivity() {
             "wr_Data_structure" -> return pref.getInt("wr_datastruc", 0)
             "wr_Database" -> return pref.getInt("wr_daba", 0)
             "wr_operation_system" -> return  pref.getInt("wr_oper", 0)
-            "wr_Software_engineering" -> return  pref.getInt("wr_soft", 0)
+            "wr_Software_Engineering" -> return  pref.getInt("wr_soft", 0)
         }
         return 0
     }

@@ -53,10 +53,13 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         LineGraphView?.drawForBeforeDrawView()
 
 
-//        getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-//        val infoview = circleGraph as LinearLayout
-//        val sampleView = CircleGraphView(this)
-//        infoview.addView(sampleView)
+        getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
+        val Algoview = circleGraph_Algo as LinearLayout
+        val CGAlgo = CircleGraphView(this)
+        Algoview.addView(CGAlgo)
+
+
 
 
 
