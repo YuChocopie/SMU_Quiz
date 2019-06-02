@@ -81,7 +81,6 @@ public open class BaseActivity : AppCompatActivity() {
         val editor = pref.edit()
         editor.putString("useremail",useremail)
             .apply()
-
         editor.commit()
     }
     fun loadCurrentUserEmail():String{

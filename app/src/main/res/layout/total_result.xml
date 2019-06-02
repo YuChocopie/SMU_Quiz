@@ -12,8 +12,8 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:paddingBottom="10dp"
-              android:paddingRight="10dp"
-              android:paddingLeft="10dp">
+              android:paddingRight="15dp"
+              android:paddingLeft="15dp">
 
     <TextView
             android:id="@+id/tvTotalResult"
@@ -31,7 +31,7 @@
 
     <android.support.constraint.ConstraintLayout
             android:id="@+id/clGotoWrongAnswer"
-            android:layout_weight="1"
+            android:layout_weight="0.9"
             android:layout_width="match_parent"
             android:layout_height="0dp">
         <TextView
@@ -46,7 +46,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="@dimen/SIZE_15"/>
         <TextView
                 android:id="@+id/tvBoxWrongAnswer"
                 android:layout_width="0dp"
@@ -70,6 +70,7 @@
     <android.support.constraint.ConstraintLayout
             android:id="@+id/clGotoMain"
             android:layout_weight="1"
+            android:layout_marginBottom="@dimen/activity_margin20"
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
@@ -85,7 +86,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="@dimen/SIZE_15"/>
         <TextView
                 android:id="@+id/tvBoxGotoMain"
                 android:layout_width="0dp"

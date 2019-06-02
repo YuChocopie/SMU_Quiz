@@ -2,6 +2,7 @@ package com.smu.sangmyung.smu_quiz
 
 import io.reactivex.Observable
 import com.smu.sangmyung.smu_quiz.model.Quiz
+import com.smu.sangmyung.smu_quiz.model.User
 import com.smu.sangmyung.smu_quiz.model.Wrong
 import io.reactivex.Flowable
 import retrofit2.Call
@@ -40,6 +41,9 @@ interface SmuQuizInterface {
 
    @POST("/register/bookmark")
     fun setBookMark(@Body value: Wrong) : Flowable<Wrong>
+
+   @POST("/register/bookmark")
+    fun setUser(@Body value: User) : Flowable<User>
 
 
 }

@@ -84,9 +84,6 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         DataStrucview.addView(CGDataStruc)
 
 
-
-
-
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout_wrong_analysis, toolbar,
             R.string.navigation_drawer_open,

@@ -34,11 +34,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="512" />
-                            <entry key="outputName" value="ic_all_quiz_logo_red" />
+                            <entry key="height" value="283" />
+                            <entry key="outputName" value="ic_md" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="$USER_HOME$/Downloads/all_quiz_logo-02.svg" />
-                            <entry key="width" value="512" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/md_대지 1.svg" />
+                            <entry key="width" value="283" />
                           </map>
                         </option>
                       </PersistentState>
