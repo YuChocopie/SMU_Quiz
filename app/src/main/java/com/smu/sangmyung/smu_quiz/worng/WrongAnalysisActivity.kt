@@ -118,6 +118,10 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
                 val intent= Intent(applicationContext, SubjectActivity::class.java)
                 startActivity(intent)
             }
+            R.id.favorite -> {
+                val intent= Intent(applicationContext, FavoriteActivity::class.java)
+                startActivity(intent)
+            }
             R.id.wrong_ques -> {
                 val intent= Intent(applicationContext, WrongNoteActivity::class.java)
                 startActivity(intent)

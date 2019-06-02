@@ -10,6 +10,11 @@
                 android:icon="@drawable/ic_check"
         />
         <item
+                android:title="즐겨찾기"
+                android:id="@+id/favorite"
+                android:icon="@drawable/ic_check"
+        />
+        <item
                 android:title="오답 문제"
                 android:id="@+id/wrong_ques"
                 android:icon="@drawable/ic_border"

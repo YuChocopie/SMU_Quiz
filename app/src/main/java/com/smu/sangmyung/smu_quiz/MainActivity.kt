@@ -173,6 +173,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 startActivity(intent)
                 finish()
             }
+            R.id.favorite -> {
+                val intent= Intent(applicationContext, FavoriteActivity::class.java)
+                startActivity(intent)
+            }
             R.id.wrong_ques -> {
                 val intent= Intent(applicationContext, WrongNoteActivity::class.java)
                 startActivity(intent)

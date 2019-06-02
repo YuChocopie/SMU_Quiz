@@ -15,10 +15,7 @@ import android.view.View.VISIBLE
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.smu.sangmyung.smu_quiz.MainActivity
-import com.smu.sangmyung.smu_quiz.R
-import com.smu.sangmyung.smu_quiz.SmuQuizAIP
-import com.smu.sangmyung.smu_quiz.SmuQuizInterface
+import com.smu.sangmyung.smu_quiz.*
 import com.smu.sangmyung.smu_quiz.adapters.WorngListAdapter
 import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import com.smu.sangmyung.smu_quiz.login.SubjectActivity
@@ -270,6 +267,10 @@ class WrongNoteActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
         when (item.itemId) {
             R.id.select_subject -> {
                 val intent= Intent(applicationContext, SubjectActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.favorite -> {
+                val intent= Intent(applicationContext, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.wrong_ques -> {
