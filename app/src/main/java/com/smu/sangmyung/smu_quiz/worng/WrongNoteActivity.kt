@@ -69,7 +69,7 @@ class WrongNoteActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
             R.string.navigation_drawer_close
         )
 
-        drawer_layout_wrong_note.addDrawerListener(toggle)
+              drawer_layout_wrong_note.addDrawerListener(toggle)
         toggle.syncState()
         nav_view_wrong_note.setNavigationItemSelectedListener(this)
 

@@ -1,13 +1,13 @@
 package com.smu.sangmyung.smu_quiz
 
-import io.reactivex.Observable
 import com.smu.sangmyung.smu_quiz.model.Quiz
 import com.smu.sangmyung.smu_quiz.model.User
 import com.smu.sangmyung.smu_quiz.model.Wrong
 import io.reactivex.Flowable
-import retrofit2.Call
+import io.reactivex.Observable
 import retrofit2.http.*
-import retrofit2.http.QueryMap
+import retrofit2.http.DELETE
+
 
 
 
@@ -18,32 +18,33 @@ interface SmuQuizInterface {
     fun test(): Observable<List<Quiz>>
 
     @GET("/quiz/mocktest")
-    fun getMocktest(@QueryMap option:Map<String,String>): Observable<List<Quiz>>
+    fun getMocktest(@QueryMap option: Map<String, String>): Observable<List<Quiz>>
 
-//        @QueryMap options: Map<String, String>): Call<List<Quiz>>
-
-//    fun getMocktest(@QueryMap (true) Map<String,String> options): Observable<List<Quiz>>
-
-
-//    fun groupList(@Path("id") groupId: Int, @QueryMap options: Map<String, String>): Call<List<User>>
+    //    fun groupList(@Path("id") groupId: Int, @QueryMap options: Map<String, String>): Call<List<User>>
     @GET("/register/wrong")
-    fun getWorngNum(@Query("email")email : String): Observable <List<Wrong>>
+    fun getWorngNum(@Query("email") email: String): Observable<List<Wrong>>
 
     @GET("/register/detail")
-    fun getWorngDetail(@Query("pr_id")wrongNum : Int): Observable <List<Quiz>>
+    fun getWorngDetail(@Query("pr_id") wrongNum: Int): Observable<List<Quiz>>
 
     @GET("/quiz/request")
-    fun getDailyQuiz(@Query("subject")subject : String): Observable <List<Quiz>>
+    fun getDailyQuiz(@Query("subject") subject: String): Observable<List<Quiz>>
 
-//    @FormUrlEncoded
+    //    @FormUrlEncoded
     @POST("/register/wrong")
-    fun setWrongQuiz(@Body value: Wrong) : Flowable<Wrong>
+    fun setWrongQuiz(@Body value: Wrong): Flowable<Wrong>
 
-   @POST("/register/bookmark")
-    fun setBookMark(@Body value: Wrong) : Flowable<Wrong>
+    @POST("/register/bookmark")
+    fun setBookMark(@Body value: Wrong): Flowable<Wrong>
 
-   @POST("/register/bookmark")
-    fun setUser(@Body value: User) : Flowable<User>
+    @POST("/register")
+    fun setUser(@Body value: User): Flowable<User>
+
+    @DELETE("/register/wrong/{id}")
+    fun deleteWrong(@Path("id") id: String, @Body value: User): Flowable<User>
+
+    @DELETE("/register/bookmark/{id}")
+    fun deleteFavoirty(@Path("id") id: String, @Body value: User): Flowable<User>
 
 
 }

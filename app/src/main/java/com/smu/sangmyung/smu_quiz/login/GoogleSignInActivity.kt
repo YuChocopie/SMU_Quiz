@@ -79,23 +79,9 @@ class GoogleSignInActivity : BaseActivity() {
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
                     saveCurrentUserEmail(auth.currentUser?.email.toString())
-                    val user = auth.currentUser
                     val intent = Intent(applicationContext, SubjectActivity::class.java)
-                    val userId = User(user?.email.toString())
-                    Log.d("Result", "123123:setUser:")
-
-                    smuDailyInterface.setUser(userId)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ wrong ->
-                            Log.d("Result", "123123:setUser:$wrong")
-                        }, { error ->
-                            error.printStackTrace()
-                            Log.d("Result", "ereerr::setUser")
-                        }, { Log.d("Result", "complete::setUser") })
-
-
                     startActivity(intent)
+
                     finish()
                 } else {
                     Log.d(TAG, "signInWithCredential:failure", task.exception)
