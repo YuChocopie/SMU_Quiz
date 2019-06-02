@@ -34,8 +34,7 @@ class MockTestMain : BaseActivity() {
     var mockList = arrayListOf<Quiz>()
     val subject = HashMap<String, String>()
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-    //    val email = user!!.email.toString()
-    val email = "abc@abc.com"
+    val email = user!!.email.toString()
     var bookMarkBoolean = false
     var wrongBoolean = true
     var quizSolved = false
@@ -218,7 +217,7 @@ class MockTestMain : BaseActivity() {
 
     //답 맞췄는지 틀렸는지
     private fun isResult(answer: Int, num: Int, choice: MutableList<Choice>) {
-        quizSolved=true
+        quizSolved = true
         if (answer == num) {
             wrongBoolean = true
             for (m in 0..3) {
@@ -270,7 +269,7 @@ class MockTestMain : BaseActivity() {
         tvChoice4.setOnClickListener {
             isResult(correctAnswer, 4, choice)
         }
-        tvPage.text = (pr_num+1).toString() + "/"+isCorrect.size
+        tvPage.text = (pr_num + 1).toString() + "/" + isCorrect.size
         //다음문제로 넘어가면 별 무조건 해제
         ivMainLike.setImageResource(R.drawable.like_empty)
 

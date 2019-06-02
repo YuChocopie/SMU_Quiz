@@ -22,17 +22,15 @@ import com.smu.sangmyung.smu_quiz.login.SubjectActivity
 import com.smu.sangmyung.smu_quiz.model.Quiz
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_subject.*
-import kotlinx.android.synthetic.main.activity_wrong_analysis.*
 import kotlinx.android.synthetic.main.activity_wrong_note.*
 import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
-class WrongNoteActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener  {
+class WrongNoteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
-    val email:String  = user!!.email.toString()
+    val email: String = user!!.email.toString()
 
     var wrongListAlgorithm = arrayListOf<Quiz>()
     var wrongListDB = arrayListOf<Quiz>()
@@ -69,22 +67,23 @@ class WrongNoteActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
             R.string.navigation_drawer_close
         )
 
-              drawer_layout_wrong_note.addDrawerListener(toggle)
+        drawer_layout_wrong_note.addDrawerListener(toggle)
         toggle.syncState()
         nav_view_wrong_note.setNavigationItemSelectedListener(this)
 
-        val email =user!!.email
+        val email = user!!.email
         val nav_header_view = nav_view_wrong_note.getHeaderView(0)
-        nav_header_view.tv_nvheader_email?.text=email.toString()
+        nav_header_view.tv_nvheader_email?.text = email.toString()
 
     }
+
     @SuppressLint("CheckResult")
     private fun getWrongData() {
         smuQuizInterface.getWorngNum(email)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ wrongNum ->
-                Log.d("Result", "123123::"+wrongNum.size.toString())
+                Log.d("Result", "123123::" + wrongNum.size.toString())
                 for (i in wrongNum) {
                     when (i.pr_id) {
                         in 1..100 -> getWrongDataDitail(wrongListDS, i.pr_id)
@@ -96,8 +95,7 @@ class WrongNoteActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
                         in 601..700 -> getWrongDataDitail(wrongListDB, i.pr_id)
                     }
                 }
-            }, {
-                    error ->
+            }, { error ->
                 error.printStackTrace()
                 Log.d("Result", "ereerr")
             }, {
@@ -108,15 +106,14 @@ class WrongNoteActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
     }
 
     @SuppressLint("CheckResult")
-    private fun getWrongDataDitail(subject: ArrayList<Quiz>, wrongNum:Int) {
+    private fun getWrongDataDitail(subject: ArrayList<Quiz>, wrongNum: Int) {
         smuQuizInterface.getWorngDetail(wrongNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ wrong ->
                 subject.add(wrong[0])
-                Log.d("Result", "123123:getWrongDataDitail:"+wrong[0].subject)
-            }, {
-                    error ->
+                Log.d("Result", "123123:getWrongDataDitail:" + wrong[0].subject)
+            }, { error ->
                 error.printStackTrace()
                 Log.d("Result", "ereerr::getWrongDataDitail")
             }, {
@@ -138,7 +135,8 @@ class WrongNoteActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
             String.format(this.getString(R.string.wrong_problem), "ComputerNetwork")
         tvWorngNoteSubjectComputerStructure.text =
             String.format(this.getString(R.string.wrong_problem), "ComputerStructure")
-        tvWorngNoteSubjectDataStructure.text = String.format(this.getString(R.string.wrong_problem), "DataStructure")    }
+        tvWorngNoteSubjectDataStructure.text = String.format(this.getString(R.string.wrong_problem), "DataStructure")
+    }
 
     private fun setRecyclerView() {
         val mAdapterA = WorngListAdapter(this, wrongListAlgorithm)
@@ -266,39 +264,39 @@ class WrongNoteActivity : AppCompatActivity() , NavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.select_subject -> {
-                val intent= Intent(applicationContext, SubjectActivity::class.java)
+                val intent = Intent(applicationContext, SubjectActivity::class.java)
                 startActivity(intent)
             }
             R.id.favorite -> {
-                val intent= Intent(applicationContext, FavoriteActivity::class.java)
+                val intent = Intent(applicationContext, FavoriteActivity::class.java)
                 startActivity(intent)
             }
             R.id.wrong_ques -> {
-                val intent= Intent(applicationContext, WrongNoteActivity::class.java)
+                val intent = Intent(applicationContext, WrongNoteActivity::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.wrong_graph -> {
-                val intent= Intent(applicationContext, WrongAnalysisActivity::class.java)
+                val intent = Intent(applicationContext, WrongAnalysisActivity::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.gotomain -> {
-                val intent= Intent(applicationContext, MainActivity::class.java)
+                val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
             R.id.community_ques -> {
-                Toast.makeText(applicationContext,"준비중입니다 ^^", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "준비중입니다 ^^", Toast.LENGTH_SHORT).show()
             }
             R.id.community_free -> {
-                Toast.makeText(applicationContext,"준비중입니다 ^^", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "준비중입니다 ^^", Toast.LENGTH_SHORT).show()
             }
-            R.id.logout ->{
-                val intent= Intent(applicationContext, GoogleSignInActivity::class.java)
+            R.id.logout -> {
+                val intent = Intent(applicationContext, GoogleSignInActivity::class.java)
                 startActivity(intent)
                 FirebaseAuth.getInstance().signOut()
-                Toast.makeText(applicationContext,"로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
                 finish()
             }
         }
