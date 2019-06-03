@@ -5,7 +5,12 @@ import com.smu.sangmyung.smu_quiz.model.User
 import com.smu.sangmyung.smu_quiz.model.Wrong
 import io.reactivex.Flowable
 import io.reactivex.Observable
+import retrofit2.Call
 import retrofit2.http.*
+import retrofit2.http.HTTP
+import retrofit2.http.FormUrlEncoded
+
+
 
 
 interface SmuQuizInterface {
@@ -29,7 +34,6 @@ interface SmuQuizInterface {
     @GET("/quiz/request")
     fun getDailyQuiz(@Query("subject") subject: String): Observable<List<Quiz>>
 
-    //    @FormUrlEncoded
     @POST("/register/wrong")
     fun setWrongQuiz(@Body value: Wrong): Flowable<Wrong>
 
@@ -39,11 +43,12 @@ interface SmuQuizInterface {
     @POST("/register/user_list")
     fun setUser(@Body value: User): Flowable<User>
 
-    @DELETE("/register/wrong/{id}")
-    fun deleteWrong(@Path("id") id: String, @Body value: User): Flowable<User>
-
-    @DELETE("/register/bookmark/{id}")
+    @FormUrlEncoded
+    @HTTP(method = "DELETE",path = "{/register/bookmark/{id}}",hasBody = true)
     fun deleteFavoirty(@Path("id") id: String, @Body value: User): Flowable<User>
 
+    @FormUrlEncoded
+    @HTTP(method = "DELETE", path = "/register/wrong/{id}", hasBody = true)
+    fun deleteWrong(@Path("id") id: String,@Body value: User): Flowable<User>
 
 }

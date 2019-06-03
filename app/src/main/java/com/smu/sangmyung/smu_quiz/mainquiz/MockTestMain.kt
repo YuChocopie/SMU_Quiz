@@ -108,8 +108,8 @@ class MockTestMain : BaseActivity() {
         smuDailyInterface.setBookMark(wrong)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ wrong ->
-                Log.d("Result", "123123:callAddFavorit:$wrong")
+            .subscribe({ infoFa ->
+                Log.d("Result", "123123:callAddFavorit:$infoFa")
             }, { error ->
                 error.printStackTrace()
                 Log.d("Result", "ereerr::callAddFavorit")
@@ -147,6 +147,7 @@ class MockTestMain : BaseActivity() {
 
     }
 
+    @SuppressLint("CheckResult")
     private fun clickBtn() {
         //즐겨찾기
         ivMainLike.setOnClickListener {
@@ -171,14 +172,14 @@ class MockTestMain : BaseActivity() {
                     callAddFavorit(mockList[pr_num].pr_id)
                 } else {
                     if (isCorrect[pr_num] != -1) {
-                        deleteFavorit(mockList[pr_num].pr_id)
+//                        deleteFavorit(mockList[pr_num].pr_id)
                     }
                 }
                 //오답일경우
                 if (!wrongBoolean) {
-                    callAddWrong(mockList[pr_num].pr_id)
                     //맞으면 1 틀리면 0
                     if (isCorrect[pr_num] == -1) {
+                        callAddWrong(mockList[pr_num].pr_id)
                         saveQuizResult("all", 1)
                         saveQuizResult(mockList[pr_num].subject, 1)
                         saveQuizResult("wr_all", 1)
