@@ -1,4 +1,4 @@
-package com.smu.sangmyung.smu_quiz
+package com.smu.sangmyung.smu_quiz.worng
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -14,12 +14,14 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.smu.sangmyung.smu_quiz.MainActivity
+import com.smu.sangmyung.smu_quiz.R
+import com.smu.sangmyung.smu_quiz.SmuQuizAIP
+import com.smu.sangmyung.smu_quiz.SmuQuizInterface
 import com.smu.sangmyung.smu_quiz.adapters.WorngListAdapter
 import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import com.smu.sangmyung.smu_quiz.login.SubjectActivity
 import com.smu.sangmyung.smu_quiz.model.Quiz
-import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
-import com.smu.sangmyung.smu_quiz.worng.WrongNoteActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_wrong_note.*
@@ -29,8 +31,7 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
 class FavoriteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
-//    val email: String = user!!.email.toString()
-    val email: String = "abc@abc.com"
+    val email: String = user!!.email.toString()
 
     var likeListAlgorithm = arrayListOf<Quiz>()
     var likeListDB = arrayListOf<Quiz>()

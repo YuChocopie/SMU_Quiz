@@ -9,7 +9,7 @@ import android.graphics.RectF
 import android.view.View
 
 
-class CircleGraphView(context: Context?) : View(context) {
+class CircleGraphView(context: Context?,result:Int) : View(context) {
 
 
     val ZERO = -90f
@@ -19,7 +19,7 @@ class CircleGraphView(context: Context?) : View(context) {
     //    private var mOvals: Array<RectF?> = arrayOfNulls(4)
     private var mBigOval: RectF = RectF(20f, 20f, 300f, 300f)
     private var mStart: Float = 0.toFloat()
-    private var mSweep: Float = 150.toFloat()
+    private var mSweep: Float = (result * 3.6).toFloat()
 //    private var mBigIndex: Int = 0
 
     private val SWEEP_INC = 1f

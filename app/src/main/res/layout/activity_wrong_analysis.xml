@@ -16,7 +16,7 @@
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white1"
+                android:background="@color/white5"
                 tools:context=".worng.WrongAnalysisActivity">
 
             <include
@@ -183,10 +183,10 @@
                     app:layout_constraintTop_toTopOf="@+id/v1WorngNoteSubject"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@color/white1"
+                    android:background="@color/white5"
             >
                 <TextView
-                        android:id="@+id/tvCircleGraph"
+                        android:id="@+id/tvAlgoGraph"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="40%"
@@ -248,7 +248,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/clalgo"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@color/white1"
+                    android:background="@color/white5"
             >
                 <TextView
                         android:id="@+id/tvdabagraph"
@@ -283,7 +283,7 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintVertical_chainStyle="packed"
                         app:layout_constraintTop_toTopOf="@+id/circleGraph_Daba"
-                        app:layout_constraintBottom_toTopOf="@+id/tvWorngAnalysisText"
+                        app:layout_constraintBottom_toTopOf="@+id/tvWorngDataBaseText"
                         app:layout_constraintStart_toEndOf="@+id/circleGraph_Daba"
                         android:layout_marginStart="8dp"
                 />
@@ -295,7 +295,7 @@
                         android:textSize="12sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tvWorngAnalysisText"
+                        android:id="@+id/tvWorngDataBaseText"
                         app:layout_constraintTop_toBottomOf="@+id/tvlgDaba"
                         app:layout_constraintBottom_toBottomOf="@+id/circleGraph_Daba"
                         app:layout_constraintStart_toEndOf="@+id/circleGraph_Daba"
@@ -311,7 +311,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/cldaba"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@color/white1"
+                    android:background="@color/white5"
             >
                 <TextView
                         android:id="@+id/tvsoftgraph"
@@ -374,7 +374,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/clsoft"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@color/white1"
+                    android:background="@color/white5"
                     android:layout_marginStart="20dp" android:layout_marginTop="20dp">
                 <TextView
                         android:id="@+id/tvopergraph"
@@ -394,7 +394,8 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:orientation="horizontal"
-                        tools:layout_editor_absoluteX="0dp" tools:layout_editor_absoluteY="0dp">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
                 </LinearLayout>
                 <TextView
                         android:id="@+id/tvlgOper"
@@ -435,7 +436,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/cloper"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@color/white1"
+                    android:background="@color/white5"
                     android:layout_marginStart="20dp" android:layout_marginTop="20dp">
                 <TextView
                         android:id="@+id/tvcomnegraph"
@@ -498,7 +499,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/clcomne"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@color/white1"
+                    android:background="@color/white5"
                     android:layout_marginStart="20dp" android:layout_marginTop="20dp">
                 <TextView
                         android:id="@+id/tvcomstrucgraph"
@@ -560,7 +561,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/clcomstruc"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@color/white1"
+                    android:background="@color/white5"
                     android:layout_marginTop="20dp" android:layout_marginStart="20dp" android:layout_marginBottom="40dp"
                     app:layout_constraintBottom_toBottomOf="parent">
                 <TextView

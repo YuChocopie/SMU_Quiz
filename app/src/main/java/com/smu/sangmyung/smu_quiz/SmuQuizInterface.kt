@@ -36,7 +36,7 @@ interface SmuQuizInterface {
     @POST("/register/bookmark")
     fun setBookMark(@Body value: Wrong): Flowable<Wrong>
 
-    @POST("/register")
+    @POST("/register/user_list")
     fun setUser(@Body value: User): Flowable<User>
 
     @DELETE("/register/wrong/{id}")

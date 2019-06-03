@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import com.smu.sangmyung.smu_quiz.login.SubjectActivity
 import com.smu.sangmyung.smu_quiz.model.User
+import com.smu.sangmyung.smu_quiz.worng.FavoriteActivity
 import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
 import com.smu.sangmyung.smu_quiz.worng.WrongNoteActivity
 import io.reactivex.android.schedulers.AndroidSchedulers

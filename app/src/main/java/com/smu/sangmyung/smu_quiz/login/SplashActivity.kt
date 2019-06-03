@@ -1,10 +1,12 @@
-package com.smu.sangmyung.smu_quiz
+package com.smu.sangmyung.smu_quiz.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import android.view.animation.AnimationUtils
+import com.smu.sangmyung.smu_quiz.BaseActivity
+import com.smu.sangmyung.smu_quiz.MainActivity
+import com.smu.sangmyung.smu_quiz.R
 import kotlinx.android.synthetic.main.activity_splash.*
 
 
@@ -25,7 +27,7 @@ class SplashActivity : BaseActivity() {
         setContentView(R.layout.activity_splash)
 
 
-        val anim = AnimationUtils.loadAnimation(applicationContext,R.anim.splash)
+        val anim = AnimationUtils.loadAnimation(applicationContext, R.anim.splash)
         ivSplash.startAnimation(anim)
 
 

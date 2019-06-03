@@ -1,9 +1,7 @@
 package com.smu.sangmyung.smu_quiz.login
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -12,13 +10,12 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.smu.sangmyung.smu_quiz.BaseActivity
-import com.smu.sangmyung.smu_quiz.FavoriteActivity
+import com.smu.sangmyung.smu_quiz.worng.FavoriteActivity
 import com.smu.sangmyung.smu_quiz.MainActivity
 import com.smu.sangmyung.smu_quiz.R
 import com.smu.sangmyung.smu_quiz.worng.WrongAnalysisActivity
 import com.smu.sangmyung.smu_quiz.worng.WrongNoteActivity
 import kotlinx.android.synthetic.main.activity_subject.*
-import kotlinx.android.synthetic.main.activity_wrong_analysis.*
 import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 

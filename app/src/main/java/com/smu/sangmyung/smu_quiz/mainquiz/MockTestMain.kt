@@ -81,6 +81,7 @@ class MockTestMain : BaseActivity() {
             }, { error ->
                 error.printStackTrace()
                 Toast.makeText(this, "오류", Toast.LENGTH_SHORT).show()
+                callMockList()
             }, {
                 // 작업이 정상적으로 완료되지 않았을 때 호출됩니다.
                 Log.d("Result", "complete")
@@ -90,7 +91,7 @@ class MockTestMain : BaseActivity() {
     @SuppressLint("CheckResult")
     private fun callAddWrong(pr_id: Int) {
         val wrong = Wrong(0, pr_id, email)
-        smuDailyInterface.setBookMark(wrong)
+        smuDailyInterface.setWrongQuiz(wrong)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ wrong ->
@@ -156,6 +157,12 @@ class MockTestMain : BaseActivity() {
                 bookMarkBoolean = true
                 ivMainLike.setImageResource(R.drawable.like_empty)
             }
+        }
+        tvStop.setOnClickListener {
+            pr_num++
+            wrongBoolean = false
+            quizSolved = false
+            setQuiz(pr_num)
         }
         //다음 문제로 넘어가기
         tvNext.setOnClickListener {
