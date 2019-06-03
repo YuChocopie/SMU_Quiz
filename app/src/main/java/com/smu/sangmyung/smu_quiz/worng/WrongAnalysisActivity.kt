@@ -26,7 +26,8 @@ import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
-class WrongAnalysisActivity() : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, Parcelable {
+@SuppressLint("ParcelCreator")
+class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, Parcelable {
     override fun describeContents(): Int {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -133,7 +134,7 @@ class WrongAnalysisActivity() : BaseActivity(), NavigationView.OnNavigationItemS
 
     private fun calaulate(wrong: Int, all: Int): Double {
         var tic = all/100 + all % 100 * 0.01
-        return wrong / tic
+        return (all-wrong) / tic
     }
 
     @SuppressLint("SetTextI18n")
@@ -237,16 +238,4 @@ class WrongAnalysisActivity() : BaseActivity(), NavigationView.OnNavigationItemS
         drawer_layout_wrong_analysis.closeDrawer(GravityCompat.START)
         return true
     }
-
-    companion object CREATOR : Parcelable.Creator<WrongAnalysisActivity> {
-        override fun createFromParcel(parcel: Parcel): WrongAnalysisActivity {
-            return WrongAnalysisActivity(parcel)
-        }
-
-        override fun newArray(size: Int): Array<WrongAnalysisActivity?> {
-            return arrayOfNulls(size)
-        }
-    }
-
-
 }
