@@ -159,7 +159,7 @@ class MockTestMain : BaseActivity() {
             }
         }
         tvStop.setOnClickListener {
-            pr_num++
+            pr_num--
             wrongBoolean = false
             quizSolved = false
             setQuiz(pr_num)
