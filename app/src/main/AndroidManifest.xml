@@ -30,9 +30,9 @@
                 android:name="com.example.smu_quiz.MockTestStart"
                 android:theme="@style/Transparent"/>
         <activity android:name=".worng.WrongAnalysisActivity"/>
-        <activity android:name=".login.SplashActivity"/>
         <activity android:name=".worng.WrongNoteActivity"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".login.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
