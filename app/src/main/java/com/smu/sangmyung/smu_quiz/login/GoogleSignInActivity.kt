@@ -35,7 +35,7 @@ class GoogleSignInActivity : BaseActivity() {
 
         btn_login_google.setOnClickListener{
 
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,SubjectActivity::class.java)
             saveCurrentUserEmail(tv_login.text.toString())
             Log.e("123123",tv_login.text.toString())
             startActivity(intent)

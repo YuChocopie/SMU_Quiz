@@ -75,6 +75,7 @@ class MockTestMain : BaseActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ result ->
+                Thread.sleep(2)
                 for (i in result) {
                     mockList.add(i)
                 }

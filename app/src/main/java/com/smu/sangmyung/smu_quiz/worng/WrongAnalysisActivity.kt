@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View.GONE
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -52,7 +53,7 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         setContentView(R.layout.activity_wrong_analysis)
         setText()
         setGraph()
-//        checkGone()
+        checkGone()
 
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout_wrong_analysis, toolbar,
@@ -71,22 +72,22 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
 
     }
 
-//    private fun checkGone() {
-////        if (resultAlgorithme == 0f)
-////            clalgo.visibility = GONE
-//        if (resultDB == 0f)
-//            cldaba.visibility = GONE
-//        if (resultSE == 0f)
-//            clsoft.visibility = GONE
-//        if (resultOS == 0f)
-//            cloper.visibility = GONE
-//        if (resultCN == 0f)
-//            clcomne.visibility = GONE
-//        if (resultCS == 0f)
-//            clcomstruc.visibility = GONE
-//        if (resultDS == 0f)
-//            cldatastruc.visibility = GONE
-//    }
+    private fun checkGone() {
+        if (resultAlgorithme == 0)
+            clalgo.visibility = GONE
+        if (resultDB == 0)
+            cldaba.visibility = GONE
+        if (resultSE == 0)
+            clsoft.visibility = GONE
+        if (resultOS == 0)
+            cloper.visibility = GONE
+        if (resultCN == 0)
+            clcomne.visibility = GONE
+        if (resultCS == 0)
+            clcomstruc.visibility = GONE
+        if (resultDS == 0)
+            cldatastruc.visibility = GONE
+    }
 
     private fun setGraph() {
         val points = intArrayOf(1, 1, 1, 1, 1, 1, 1)
@@ -98,7 +99,7 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         points[5] = loadQuizResult("wr_computer_structure")
         points[6] = loadQuizResult("wr_Data_structure")
 
-        LineGraphView?.setPoints(points, 1.0, 0, points.max()!!.toInt() + 5)
+        LineGraphView?.setPoints(points, 1.0, 0, points.max()!!*1.2.toInt())
         LineGraphView?.drawForBeforeDrawView()
 
 

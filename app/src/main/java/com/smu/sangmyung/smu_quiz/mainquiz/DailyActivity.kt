@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
@@ -23,6 +24,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_daily.*
 import kotlinx.android.synthetic.main.item_global_title.*
+import java.lang.Thread.sleep
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -77,10 +79,7 @@ class DailyActivity : BaseActivity() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ result ->
-                // data 를 받아 처리합니다.
-                Log.d("121212", subjectSelect.random().toString())
-                Log.d("12121212", result[0].toString())
-
+                sleep(2)
                 // 작업 중 오류가 발생하면 이 블록은 호출되지 않습니다
                 quiz.add(result[0])
                 tvGlobalTitle.text = result[0].subject

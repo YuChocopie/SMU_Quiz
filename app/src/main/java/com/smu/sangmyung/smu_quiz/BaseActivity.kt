@@ -84,7 +84,7 @@ public open class BaseActivity : AppCompatActivity() {
     }
     fun loadCurrentUserEmail():String{
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        return pref.getString("useremail","ss")
+        return pref.getString("useremail","false")
     }
 
 
