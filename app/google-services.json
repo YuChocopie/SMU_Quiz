@@ -15,24 +15,44 @@
       },
       "oauth_client": [
         {
-          "client_id": "93980216082-l4p2i3uhiosrv9t8q8p8ombbh4fpivt0.apps.googleusercontent.com",
+          "client_id": "93980216082-t4mcepri9r9cn2u21tsc8k8mlqq9ektj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.smu.sangmyung.smu_quiz",
-            "certificate_hash": "ec9bf4c304342f2eb1261708738479f27eb64d10"
+            "certificate_hash": "30214c709549a9d9fdd4c16208f04339ef4a4f48"
           }
         },
         {
-          "client_id": "93980216082-27opvq5paj7392hqe1gauiqbsf54hrgr.apps.googleusercontent.com",
+          "client_id": "93980216082-cbl8jkcepo32os3u1m4qp09j6735q373.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.smu.sangmyung.smu_quiz",
-            "certificate_hash": "72a58a6ab37c8003c701410928e8249d9039397f"
+            "certificate_hash": "4b06ad407f3f11e52e9ea5a95f14e21af55c5cd0"
           }
         },
         {
-          "client_id": "93980216082-h4jv5ddu7d2b3ofsh13esseu33hu3u97.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "93980216082-i5o8s7243m6hun7fduar3gjo9cvtd4n8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smu.sangmyung.smu_quiz",
+            "certificate_hash": "87190ad4a5914b7a2b452306b60b6dcad8fc61dc"
+          }
+        },
+        {
+          "client_id": "93980216082-88vbcstdtur8on8rmmfpiliee647u5vc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smu.sangmyung.smu_quiz",
+            "certificate_hash": "dbc7ff406cb76caf212a409babbdee8bb86f801b"
+          }
+        },
+        {
+          "client_id": "93980216082-e46l14flase7jplg9ncaisttu24jjl9g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smu.sangmyung.smu_quiz",
+            "certificate_hash": "999a727e3118d62b7d125adcb19728a2b9a181d1"
+          }
         }
       ],
       "api_key": [
@@ -42,12 +62,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "93980216082-h4jv5ddu7d2b3ofsh13esseu33hu3u97.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

@@ -14,22 +14,43 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.5"
             app:layout_constraintBottom_toTopOf="@+id/btn_login_google"
             app:layout_constraintHorizontal_bias="0.0"/>
 
-    <com.google.android.gms.common.SignInButton
+    <Button
             android:id="@+id/btn_login_google"
             android:layout_margin="@dimen/activity_margin40"
             android:layout_width="0dp"
             android:layout_height="64dp"
+            android:text="시작하기"
+            android:textColor="@color/black0"
+            android:textStyle="bold"
+            android:textSize="19sp"
+            android:background="@drawable/code_box"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.825">
+            app:layout_constraintVertical_bias="0.845">
 
-    </com.google.android.gms.common.SignInButton>
+    </Button>
+
+    <EditText
+            android:id="@+id/tv_login"
+            android:gravity="center"
+            android:textStyle="normal"
+            android:textColor="@color/black5"
+            android:text="이메일을 입력해주세요"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            app:layout_constraintStart_toStartOf="@+id/btn_login_google"
+            app:layout_constraintEnd_toEndOf="@+id/btn_login_google"
+            app:layout_constraintHorizontal_bias="0.0"
+            tools:ignore="MissingConstraints"
+            android:layout_marginBottom="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_login_google"/>
 
 </android.support.constraint.ConstraintLayout>
 

@@ -29,7 +29,8 @@ import kotlin.collections.ArrayList
 
 class DailyActivity : BaseActivity() {
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-    val email = user!!.email.toString()
+//    val email = user!!.email.toString()
+//    val email =loadCurrentUserEmail()
 
     private var smuQuizAIP = SmuQuizAIP()
     private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
@@ -166,7 +167,7 @@ class DailyActivity : BaseActivity() {
         tvNext.setOnClickListener {
             if (quizSolved) {
                 if (bookMarkBoolean) {
-                    val wrong = Wrong(0, quiz[0].pr_id, email)
+                    val wrong = Wrong(0, quiz[0].pr_id, loadCurrentUserEmail())
                     smuDailyInterface.setBookMark(wrong)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -179,7 +180,7 @@ class DailyActivity : BaseActivity() {
 
                 }
                 if (!wrongBoolean) {
-                    val wrong = Wrong(0, quiz[0].pr_id, email)
+                    val wrong = Wrong(0, quiz[0].pr_id, loadCurrentUserEmail())
                     smuDailyInterface.setWrongQuiz(wrong)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())

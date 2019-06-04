@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
 class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener  {
-    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+//    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
     private var all_subject:String=""
 
@@ -99,9 +99,10 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         toggle.syncState()
         nav_view_sub.setNavigationItemSelectedListener(this)
 
-        val email =user!!.email
+//        val email =user!!.email
+//        val email =loadCurrentUserEmail()
         val nav_header_view = nav_view_sub.getHeaderView(0)
-        nav_header_view.tv_nvheader_email?.text=email.toString()
+        nav_header_view.tv_nvheader_email?.text=loadCurrentUserEmail()
 
     }
 

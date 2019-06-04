@@ -30,7 +30,9 @@ import java.util.*
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var auth: FirebaseAuth
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-    val email = user!!.email.toString()
+//    val email = user?.email.toString()
+//    val email:String?=
+
 
     var Algorithme: Boolean? = null
     var Database: Boolean? = null
@@ -196,15 +198,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     @SuppressLint("CheckResult")
     fun checkCurrentUser() {
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            auth = FirebaseAuth.getInstance()
-            var user = auth.currentUser
-            val email = user!!.email
+//        val user = FirebaseAuth.getInstance().currentUser
+        if (loadCurrentUserEmail() != null) {
+//            auth = FirebaseAuth.getInstance()
+//            var user = auth.currentUser
+//            val email = user!!.email
             val navheaderview = nav_view_main.getHeaderView(0)
-            navheaderview.tv_nvheader_email?.text = email.toString()
+            navheaderview.tv_nvheader_email?.text = loadCurrentUserEmail().toString()
 
-            val userId = User(email.toString())
+            val userId = User(loadCurrentUserEmail())
 
             Log.d("Result", "123123:$userId")
             smuQuizInterface.setUser(userId)

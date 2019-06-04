@@ -36,7 +36,7 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+//    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
     @SuppressLint("WrongViewCast", "SetTextI18n")
 
     var resultAlgorithme = 0
@@ -63,8 +63,9 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         drawer_layout_wrong_analysis.addDrawerListener(toggle)
         toggle.syncState()
         nav_view_wrong_anal.setNavigationItemSelectedListener(this)
+        val email =loadCurrentUserEmail()
 
-        val email = user!!.email
+//        val email = user!!.email
         val nav_header_view = nav_view_wrong_anal.getHeaderView(0)
         nav_header_view.tv_nvheader_email?.text = email.toString()
 
@@ -97,7 +98,7 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         points[5] = loadQuizResult("wr_computer_structure")
         points[6] = loadQuizResult("wr_Data_structure")
 
-        LineGraphView?.setPoints(points, 1.0, 0, points.max()!!.toInt() + 2)
+        LineGraphView?.setPoints(points, 1.0, 0, points.max()!!.toInt() + 5)
         LineGraphView?.drawForBeforeDrawView()
 
 

@@ -33,8 +33,9 @@ class MockTestMain : BaseActivity() {
     var subjectSelect = arrayListOf<String>()
     var mockList = arrayListOf<Quiz>()
     val subject = HashMap<String, String>()
-    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-    val email = user!!.email.toString()
+//    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+    //    val email = user!!.email.toString()
+
     var bookMarkBoolean = false
     var wrongBoolean = true
     var quizSolved = false
@@ -90,7 +91,7 @@ class MockTestMain : BaseActivity() {
 
     @SuppressLint("CheckResult")
     private fun callAddWrong(pr_id: Int) {
-        val wrong = Wrong(0, pr_id, email)
+        val wrong = Wrong(0, pr_id, loadCurrentUserEmail())
         smuDailyInterface.setWrongQuiz(wrong)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -104,7 +105,7 @@ class MockTestMain : BaseActivity() {
 
     @SuppressLint("CheckResult")
     private fun callAddFavorit(pr_id: Int) {
-        val wrong = Wrong(0, pr_id, email)
+        val wrong = Wrong(0, pr_id, loadCurrentUserEmail())
         smuDailyInterface.setBookMark(wrong)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -118,7 +119,7 @@ class MockTestMain : BaseActivity() {
 
     @SuppressLint("CheckResult")
     private fun deleteWrong(pr_id: Int) {
-        val userId = User(email)
+        val userId = User(loadCurrentUserEmail())
         smuDailyInterface.deleteWrong(pr_id.toString(), userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -134,7 +135,7 @@ class MockTestMain : BaseActivity() {
 
     @SuppressLint("CheckResult")
     private fun deleteFavorit(pr_id: Int) {
-        val userId = User(email)
+        val userId = User(loadCurrentUserEmail())
         smuDailyInterface.deleteFavoirty(pr_id.toString(), userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

@@ -14,10 +14,7 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.smu.sangmyung.smu_quiz.MainActivity
-import com.smu.sangmyung.smu_quiz.R
-import com.smu.sangmyung.smu_quiz.SmuQuizAIP
-import com.smu.sangmyung.smu_quiz.SmuQuizInterface
+import com.smu.sangmyung.smu_quiz.*
 import com.smu.sangmyung.smu_quiz.adapters.WorngListAdapter
 import com.smu.sangmyung.smu_quiz.login.GoogleSignInActivity
 import com.smu.sangmyung.smu_quiz.login.SubjectActivity
@@ -28,10 +25,10 @@ import kotlinx.android.synthetic.main.activity_wrong_note.*
 import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
-class FavoriteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+class FavoriteActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+//    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
 
-    val email: String = user!!.email.toString()
+    //    val email: String = user!!.email.toString()
 
     var likeListAlgorithm = arrayListOf<Quiz>()
     var likeListDB = arrayListOf<Quiz>()
@@ -71,9 +68,9 @@ class FavoriteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         toggle.syncState()
         nav_view_wrong_note.setNavigationItemSelectedListener(this)
 
-        val email = user!!.email
+//        val email = loadCurrentUserEmail()!!.email
         val nav_header_view = nav_view_wrong_note.getHeaderView(0)
-        nav_header_view.tv_nvheader_email?.text = email.toString()
+        nav_header_view.tv_nvheader_email?.text = loadCurrentUserEmail()
 
 
     }
@@ -121,7 +118,8 @@ class FavoriteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         rvWorngSoftwareEngineering.adapter = mAdapterSE
         rvWorngSoftwareEngineering.layoutManager = lm7
-        rvWorngSoftwareEngineering.setHasFixedSize(true)    }
+        rvWorngSoftwareEngineering.setHasFixedSize(true)
+    }
 
     private fun setRecyclerView() {
         tvWorngNoteSubjectAlgorithm.setOnClickListener {
@@ -186,11 +184,12 @@ class FavoriteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 rvWorngSoftwareEngineering.visibility = View.VISIBLE
                 softwareEngineering = true
             }
-        }    }
+        }
+    }
 
     @SuppressLint("CheckResult")
     private fun getBookMarkData() {
-        smuQuizInterface.getBookMarkNum(email)
+        smuQuizInterface.getBookMarkNum(loadCurrentUserEmail())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ listNum ->
@@ -212,7 +211,8 @@ class FavoriteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
             }, {
                 // 작업이 정상적으로 완료되지 않았을 때 호출됩니다.
                 Log.d("Result", "complete")
-            })    }
+            })
+    }
 
     @SuppressLint("CheckResult")
     private fun getlikeDataDitail(likeListDS: ArrayList<Quiz>, pr_id: Int) {

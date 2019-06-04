@@ -27,10 +27,11 @@ import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
-class WrongNoteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+class WrongNoteActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+//    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+//    val email =loadCurrentUserEmail()
 
-    val email: String = user!!.email.toString()
+//    val email: String = user!!.email.toString()
 
     var wrongListAlgorithm = arrayListOf<Quiz>()
     var wrongListDB = arrayListOf<Quiz>()
@@ -71,15 +72,15 @@ class WrongNoteActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toggle.syncState()
         nav_view_wrong_note.setNavigationItemSelectedListener(this)
 
-        val email = user!!.email
+//        val email = user!!.email
         val nav_header_view = nav_view_wrong_note.getHeaderView(0)
-        nav_header_view.tv_nvheader_email?.text = email.toString()
+        nav_header_view.tv_nvheader_email?.text = loadCurrentUserEmail()
 
     }
 
     @SuppressLint("CheckResult")
     private fun getWrongData() {
-        smuQuizInterface.getWorngNum(email)
+        smuQuizInterface.getWorngNum(loadCurrentUserEmail())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ wrongNum ->

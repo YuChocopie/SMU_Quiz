@@ -11,14 +11,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.smu.sangmyung.smu_quiz.BaseActivity
-import com.smu.sangmyung.smu_quiz.R
-import com.smu.sangmyung.smu_quiz.SmuQuizAIP
-import com.smu.sangmyung.smu_quiz.SmuQuizInterface
+import com.smu.sangmyung.smu_quiz.*
 import com.smu.sangmyung.smu_quiz.model.User
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_google.*
+import java.sql.Types.NULL
 
 class GoogleSignInActivity : BaseActivity() {
 
@@ -27,30 +25,42 @@ class GoogleSignInActivity : BaseActivity() {
     private var smuQuizAIP = SmuQuizAIP()
     private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
     private var smuDailyInterface = smuQuizRetrofit.create(SmuQuizInterface::class.java)
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_google)
-
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-
-        auth = FirebaseAuth.getInstance()
-
-        btn_login_google.setOnClickListener {
-            signIn()
-
+        tv_login.setOnClickListener {
+            tv_login.text = null
         }
+
+        btn_login_google.setOnClickListener{
+
+            val intent = Intent(this,MainActivity::class.java)
+            saveCurrentUserEmail(tv_login.text.toString())
+            Log.e("123123",tv_login.text.toString())
+            startActivity(intent)
+        }
+
+//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(getString(R.string.default_web_client_id))
+//            .requestEmail()
+//            .build()
+//
+//        googleSignInClient = GoogleSignIn.getClient(this, gso)
+//
+//        auth = FirebaseAuth.getInstance()
+//
+//        btn_login_google.setOnClickListener {
+//            signIn()
+//
+//        }
     }
 
-    public override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-
-    }
+//    public override fun onStart() {
+//        super.onStart()
+//        val currentUser = auth.currentUser
+//
+//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

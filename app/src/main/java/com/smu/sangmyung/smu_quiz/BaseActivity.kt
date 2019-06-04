@@ -3,7 +3,6 @@ package com.smu.sangmyung.smu_quiz
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import kotlinx.android.synthetic.main.activity_subject.*
 
 public open class BaseActivity : AppCompatActivity() {
@@ -85,8 +84,7 @@ public open class BaseActivity : AppCompatActivity() {
     }
     fun loadCurrentUserEmail():String{
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val useremail = pref.getString("useremail","false")
-        return useremail
+        return pref.getString("useremail","ss")
     }
 
 
