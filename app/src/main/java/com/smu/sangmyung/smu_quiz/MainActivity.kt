@@ -29,9 +29,6 @@ import java.util.*
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var auth: FirebaseAuth
-    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-//    val email = user?.email.toString()
-//    val email:String?=
 
 
     var Algorithme: Boolean? = null
@@ -56,6 +53,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         //로그인 되있으면 이메일 확인후 네비바에 삽입 & 서버에 유저이메일 보내기
         checkCurrentUser()
         tvGlobalTitle.text = "ALL QUIZ"
+        auth = FirebaseAuth.getInstance()
+        val email = auth.currentUser
+        Log.d("222",email?.email)
 
         setToggle()
         setBtn()

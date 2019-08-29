@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
 class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener  {
-//    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+
 
     private var all_subject:String=""
 
