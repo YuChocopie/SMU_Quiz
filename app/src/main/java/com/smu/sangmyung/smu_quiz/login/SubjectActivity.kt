@@ -22,7 +22,6 @@ import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener  {
 
-
     private var all_subject:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +56,7 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         }
         cb_data_structure.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
-                get_subject("Data_structure&")
+                get_subject("Data_Structure&")
             }
         }
         cb_database.setOnCheckedChangeListener { _, isChecked ->
@@ -99,10 +98,9 @@ class SubjectActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         toggle.syncState()
         nav_view_sub.setNavigationItemSelectedListener(this)
 
-//        val email =user!!.email
-//        val email =loadCurrentUserEmail()
+        val email = getUserEmail()
         val nav_header_view = nav_view_sub.getHeaderView(0)
-        nav_header_view.tv_nvheader_email?.text=loadCurrentUserEmail()
+        nav_header_view.tv_nvheader_email.text=email
 
     }
 

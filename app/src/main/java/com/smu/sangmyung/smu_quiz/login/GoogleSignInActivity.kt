@@ -16,8 +16,8 @@ import kotlinx.android.synthetic.main.activity_google.*
 
 class GoogleSignInActivity : BaseActivity() {
 
-    private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     private var smuQuizAIP = SmuQuizAIP()
     private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
@@ -34,8 +34,6 @@ class GoogleSignInActivity : BaseActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        auth = FirebaseAuth.getInstance()
-
         btn_login_google.setOnClickListener {
             signIn()
 
@@ -44,7 +42,7 @@ class GoogleSignInActivity : BaseActivity() {
 
     public override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
+        val currentUser = getUserEmail()
 
     }
 
@@ -68,13 +66,11 @@ class GoogleSignInActivity : BaseActivity() {
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.id!!)
 
-
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d(TAG, "signInWithCredential:success")
-                    saveCurrentUserEmail(auth.currentUser?.email.toString())
                     val intent = Intent(applicationContext, SubjectActivity::class.java)
                     startActivity(intent)
 

@@ -42,7 +42,7 @@
     <string name="softwareEngineering">softwareEngineering</string>
     <string name="operationSystem">operationSystem</string>
     <string name="computerNetwork">computerNetwork</string>
-    <string name="computerStructure">datacomputerStructurebase</string>
+    <string name="computerStructure">computerStructure</string>
     <string name="dataStructure">dataStructure</string>
     <string name="algorithm_h">알고리즘</string>
     <string name="database_h">DB</string>

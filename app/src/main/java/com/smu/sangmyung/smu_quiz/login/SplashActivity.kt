@@ -30,12 +30,9 @@ class SplashActivity : BaseActivity() {
         val anim = AnimationUtils.loadAnimation(applicationContext, R.anim.splash)
         ivSplash.startAnimation(anim)
 
-
-        val useremail: String? = loadCurrentUserEmail()
-
         var handler = Handler()
 
-        if (useremail !="false") {
+        if (getUserEmail() !=null) {
                 handler.postDelayed(main,4000)
             }
         else{
