@@ -26,9 +26,6 @@ import kotlinx.android.synthetic.main.item_global_title.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 class FavoriteActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
-//    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-
-    //    val email: String = user!!.email.toString()
 
     var likeListAlgorithm = arrayListOf<Quiz>()
     var likeListDB = arrayListOf<Quiz>()
@@ -68,9 +65,8 @@ class FavoriteActivity : BaseActivity(), NavigationView.OnNavigationItemSelected
         toggle.syncState()
         nav_view_wrong_note.setNavigationItemSelectedListener(this)
 
-//        val email = loadCurrentUserEmail()!!.email
         val nav_header_view = nav_view_wrong_note.getHeaderView(0)
-        nav_header_view.tv_nvheader_email?.text = loadCurrentUserEmail()
+        nav_header_view.tv_nvheader_email?.text = getUserEmail()
 
 
     }
@@ -189,7 +185,7 @@ class FavoriteActivity : BaseActivity(), NavigationView.OnNavigationItemSelected
 
     @SuppressLint("CheckResult")
     private fun getBookMarkData() {
-        smuQuizInterface.getBookMarkNum(loadCurrentUserEmail())
+        smuQuizInterface.getBookMarkNum(getUserEmail())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ listNum ->
@@ -233,18 +229,13 @@ class FavoriteActivity : BaseActivity(), NavigationView.OnNavigationItemSelected
 
     private fun setText() {
         tvGlobalTitle.text = "즐겨찾기"
-
-        tvWorngNoteSubjectAlgorithm.text = String.format(this.getString(R.string.wrong_problem), "Algorithm")
-        tvWorngNoteSubjectDatabase.text = String.format(this.getString(R.string.wrong_problem), "Database")
-        tvWorngNoteSubjectSoftwareEngineering.text =
-            String.format(this.getString(R.string.wrong_problem), "SoftwareEngineering")
-        tvWorngNoteSubjectOperationSystem.text =
-            String.format(this.getString(R.string.wrong_problem), "OperationSystem")
-        tvWorngNoteSubjectComputerNetwork.text =
-            String.format(this.getString(R.string.wrong_problem), "ComputerNetwork")
-        tvWorngNoteSubjectComputerStructure.text =
-            String.format(this.getString(R.string.wrong_problem), "ComputerStructure")
-        tvWorngNoteSubjectDataStructure.text = String.format(this.getString(R.string.wrong_problem), "DataStructure")
+        tvWorngNoteSubjectAlgorithm.text = "Algorithm"
+        tvWorngNoteSubjectDatabase.text = "Database"
+        tvWorngNoteSubjectSoftwareEngineering.text = "SoftwareEngineering"
+        tvWorngNoteSubjectOperationSystem.text = "OperationSystem"
+        tvWorngNoteSubjectComputerNetwork.text ="ComputerNetwork"
+        tvWorngNoteSubjectComputerStructure.text ="ComputerStructure"
+        tvWorngNoteSubjectDataStructure.text ="DataStructure"
 
 
     }

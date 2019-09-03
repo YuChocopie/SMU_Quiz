@@ -37,7 +37,6 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-//    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
     @SuppressLint("WrongViewCast", "SetTextI18n")
 
     var resultAlgorithme = 0
@@ -64,11 +63,8 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         drawer_layout_wrong_analysis.addDrawerListener(toggle)
         toggle.syncState()
         nav_view_wrong_anal.setNavigationItemSelectedListener(this)
-        val email =loadCurrentUserEmail()
-
-//        val email = user!!.email
         val nav_header_view = nav_view_wrong_anal.getHeaderView(0)
-        nav_header_view.tv_nvheader_email?.text = email.toString()
+        nav_header_view.tv_nvheader_email?.text = getUserEmail()
 
     }
 
@@ -93,7 +89,7 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         val points = intArrayOf(1, 1, 1, 1, 1, 1, 1)
         points[0] = loadQuizResult("wr_Algorithme")
         points[1] = loadQuizResult("wr_Database")
-        points[2] = loadQuizResult("wr_Software_engineering")
+        points[2] = loadQuizResult("wr_Software_Engineering")
         points[3] = loadQuizResult("wr_operation_system")
         points[4] = loadQuizResult("wr_computer_network")
         points[5] = loadQuizResult("wr_computer_structure")
@@ -145,9 +141,9 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
             resultAlgorithme = calaulate(loadQuizResult("wr_Algorithme"), loadQuizResult("Algorithme")).toInt()
         if (loadQuizResult("Database") != 0)
             resultDB = calaulate(loadQuizResult("wr_Database"), loadQuizResult("Database")).toInt()
-        if (loadQuizResult("Software_engineering") != 0)
+        if (loadQuizResult("Software_Engineering") != 0)
             resultSE =
-                calaulate(loadQuizResult("wr_Software_engineering"), loadQuizResult("Software_engineering")).toInt()
+                calaulate(loadQuizResult("wr_Software_Engineering"), loadQuizResult("Software_engineering")).toInt()
         if (loadQuizResult("operation_system") != 0)
             resultOS = calaulate(loadQuizResult("wr_operation_system"), loadQuizResult("operation_system")).toInt()
         if (loadQuizResult("computer_network") != 0)
@@ -179,12 +175,12 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
 
 
         tvAlgotext.text = "$resultAlgorithme%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("Algorithme")
-        tvWorngDataBaseText.text = "$resultAlgorithme%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("Database")
-        tvSofttext.text = "$resultAlgorithme%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("Software_engineering")
-        tvOpertext.text = "$resultAlgorithme%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("operation_system")
-        tvComnetext.text = "$resultAlgorithme%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("computer_network")
-        tvComstructext.text = "$resultAlgorithme%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("computer_structure")
-        tvDatatructext.text = "$resultAlgorithme%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("Data_structure")
+        tvWorngDataBaseText.text = "$resultDB%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("Database")
+        tvSofttext.text = "$resultSE%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("Software_Engineering")
+        tvOpertext.text = "$resultOS%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("operation_system")
+        tvComnetext.text = "$resultCN%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("computer_network")
+        tvComstructext.text = "$resultCS%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("computer_structure")
+        tvDatatructext.text = "$resultDS%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("Data_structure")
 
     }
 

@@ -37,7 +37,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     var operation_system: Boolean? = null
     var computer_network: Boolean? = null
     var computer_structure: Boolean? = null
-    var Data_structure: Boolean? = null
+    var Data_Structure: Boolean? = null
     var selected_subject: String? = null
 
 
@@ -53,9 +53,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         //로그인 되있으면 이메일 확인후 네비바에 삽입 & 서버에 유저이메일 보내기
         checkCurrentUser()
         tvGlobalTitle.text = "ALL QUIZ"
-        auth = FirebaseAuth.getInstance()
-        val email = auth.currentUser
-        Log.d("222",email?.email)
 
         setToggle()
         setBtn()
@@ -98,7 +95,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         operation_system = false
         computer_network = false
         computer_structure = false
-        Data_structure = false
+        Data_Structure = false
 
         var subjectall: String = loadSubjectlist()
         if (subjectall != null) {
@@ -106,15 +103,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             subject_list.clear()
             while (subject_token.hasMoreTokens()) {
                 var token: String = subject_token.nextToken().toString()
-                if (token == "algorithm") {
+                if (token == "Algorithme") {
                     Algorithme = true
                     subject_list.add("Algorithme")
                 }
-                if (token == "database") {
+                if (token == "Database") {
                     Database = true
                     subject_list.add("Database")
                 }
-                if (token == "sofrware_engineering") {
+                if (token == "Software_Engineering") {
                     Software_Engineering = true
                     subject_list.add("Software_Engineering")
                 }
@@ -130,9 +127,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     computer_structure = true
                     subject_list.add("computer_structure")
                 }
-                if (token == "data_structure") {
-                    Data_structure = true
-                    subject_list.add("Data_structure")
+                if (token == "Data_Structure") {
+                    Data_Structure = true
+                    subject_list.add("Data_Structure")
                 }
             }
             selected_subject = subject_list.random()
@@ -182,7 +179,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 val intent = Intent(applicationContext, GoogleSignInActivity::class.java)
                 startActivity(intent)
                 FirebaseAuth.getInstance().signOut()
-                saveCurrentUserEmail(true.toString())
                 Toast.makeText(applicationContext, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
                 finish()
             }
@@ -198,15 +194,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     @SuppressLint("CheckResult")
     fun checkCurrentUser() {
-//        val user = FirebaseAuth.getInstance().currentUser
-        if (loadCurrentUserEmail() != null) {
-//            auth = FirebaseAuth.getInstance()
-//            var user = auth.currentUser
-//            val email = user!!.email
+        if (getUserEmail() != null) {
+            val email = getUserEmail()
             val navheaderview = nav_view_main.getHeaderView(0)
-            navheaderview.tv_nvheader_email?.text = loadCurrentUserEmail().toString()
+            navheaderview.tv_nvheader_email?.text = email
 
-            val userId = User(loadCurrentUserEmail())
+            val userId = User(email)
 
             Log.d("Result", "123123:$userId")
             smuQuizInterface.setUser(userId)

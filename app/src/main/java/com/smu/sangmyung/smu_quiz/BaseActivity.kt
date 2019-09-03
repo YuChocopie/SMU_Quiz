@@ -3,9 +3,11 @@ package com.smu.sangmyung.smu_quiz
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_subject.*
 
 public open class BaseActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
     var all :Int=0
     var algo: Int=0
     var comne: Int=0
@@ -33,7 +35,7 @@ public open class BaseActivity : AppCompatActivity() {
         editor.putBoolean("Algorithme",b1)
             .putBoolean("computer_network",b2)
             .putBoolean("computer_structure",b3)
-            .putBoolean("Data_structure",b4)
+            .putBoolean("Data_Structure",b4)
             .putBoolean("Database",b5)
             .putBoolean("operation_system",b6)
             .putBoolean("Software_Engineering",b7)
@@ -47,7 +49,7 @@ public open class BaseActivity : AppCompatActivity() {
         val b1 = pref.getBoolean("Algorithme", false)
         val b2 = pref.getBoolean("computer_network", false)
         val b3 = pref.getBoolean("computer_structure", false)
-        val b4 = pref.getBoolean("Data_structure", false)
+        val b4 = pref.getBoolean("Data_Structure", false)
         val b5 = pref.getBoolean("Database", false)
         val b6 = pref.getBoolean("operation_system", false)
         val b7 = pref.getBoolean("Software_Engineering", false)
@@ -58,8 +60,6 @@ public open class BaseActivity : AppCompatActivity() {
         cb_database.isChecked = b5
         cb_operation_system.isChecked = b6
         cb_software_engineering.isChecked = b7
-
-
 
     }
     fun saveSubjectlist(subjectlist : String){
@@ -75,16 +75,10 @@ public open class BaseActivity : AppCompatActivity() {
         val subjectlist = pref.getString("subjectlist","")
         return subjectlist
     }
-    fun saveCurrentUserEmail(useremail:String){
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor = pref.edit()
-        editor.putString("useremail",useremail)
-            .apply()
-        editor.commit()
-    }
-    fun loadCurrentUserEmail():String{
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        return pref.getString("useremail","false")
+    //현재 로그인된 유저 이메일 받아오기
+    fun getUserEmail():String{
+        auth = FirebaseAuth.getInstance()
+        return auth.currentUser?.email.toString()
     }
 
 
@@ -111,7 +105,7 @@ public open class BaseActivity : AppCompatActivity() {
                     .apply()
 
             }
-            "Data_structure" -> {
+            "Data_Structure" -> {
                 editor.putInt("datastruc", pref.getInt("datastruc",0) +num)
                     .apply()
 
@@ -151,7 +145,7 @@ public open class BaseActivity : AppCompatActivity() {
                     .apply()
 
             }
-            "wr_Data_structure" -> {
+            "wr_Data_Structure" -> {
                 editor.putInt("wr_datastruc", pref.getInt("wr_datastruc",0) +num)
                     .apply()
 
@@ -167,7 +161,7 @@ public open class BaseActivity : AppCompatActivity() {
 
             }
             "wr_Software_Engineering" -> {
-                editor.putInt("wr_soft", pref.getInt("all",0) +num)
+                editor.putInt("wr_soft", pref.getInt("wr_soft",0) +num)
                     .apply()
 
             }
@@ -182,7 +176,7 @@ public open class BaseActivity : AppCompatActivity() {
             "Algorithme" -> return  pref.getInt("algo", 0)
             "computer_network" -> return pref.getInt("comne", 0)
             "computer_structure" -> return  pref.getInt("comstruc", 0)
-            "Data_structure" -> return  pref.getInt("datastruc", 0)
+            "Data_Structure" -> return  pref.getInt("datastruc", 0)
             "Database" -> return pref.getInt("daba", 0)
             "operation_system" -> return pref.getInt("oper", 0)
             "Software_Engineering" -> return pref.getInt("soft", 0)
@@ -190,7 +184,7 @@ public open class BaseActivity : AppCompatActivity() {
             "wr_Algorithme" -> return pref.getInt("wr_algo", 0)
             "wr_computer_network" -> return pref.getInt("wr_comne", 0)
             "wr_computer_structure" -> return pref.getInt("wr_comstruc", 0)
-            "wr_Data_structure" -> return pref.getInt("wr_datastruc", 0)
+            "wr_Data_Structure" -> return pref.getInt("wr_datastruc", 0)
             "wr_Database" -> return pref.getInt("wr_daba", 0)
             "wr_operation_system" -> return  pref.getInt("wr_oper", 0)
             "wr_Software_Engineering" -> return  pref.getInt("wr_soft", 0)

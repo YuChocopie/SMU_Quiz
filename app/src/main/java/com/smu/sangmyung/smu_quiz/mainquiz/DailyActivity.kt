@@ -30,9 +30,6 @@ import kotlin.collections.ArrayList
 
 
 class DailyActivity : BaseActivity() {
-    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-//    val email = user!!.email.toString()
-//    val email =loadCurrentUserEmail()
 
     private var smuQuizAIP = SmuQuizAIP()
     private var smuQuizRetrofit = smuQuizAIP.smuQuizInfoRetrofit()
@@ -63,12 +60,12 @@ class DailyActivity : BaseActivity() {
         choice.add(Choice(tvChoice2))
         choice.add(Choice(tvChoice3))
         choice.add(Choice(tvChoice4))
+        subjectSelect.clear()
         subjectSelect = intent.getStringArrayListExtra("subject")
 
         tvPage.visibility = GONE
         callQuiz()
         setBtn()
-
 
     }
 
@@ -166,7 +163,7 @@ class DailyActivity : BaseActivity() {
         tvNext.setOnClickListener {
             if (quizSolved) {
                 if (bookMarkBoolean) {
-                    val wrong = Wrong(0, quiz[0].pr_id, loadCurrentUserEmail())
+                    val wrong = Wrong(0, quiz[0].pr_id, getUserEmail())
                     smuDailyInterface.setBookMark(wrong)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -179,7 +176,7 @@ class DailyActivity : BaseActivity() {
 
                 }
                 if (!wrongBoolean) {
-                    val wrong = Wrong(0, quiz[0].pr_id, loadCurrentUserEmail())
+                    val wrong = Wrong(0, quiz[0].pr_id, getUserEmail())
                     smuDailyInterface.setWrongQuiz(wrong)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())

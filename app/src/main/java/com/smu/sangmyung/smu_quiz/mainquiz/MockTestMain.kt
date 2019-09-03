@@ -33,8 +33,6 @@ class MockTestMain : BaseActivity() {
     var subjectSelect = arrayListOf<String>()
     var mockList = arrayListOf<Quiz>()
     val subject = HashMap<String, String>()
-//    var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-    //    val email = user!!.email.toString()
 
     var bookMarkBoolean = false
     var wrongBoolean = true
@@ -92,7 +90,7 @@ class MockTestMain : BaseActivity() {
 
     @SuppressLint("CheckResult")
     private fun callAddWrong(pr_id: Int) {
-        val wrong = Wrong(0, pr_id, loadCurrentUserEmail())
+        val wrong = Wrong(0, pr_id, getUserEmail())
         smuDailyInterface.setWrongQuiz(wrong)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -106,7 +104,7 @@ class MockTestMain : BaseActivity() {
 
     @SuppressLint("CheckResult")
     private fun callAddFavorit(pr_id: Int) {
-        val wrong = Wrong(0, pr_id, loadCurrentUserEmail())
+        val wrong = Wrong(0, pr_id, getUserEmail())
         smuDailyInterface.setBookMark(wrong)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -120,7 +118,7 @@ class MockTestMain : BaseActivity() {
 
     @SuppressLint("CheckResult")
     private fun deleteWrong(pr_id: Int) {
-        val userId = User(loadCurrentUserEmail())
+        val userId = User(getUserEmail())
         smuDailyInterface.deleteWrong(pr_id.toString(), userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -136,7 +134,7 @@ class MockTestMain : BaseActivity() {
 
     @SuppressLint("CheckResult")
     private fun deleteFavorit(pr_id: Int) {
-        val userId = User(loadCurrentUserEmail())
+        val userId = User(getUserEmail())
         smuDailyInterface.deleteFavoirty(pr_id.toString(), userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
