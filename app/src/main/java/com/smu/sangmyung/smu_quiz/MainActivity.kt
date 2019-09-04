@@ -88,6 +88,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun subjectSet(): ArrayList<String> {
         var subject_list = arrayListOf<String>()
+        subject_list.clear()
 
         Algorithme = false
         Database = false
