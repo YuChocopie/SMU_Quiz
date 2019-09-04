@@ -93,7 +93,7 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         points[3] = loadQuizResult("wr_operation_system")
         points[4] = loadQuizResult("wr_computer_network")
         points[5] = loadQuizResult("wr_computer_structure")
-        points[6] = loadQuizResult("wr_Data_structure")
+        points[6] = loadQuizResult("wr_Data_Structure")
 
         LineGraphView?.setPoints(points, 1.0, 0, points.max()!!*1.2.toInt())
         LineGraphView?.drawForBeforeDrawView()
@@ -143,15 +143,15 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
             resultDB = calaulate(loadQuizResult("wr_Database"), loadQuizResult("Database")).toInt()
         if (loadQuizResult("Software_Engineering") != 0)
             resultSE =
-                calaulate(loadQuizResult("wr_Software_Engineering"), loadQuizResult("Software_engineering")).toInt()
+                calaulate(loadQuizResult("wr_Software_Engineering"), loadQuizResult("Software_Engineering")).toInt()
         if (loadQuizResult("operation_system") != 0)
             resultOS = calaulate(loadQuizResult("wr_operation_system"), loadQuizResult("operation_system")).toInt()
         if (loadQuizResult("computer_network") != 0)
             resultCN = calaulate(loadQuizResult("wr_computer_network"), loadQuizResult("computer_network")).toInt()
         if (loadQuizResult("computer_structure") != 0)
             resultCS = calaulate(loadQuizResult("wr_computer_structure"), loadQuizResult("computer_structure")).toInt()
-        if (loadQuizResult("Data_structure") != 0)
-            resultDS = calaulate(loadQuizResult("wr_Data_structure"), loadQuizResult("Data_structure")).toInt()
+        if (loadQuizResult("Data_Structure") != 0)
+            resultDS = calaulate(loadQuizResult("wr_Data_Structure"), loadQuizResult("Data_Structure")).toInt()
 
         Log.e("123123123", (resultAlgorithme.toString()))
         Log.e("123123123", (resultDB.toString()))
@@ -180,7 +180,7 @@ class WrongAnalysisActivity : BaseActivity(), NavigationView.OnNavigationItemSel
         tvOpertext.text = "$resultOS%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("operation_system")
         tvComnetext.text = "$resultCN%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("computer_network")
         tvComstructext.text = "$resultCS%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("computer_structure")
-        tvDatatructext.text = "$resultDS%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("Data_structure")
+        tvDatatructext.text = "$resultDS%의 정답률\n총 푼 문제의 수 : " + loadQuizResult("Data_Structure")
 
     }
 
