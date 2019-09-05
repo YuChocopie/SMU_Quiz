@@ -46,7 +46,7 @@ class DailyActivity : BaseActivity() {
     var pr_num = 0 //문제 수
     var quizSolved = false //문제풀이여부
     var wrongBoolean = false //문제정답여부
-    var bookMarkBoolean = false //문제정답여부
+    var bookMarkBoolean = false //북마크 여부
     var correctAnswer = 0
     var subjectSelect = ArrayList<String>()
     var quiz = arrayListOf<Quiz>()
@@ -145,10 +145,12 @@ class DailyActivity : BaseActivity() {
             override fun onClick(v: View) {
                 if (bookMarkBoolean) {
                     bookMarkBoolean = false
-                    ivMainLike.setImageResource(R.drawable.like_fill)
+                    ivMainLike.setImageResource(R.drawable.like_empty)
+                    Log.d("bookmark_true", "$bookMarkBoolean")
                 } else {
                     bookMarkBoolean = true
-                    ivMainLike.setImageResource(R.drawable.like_empty)
+                    ivMainLike.setImageResource(R.drawable.like_fill)
+                    Log.d("bookmark_false", "$bookMarkBoolean")
                 }
             }
         })
@@ -168,11 +170,11 @@ class DailyActivity : BaseActivity() {
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ wrong ->
-                            Log.d("Result", "123123:bookMarkBoolean:$wrong")
+                            Log.d("bookmark", "123123:bookMarkBoolean:$wrong")
                         }, { error ->
                             error.printStackTrace()
-                            Log.d("Result", "ereerr::bookMarkBoolean")
-                        }, { Log.d("Result", "complete::bookMarkBoolean") })
+                            Log.d("bookmark", "ereerr::bookMarkBoolean")
+                        }, { Log.d("bookmark", "complete::bookMarkBoolean") })
 
                 }
                 if (!wrongBoolean) {
