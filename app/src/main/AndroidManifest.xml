@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.smu.sangmyung.smu_quiz">
+          package="com.smu.sangmyung.quiz">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -13,26 +13,26 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".worng.FavoriteActivity">
+        <activity android:name="com.smu.sangmyung.quiz.worng.FavoriteActivity">
         </activity>
-        <activity android:name=".login.GoogleSignInActivity">
+        <activity android:name="com.smu.sangmyung.quiz.login.GoogleSignInActivity">
         </activity>
-        <activity android:name=".login.SubjectActivity"/>
-        <activity android:name="com.example.smu_quiz.DailyActivity"/>
-        <activity android:name="com.example.smu_quiz.MockTestMain"/>
+        <activity android:name="com.smu.sangmyung.quiz.login.SubjectActivity"/>
+        <activity android:name="com.smu.sangmyung.quiz.mainquiz.DailyActivity"/>
+        <activity android:name="com.smu.sangmyung.quiz.mainquiz.MockTestMain"/>
         <activity
-                android:name="com.example.smu_quiz.StopActivity"
+                android:name="com.smu.sangmyung.quiz.mainquiz.StopActivity"
                 android:theme="@style/Transparent"/>
         <activity
-                android:name="com.example.smu_quiz.TotalResult"
+                android:name="com.smu.sangmyung.quiz.mainquiz.TotalResult"
                 android:theme="@style/Transparent"/>
         <activity
-                android:name="com.example.smu_quiz.MockTestStart"
+                android:name="com.smu.sangmyung.quiz.mainquiz.MockTestStart"
                 android:theme="@style/Transparent"/>
-        <activity android:name=".worng.WrongAnalysisActivity"/>
-        <activity android:name=".worng.WrongNoteActivity"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".login.SplashActivity">
+        <activity android:name="com.smu.sangmyung.quiz.worng.WrongAnalysisActivity"/>
+        <activity android:name="com.smu.sangmyung.quiz.worng.WrongNoteActivity"/>
+        <activity android:name="com.smu.sangmyung.quiz.MainActivity"/>
+        <activity android:name="com.smu.sangmyung.quiz.login.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

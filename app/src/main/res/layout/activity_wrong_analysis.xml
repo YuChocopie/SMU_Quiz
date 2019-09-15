@@ -52,7 +52,7 @@
                     android:layout_marginEnd="@dimen/activity_margin20"/>
 
 
-            <com.smu.sangmyung.smu_quiz.worng.LineGraphView
+            <com.smu.sangmyung.quiz.worng.LineGraphView
                     android:id="@+id/LineGraphView"
                     android:layout_width="match_parent"
                     android:layout_height="110dp"

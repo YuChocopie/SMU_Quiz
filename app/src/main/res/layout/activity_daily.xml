@@ -6,7 +6,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.smu_quiz.DailyActivity">
+        tools:context=".mainquiz.DailyActivity">
     <include
             android:id="@+id/tvMainTopTitle"
             layout="@layout/item_global_title"
